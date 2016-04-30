@@ -9,7 +9,7 @@ namespace Moolien.Models.ViewModels
     {
         public bool accepted()
         {
-
+            return false;
         }
     }
 }

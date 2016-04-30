@@ -9,7 +9,7 @@ namespace Moolien.Models.Entities
     {
         public bool accepted()
         {
-
+            return false;
         }
         public int status { get; set; }
     }

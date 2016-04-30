@@ -7,7 +7,7 @@ namespace Moolien.Models.ViewModels
 {
     public class AssignmentViewModel
     {
-        public string title { get; set}
+        public string title { get; set; }
 
         public void myAssignments()
         {
