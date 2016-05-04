@@ -19,5 +19,8 @@ namespace Moolien.Models.Entities
         {
 
         }
+
+        private List<Assignment> assignments;
+        private List<Course> courses;
     }
 }

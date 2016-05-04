@@ -19,5 +19,6 @@ namespace Moolien.Models.Entities
         private int ID { get; set; }
         private string name { get; set; }
         private string description { get; set; }
+        private List<Assignment> assignments;
     }
 }

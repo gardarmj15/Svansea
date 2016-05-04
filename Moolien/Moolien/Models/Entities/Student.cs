@@ -14,9 +14,10 @@ namespace Moolien.Models.Entities
 
         private string course { get; set; }
         private string assignment { get; set; }
-        private List<Submission> submission { get; set; }
+        private List<Submission> submission;
         private string department { get; set; }
         private string major { get; set; }
         private int semester { get; set; }
+        private List<Assignment> assignments;
     }
 }
