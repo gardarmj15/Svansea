@@ -2,17 +2,19 @@
     ViewBag.Title = "Admin Corses";
 }
 
-
+<!-- Breadcrumbs code begin
 <div>
-    <ol class="breadcrumb" style="margin-bottom: 5px;">
+    <ol class="breadcrumb" style="margin: 5px;">
         <li><a href="#">Admin</a></li>
         <li><a href="#">Course</a></li>
         <li class="active">Manage Course </li>
     </ol>
 </div>
-
+<!-- Breadcrumbs code ends -->
+&nbsp;
+<!-- Course Tabs code begin -->
+<div></div>
 <div class="container">
-    <h2>Admin  Course Tabs</h2>
     <ul class="nav nav-tabs">
         <li class="active"><a data-toggle="tab" href="#adminMC">Manage Courses</a></li>
         <li><a data-toggle="tab" href="#adminCC">Create Courses</a></li>
@@ -21,17 +23,74 @@
     </ul>
 
     <div class="tab-content">
+
+        <!-- Manage Course Tab -->
         <div id="adminMC" class="tab-pane fade in active">
             <h3>Manage Courses</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+            <p>Click on the course you want to edit.</p>
+            <div class="list-group">
+                <a href="#" class="list-group-item">Forritun</a>
+                <a href="#" class="list-group-item">Forritun í C++</a>
+                <a href="#" class="list-group-item">Forritunarmál</a>
+                <a href="#" class="list-group-item">Forritunarmál í Python</a>
+                <a href="#" class="list-group-item">Gagnaskipan</a>
+                <a href="#" class="list-group-item">Verkefnalausnir</a>
+                <a href="#" class="list-group-item">Reiknirit</a>
+            </div>   
         </div>
+
+        <!-- Create Course Tab -->
         <div id="adminCC" class="tab-pane fade">
             <h3>Create Courses</h3>
-            <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+            <form>
+                <fieldset class="form-group">
+                    <label for="courseName">Course name:</label>
+                    <input type="text" class="form-control" id="courseName" placeholder="Enter course name">
+                </fieldset>
+                <fieldset class="form-group">
+                    <label for="exampleSelect1">Department</label>
+                    <select class="form-control" id="exampleSelect1">
+                        <option>Select department</option>
+                        <option>Tölvunarfræði - 1. önn</option>
+                        <option>Tölvunarfræði - 2. önn</option>
+                        <option>Tölvunarfræði - 3. önn</option>
+                        <option>Tölvunarfræði - 4. önn</option>
+                        <option>Tölvunarfræði - 5. önn</option>
+                        <option>Tölvunarfræði - 6. önn</option>
+                        <option>Hugbúnaðarfræði - 1. önn</option>
+                        <option>Hugbúnaðarfræði - 2. önn</option>
+                        <option>Hugbúnaðarfræði - 3. önn</option>
+                        <option>Hugbúnaðarfræði - 4. önn</option>
+                        <option>Hugbúnaðarfræði - 5. önn</option>
+                        <option>Hugbúnaðarfræði - 6. önn</option>
+                    </select>
+                </fieldset>
+               
+                <fieldset class="form-group">
+                    <label for="exampleTextarea">Description:</label>
+                    <textarea class="form-control" id="exampleTextarea" rows="6" style="min-width: 100%"></textarea>
+                </fieldset>
+                <button type="submit" class="btn btn-success">Create</button>
+            </form>
         </div>
+
+        <!-- Delate Course Tab -->
         <div id="adminDC" class="tab-pane fade">
-            <h3>Delete Courses</h3>
-            <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.</p>
+            <div id="adminMC" class="tab-pane fade in active">
+                <h3>Manage Courses</h3>
+                <p>Click on the course you want to delate.</p>
+                <div class="list-group">
+                    <a href="#" class="list-group-item">Forritun<span class="badge">Delete</span></a>
+                    <a href="#" class="list-group-item">Forritun í C++<span class="badge">Delete</span></a>
+                    <a href="#" class="list-group-item">Forritunarmál<span class="badge">Delete</span></a>
+                    <a href="#" class="list-group-item">Forritunarmál í Python<span class="badge">Delete</span></a>
+                    <a href="#" class="list-group-item">Gagnaskipan<span class="badge">Delete</span></a>
+                    <a href="#" class="list-group-item">Verkefnalausnir<span class="badge">Delete</span></a>
+                    <a href="#" class="list-group-item">Reiknirit<span class="badge">Delete</span></a>
+                </div>
+            </div>
         </div>
+
     </div>
 </div>
+<!-- Course Tabs code ends -->
