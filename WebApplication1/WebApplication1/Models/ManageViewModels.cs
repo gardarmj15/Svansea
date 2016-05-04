@@ -3,11 +3,10 @@ using System.ComponentModel.DataAnnotations;
 using Microsoft.AspNet.Identity;
 using Microsoft.Owin.Security;
 
-namespace Moolien.Models
+namespace WebApplication1.Models
 {
     public class IndexViewModel
     {
-        
         public bool HasPassword { get; set; }
         public IList<UserLoginInfo> Logins { get; set; }
         public string PhoneNumber { get; set; }

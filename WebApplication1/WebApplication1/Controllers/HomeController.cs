@@ -1,21 +1,19 @@
-﻿using Moolien.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace Moolien.Controllers
+namespace WebApplication1.Controllers
 {
-    [Authorize]
     public class HomeController : Controller
     {
         public ActionResult Index()
-        {
+        {
             return View();
         }
 
-        /*public ActionResult About()
+        public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";
 
@@ -25,12 +23,6 @@ namespace Moolien.Controllers
         public ActionResult Contact()
         {
             ViewBag.Message = "Your contact page.";
-
-            return View();
-        }*/
-        public ActionResult Tabs()
-        {
-            ViewBag.Message = "Your tabs examples.";
 
             return View();
         }
