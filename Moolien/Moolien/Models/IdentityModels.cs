@@ -19,6 +19,7 @@ namespace Moolien.Models
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
+        public ApplicationDbContext _db;
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
         {
