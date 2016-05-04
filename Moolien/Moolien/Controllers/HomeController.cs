@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Moolien.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -10,6 +11,18 @@ namespace Moolien.Controllers
     {
         public ActionResult Index()
         {
+            IdentityManager manager = new IdentityManager();
+            if (!manager.RoleExists("Administrators"))
+            {
+                manager.CreateRole("Administrators");
+            }
+            if (!manager.UserExists("admin"))
+            {
+                ApplicationUser newAdmin = new ApplicationUser();
+                newAdmin.UserName = "admin@admin.is";
+                manager.CreateUser(newAdmin, "123456");
+                manager.AddUserToRole(newAdmin.Id, "Administrators");
+            }
             return View();
         }
 
