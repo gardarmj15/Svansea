@@ -26,5 +26,11 @@ namespace Moolien.Controllers
 
             return View();
         }
+        public ActionResult Tabs()
+        {
+            ViewBag.Message = "Your tabs examples.";
+
+            return View();
+        }
     }
 }
