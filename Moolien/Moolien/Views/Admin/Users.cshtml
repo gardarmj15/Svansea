@@ -1,39 +1,98 @@
 ﻿@{
     ViewBag.Title = "Admin Users";
 }
+
 <!-- Breadcrumbs code begin -->
 <div>
-    <ol class="breadcrumb" style="margin-bottom: 5px;">
+    <ol class="breadcrumb" style="margin: 5px;">
         <li><a href="#">Admin</a></li>
         <li><a href="#">Users</a></li>
         <li class="active">Manage Users </li>
     </ol>
 </div>
 <!-- Breadcrumbs code ends -->
-
+&nbsp;
 <!-- User Tabs code begin -->
+<div></div>
 <div class="container">
-    <h2>Admin Users Tabs</h2>
     <ul class="nav nav-tabs">
-        <li class="active"><a data-toggle="tab" href="#adminUsers">Manage Users</a></li>
-        <li><a data-toggle="tab" href="#adminCU">Create Users </a></li>
-        <li><a data-toggle="tab" href="#adminDU">Delete Users</a></li>
+        <li class="active"><a data-toggle="tab" href="#adminMC">Manage Users</a></li>
+        <li><a data-toggle="tab" href="#adminCC">Create User</a></li>
+        <li><a data-toggle="tab" href="#adminDC">Delete User</a></li>
 
     </ul>
 
     <div class="tab-content">
-        <div id="adminMU" class="tab-pane fade in active">
+
+        <!-- Manage Users Tab -->
+        <div id="adminMC" class="tab-pane fade in active">
             <h3>Manage Users</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+            <p>Click on the user you want to edit.</p>
+            <div class="list-group">
+                <a href="#" class="list-group-item">Andri Guðmundsson</a>
+                <a href="#" class="list-group-item">Bergvin Þór Gíslason</a>
+                <a href="#" class="list-group-item">Garðar Már Jónsson</a>
+                <a href="#" class="list-group-item">Einar Magnús Einarsson</a>
+                <a href="#" class="list-group-item">Svanur Jóhannsson</a>
+            </div>
         </div>
-        <div id="adminCU" class="tab-pane fade">
-            <h3>Create Users</h3>
-            <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+
+        <!-- Create User Tab -->
+        <div id="adminCC" class="tab-pane fade">
+            <h3>Create User</h3>
+            <form>
+                <fieldset class="form-group">
+                    <label for="userName">User name:</label>
+                    <input type="text" class="form-control" id="userName" placeholder="Enter users full name">
+                </fieldset>
+                <fieldset class="form-group">
+                    <label for="userName">Email:</label>
+                    <input type="email" class="form-control" id="userEmail" placeholder="Enter users full name">
+                </fieldset>
+                <fieldset class="form-group">
+                    <label for="exampleSelect1">Department</label>
+                    <select class="form-control" id="exampleSelect1">
+                        <option>Select department</option>
+                        <option>Tölvunarfræði - 1. önn</option>
+                        <option>Tölvunarfræði - 2. önn</option>
+                        <option>Tölvunarfræði - 3. önn</option>
+                        <option>Tölvunarfræði - 4. önn</option>
+                        <option>Tölvunarfræði - 5. önn</option>
+                        <option>Tölvunarfræði - 6. önn</option>
+                        <option>Hugbúnaðarfræði - 1. önn</option>
+                        <option>Hugbúnaðarfræði - 2. önn</option>
+                        <option>Hugbúnaðarfræði - 3. önn</option>
+                        <option>Hugbúnaðarfræði - 4. önn</option>
+                        <option>Hugbúnaðarfræði - 5. önn</option>
+                        <option>Hugbúnaðarfræði - 6. önn</option>
+                    </select>
+                </fieldset>
+
+                <fieldset class="form-group">
+                    <label for="exampleTextarea">Description:</label>
+                    <textarea class="form-control" id="exampleTextarea" rows="6" style="min-width: 100%"></textarea>
+                </fieldset>
+                <button type="submit" class="btn btn-success">Create</button>
+                <button type="submit" class="btn btn-danger">Cancel</button>
+            </form>
         </div>
-        <div id="adminDU" class="tab-pane fade">
-            <h3>Delete Users</h3>
-            <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.</p>
+
+        <!-- Delate User Tab -->
+        <div id="adminDC" class="tab-pane fade">
+            <div id="adminMC" class="tab-pane fade in active">
+                <h3>Delate User</h3>
+                <p>Click on the user you want to delate.</p>
+                <div class="list-group">
+                    <a href="#" class="list-group-item">Andri Guðmundsson<span class="badge">Delete</span></a>
+                    <a href="#" class="list-group-item">Bergvin Þór Gíslason<span class="badge">Delete</span></a>
+                    <a href="#" class="list-group-item">Garðar Már Jónsson<span class="badge">Delete</span></a>
+                    <a href="#" class="list-group-item">Einar Mangús Einarsson<span class="badge">Delete</span></a>
+                    <a href="#" class="list-group-item">Svanur Jóhannesson<span class="badge">Delete</span></a>
+                </div>
+            </div>
         </div>
+
     </div>
 </div>
+<!-- Course Tabs code ends -->
 <!-- User Tabs code ends -->
