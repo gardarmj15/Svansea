@@ -11,6 +11,19 @@ namespace Moolien.Controllers
         // GET: Admin
         public ActionResult Index()
         {
+            ViewBag.Message = "Your application description page.";
+            return View();
+        }
+   
+        public ActionResult Courses()
+        {
+            ViewBag.Message = "Your application description page.";
+            return View();
+        }
+
+        public ActionResult Users()
+        {
+            ViewBag.Message = "Your application description page.";
             return View();
         }
     }

@@ -13,5 +13,10 @@ namespace Moolien.Controllers
         {
             return View();
         }
+        public ActionResult Assignments()
+        {
+            ViewBag.Message = "Your application description page.";
+            return View();
+        }
     }
 }
