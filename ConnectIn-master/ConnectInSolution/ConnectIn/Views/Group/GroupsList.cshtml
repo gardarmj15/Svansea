@@ -1,0 +1,24 @@
+﻿@model IEnumerable<ConnectIn.Models.ViewModels.GroupListViewModel>
+
+@{
+    ViewBag.Title = "GroupsList";
+}
+
+<h2>Your groups</h2>
+
+<span style="float: right">
+    @using (Html.BeginForm("Create", "Group", FormMethod.Get))
+    {
+        <button type="submit" class="btn btn-success" style="position: relative; bottom: 37px;"><span class="glyphicon glyphicon-plus-sign" style="position: relative; top: 2px;">&nbsp;</span>Create a group</button>
+    }
+</span>
+
+
+@foreach (var item in Model) {
+
+    <div class="well">
+        <span>
+            <h2>@Html.ActionLink(item.Name, "Details", new { id = item.GroupId })</h2>
+        </span>
+    </div>
+}

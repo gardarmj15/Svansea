@@ -1,0 +1,55 @@
+﻿@using Microsoft.AspNet.Identity
+@model ConnectIn.Models.ViewModels.NewsFeedViewModel
+
+
+<div class="container postPartialContainer">
+    <div id="posts" class="row" >
+        @foreach (var item in Model.Posts)
+{
+    <div id="post-@item.PostId" class="post item span3" >
+        <div class="well" id="FriendsListWell">
+            <div id="postContent">
+                <!--Should display user's profile picture, a cat was used temporarily-->
+                <div class="PostPartialViewPhoto">
+                    <a href="/Home/Profile/@item.User.UserId"><img class="PartialViewResponsive  img-rounded" src="@Url.Content(item.User.ProfilePicture)" alt="Profile Picture" /></a>
+                </div>
+                <!--Should display username instead of item.userID-->
+                <div class="friendsListName">
+                    <h3>
+                        <a href="/Home/Profile/@item.User.UserId">@item.User.Name</a><small class="pull-right">@Html.DisplayFor(modelItem => item.DateInserted)</small>
+                    </h3>
+                </div>
+                <!--<button type="button" class="david"> dabs</button>-->
+                <div class="ellipsis-text preReset">
+                    <pre class="preReset" style="word-break: normal">@item.Body</pre>
+                    <span class="more dontmove fakeLink">See more</span>
+                    <span class="less dontmove fakeLink">See less</span>
+                </div>
+            </div>
+
+            <div id="commentsLikesDeleteDiv">
+                <div id="commentsAndLikes">
+                    <div id="reactionButtons">
+
+                        <input type="hidden" name="postId" value="@item.PostId"/>
+                        <button type="button" id="likeBtn-@item.PostId" class="btnNew btn-default-clicked likeBtn"><img id="likedislikeimg" src="@Url.Content(item.LikePic)" alt="Like Picture" />@item.LikeDislikeComment.Likes Smiles</button>
+                        <button type="button" id="dislikeBtn-@item.PostId" class="btnNew btn-default-clicked dislikeBtn"><img id="likedislikeimg" src="@Url.Content(item.DislikePic)" alt="Dislike Picture" />@item.LikeDislikeComment.Dislikes Sadfaces</button>
+                        
+                        @using (Html.BeginForm("Comment", "Status", FormMethod.Get))
+                        {
+                            <input type="hidden" name="postId" value="@item.PostId"/>
+                            <button type="submit" class="btnNew btn-default-comment commentss">&nbsp; &nbsp; @item.LikeDislikeComment.Comments Comments</button>
+                        }
+                        @if (item.User.UserId == User.Identity.GetUserId())
+                        {
+                            <button type="button" class="btn btn-danger deletePostButton deletePostBtn">Delete Post</button>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+    </div>
+</div>
+

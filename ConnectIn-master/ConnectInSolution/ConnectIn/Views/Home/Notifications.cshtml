@@ -1,0 +1,100 @@
+﻿@using ConnectIn.DAL
+@using ConnectIn.Services
+@using Microsoft.AspNet.Identity
+@model IEnumerable<ConnectIn.Models.ViewModels.NotificationViewModel>
+
+@{
+    ViewBag.Title = "Notifications";
+}
+
+<h2>Notifications</h2>
+
+
+<div class="container">
+    <div id="posts" class="row">
+    @foreach (var item in Model)
+    {
+        if (item.GroupId == -1)
+        {
+            <div id="friendsacre-@item.NotificationId" class="post item span3" style="position: relative">
+                <div class="well" id="FriendsListWell">
+                    <div class="friendsListPhoto">
+                        <a href="/Home/Profile/@item.Friend.UserId"><img class="img-responsive img-rounded smallPhoto" src="@Url.Content(item.Friend.ProfilePicture)"></a>
+                    </div>
+
+                    <div class="friendsListAbout">
+                        <div class="friendsListName">
+                            <h2 class="friendsListName">
+                                @Html.ActionLink(item.Friend.Name, "Profile", new { id = item.Friend.UserId })
+                            </h2>
+                        </div>
+                        <table class="tableFriends">
+                            <tbody>
+                            <tr>
+                                <td class="glyphicon glyphicon-briefcase tableItem">
+                                    Work
+                                </td>
+                                <td class="glyphicon workFriendsList tableItemInfo">
+                                    @item.Friend.Work
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="glyphicon glyphicon-envelope tableItem">
+                                    School
+                                </td>
+                                <td class="glyphicon schoolFriendsList tableItemInfo">
+                                    @item.Friend.School
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <span class="bottomRightButtonRight">
+                    <input type="hidden" name="notificationId" value="@item.NotificationId" />
+                    <button type="submit" class="btn btn-danger rejectFriend"><span class="glyphicon glyphicon-remove"></span>&nbsp;Decline</button>
+                </span>
+                <span class="bottomRightButtonLeft">
+                    <input type="hidden" name="notificationId" value="@item.NotificationId" />
+                    <button type="submit" class="btn btn-success acceptFriend"><span class="glyphicon glyphicon-ok"></span>&nbsp;Accept</button>
+                </span>
+            
+            </div>
+        }
+
+        else
+        {
+            <div id="groupNotification-@item.NotificationId" class="post item span3" style="position: relative">
+                <div class="well" id="FriendsListWell">
+                    <div class="friendsListPhoto">
+                        <a href="/Home/Profile/@item.Friend.UserId"><img class="img-responsive img-rounded smallPhoto" src="@Url.Content(item.Friend.ProfilePicture)"></a>
+                    </div>
+
+                    <div class="friendsListAbout">
+                        <div class="friendsListName">
+                            <h2 class="friendsListName">
+                                @item.Friend.Name 
+                            </h2>
+                            <h4 class="friendsListName">
+                                has added you to the group @Html.ActionLink(@item.Group.Name, "Details", "Group", new { id = item.GroupId }, null)
+                            </h4>
+                        </div>
+                    </div>
+                    <span class="bottomRightButtonRight">
+                        <input type="hidden" name="groupNotificationId" value="@item.NotificationId" />
+                        <button type="submit" class="btn btn-success groupNotification"><span class="glyphicon glyphicon-check"></span>&nbsp;OK</button>
+                    </span>
+                </div>
+            </div>
+
+            
+        }
+    }
+       
+    </div>
+</div>
+
+
+
+

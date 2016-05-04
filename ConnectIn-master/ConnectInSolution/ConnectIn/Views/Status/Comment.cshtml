@@ -1,0 +1,113 @@
+﻿@using Microsoft.AspNet.Identity
+@model ConnectIn.Models.ViewModels.CommentHelperViewModel
+@{
+    ViewBag.Title = "Comment";
+}
+@if (Request.IsAuthenticated)
+{
+    <h2>Comments
+        <span style="float: right;">
+            <button type="button" class="btn btn-warning" onclick="location.href = document.referrer;">Go back</button>
+        </span>
+    </h2>
+
+    
+    
+    <div class="container">
+        <div id="posts" class="row">
+            <div class="post item span3">
+                    <div class="well" id="FriendsListWell">
+                        <div id="CommentPostWell">
+                            <!--Should display user's profile picture, a cat was used temporarily-->
+                            <div class="PostPartialViewPhoto">
+                                <a href="/Home/Profile/@Model.Post.User.UserId"><img class="PartialViewResponsive img-rounded" src="@Url.Content(Model.Post.User.ProfilePicture)" alt="Profile Picture" /></a>
+                            </div>
+                            <!--Should display username instead of item.userID-->
+                            <div class="friendsListName">
+                                <h3 class="friendsListName">
+                                    @Html.ActionLink(Model.Post.User.Name, "Profile", "Home", new {id = Model.Post.User.UserId}, null) <small class="pull-right">@Html.DisplayFor(modelItem => Model.Post.DateInserted)</small>
+                                </h3>
+                            </div>
+                            <pre class="preReset">@Model.Post.Body</pre>
+                        </div>
+
+                        <div id="commentsLikesDeleteDiv">
+                            <div id="commentsAndLikes">
+                                <div id="reactionButtons">
+                                    <input type="hidden" name="postId" value="@Model.Post.PostId" />
+                                    <button type="submit" id="likeBtn-@Model.Post.PostId" class="btnNew btn-default-clicked likeBtn"><img id="likedislikeimg" src="@Url.Content(Model.Post.LikePic)" alt="Dislike Picture" />@Model.Post.LikeDislikeComment.Likes Smiles</button>
+                                    <button type="submit" id="dislikeBtn-@Model.Post.PostId" class="btnNew btn-default-clicked dislikeBtn"><img id="likedislikeimg" src="@Url.Content(Model.Post.DislikePic)" alt="Dislike Picture" />@Model.Post.LikeDislikeComment.Dislikes Sadfaces</button>
+
+                                    @if (Model.Post.User.UserId == User.Identity.GetUserId())
+                                    {
+                                        using (Html.BeginForm("RemovePost", "Status", new { postId = Model.Post.PostId }))
+                                        {
+                                            <input type="hidden" name="postId" value="@Model.Post.PostId" />
+                                            <button type="submit" class="btn btn-danger deletePostButton">Delete Post</button>
+                                        }
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        </div>
+    </div>
+    <div>
+        <div class="NewsFeedContainer" >
+            <div class="form-horizontal" style="margin-top: 10px; margin-bottom: 20px;">
+                <input type="hidden" name="postId" value="@Model.Post.PostId" />
+                <div class="PostPartialViewPhoto">
+                    <a href="/Home/Profile/@User.Identity.GetUserId()"><img class="PartialViewResponsive img-rounded" src="@Url.Content(Model.User.ProfilePicture)" alt="Profile Picture" /></a>
+                </div>
+                <textarea placeholder="Comment..." class="commentform-control" rows="5" id="commentstatus" name="status"></textarea>
+                <button type="button" id="submitcomment" class="btn btn-primary">Submit</button>
+            </div>
+            <hr />
+        </div>
+
+
+
+        </div>
+    
+    <div class="container">
+        <div id="allcomments" class="row  ">
+            @foreach (var item in Model.Comments)
+            {
+                <div id="comment-@item.CommentId" class="post item span3">
+                    <div class="well commentwell" id="FriendsListWell">
+                        <div id="postContent">
+                            <div class="PostPartialViewPhoto">
+                                <a href="/Home/Profile/@item.User.UserId"><img class="PartialViewResponsive img-rounded pull-left" src="@Url.Content(item.User.ProfilePicture)" alt="Profile Picture" /></a>
+                            </div>
+                            <!--Should display username instead of item.userID-->
+                            <div id="comm" style="margin-left:100px">
+                                <div class="friendsListName">
+                                    <h4>
+                                        @Html.ActionLink(item.User.Name, "Profile", "Home", new { id = item.User.UserId }, null)
+                                        <small class="pull-right">@Html.DisplayFor(modelItem => item.DateInserted)</small>
+                                    </h4>
+
+                                </div>
+                                <div class="ellipsis-text preReset">
+                                    <pre class="preReset">@item.Body</pre>
+                                    <span class="more dontmove fakeLink">See more</span>
+                                    <span class="less dontmove fakeLink">See less</span>
+                                </div>
+                                <span id="reactionCommentButtons">
+                                    @if (item.User.UserId == User.Identity.GetUserId())
+                                    {
+                                        <button type="button" class="btn btn-danger deletePostButton deleteComment">Delete Comment</button>
+                                        <input type="hidden" name="commentId" value="@item.CommentId" />
+                                    }
+                                </span>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+
+}

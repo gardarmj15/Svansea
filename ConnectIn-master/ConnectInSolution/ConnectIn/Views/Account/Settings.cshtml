@@ -1,0 +1,100 @@
+﻿@model ConnectIn.Models.ViewModels.ManageUserViewModel
+@using ConnectIn.DAL
+@using ConnectIn.Services
+@using Microsoft.AspNet.Identity
+
+@{
+    ViewBag.Title = "Settings";
+}
+
+<h2>Settings</h2>
+
+<p>You're logged in as <strong>@User.Identity.GetUserName()</strong>.</p>
+
+<p><br /></p>
+
+@if (User.Identity.IsAuthenticated)
+{
+    <div class="row">
+        <div class="col-md-10">
+                @{
+                    var db = new ApplicationDbContext();
+                    var userService = new UserService(db);
+                    var user = userService.GetUserById(User.Identity.GetUserId());
+                    var img = "";
+                    var text = "";
+                    var detail = "";
+                    if (user.Privacy == 0)
+                    {
+                        img = "/Content/Images/UnLock.png";
+                        text = "Public";
+                        detail = "Everyone can view your profile and posts";
+                    }
+                    else if (user.Privacy == 1)
+                    {
+                        img = "/Content/Images/Lock.png";
+                        text = "Private";
+                        detail = "All friends can view your profile and posts.";
+                    }
+                    else
+                    {
+                        img = "/Content/Images/ExtremeLock.png";
+                        text = "Extreme Privacy";
+                        detail = "Only your best friends and family can view your profile and posts.";
+                    }
+                }
+
+                <input type="hidden" name="userId" value=@user.Id />
+            <h4>Privacy Settings</h4>
+
+            <hr/>
+            <div class="PrivacyDiv">
+                <button type="submit" class="btnNew privacy"><img id="privacyimg" src=@img alt="Lock" /><span class="glyphicon bffam">@text</span></button>
+                <div id="privacyText" class="bffam" style="margin-left: 10px">@detail</div>
+            </div>
+            <p><br /></p>
+            <div class="col-md-10">
+                <h4>Change Password</h4>
+                <hr />
+                @using (Html.BeginForm("Manage", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form", style = "margin-left:-1%" }))
+                {
+                    @Html.AntiForgeryToken()
+
+                    @Html.ValidationSummary("", new { @class = "text-danger" })
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.OldPassword, new { @class = "col-md-2 control-label" })
+                        <div class="col-md-10">
+                            @Html.PasswordFor(m => m.OldPassword, new { @class = "form-control" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.NewPassword, new { @class = "col-md-2 control-label" })
+                        <div class="col-md-10">
+                            @Html.PasswordFor(m => m.NewPassword, new { @class = "form-control" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.ConfirmPassword, new { @class = "col-md-2 control-label" })
+                        <div class="col-md-10">
+                            @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            <input type="submit" value="Change password" class="btn btn-default" />
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+
+    </div>
+
+}
+else
+{
+    <h1 id="loginSignUpMessage">
+        Please log in or sign up to access your Settings.
+    </h1>
+}

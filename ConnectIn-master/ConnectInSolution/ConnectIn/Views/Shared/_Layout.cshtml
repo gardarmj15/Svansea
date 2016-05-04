@@ -1,0 +1,243 @@
+﻿@using ConnectIn.DAL
+@using ConnectIn.Services
+@using Microsoft.AspNet.Identity
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="@Url.Content("~/icon.ico")"/>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" />
+
+    <title>Connectin</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body style="margin-left: 75px; ">
+    <div class=" navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+
+
+            <div class="navbar-collapse collapse" >
+                <ul class="nav navbar-nav" >
+                    <li>@Html.ActionLink(" ", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })</li>
+                    @if (Request.IsAuthenticated)
+                    {
+                        var db = new ApplicationDbContext();
+                        var userService = new UserService(db);
+                        var user = userService.GetUserById(User.Identity.GetUserId());
+                        if (user.Name != null)
+                        {
+                            var nameA = user.Name.Split(' ');
+                            var name = "";
+                            for (int i = 0; i < nameA.Length; i++)
+                            {
+                                name += nameA[i];
+                                if (i == nameA.Length - 2) { break; }
+                                name += " ";
+                            }
+                            @:<li>@Html.ActionLink("Hello, " + name, "Profile", "Home", new { id = @User.Identity.GetUserId() }, null)
+                        }
+                        @:</li>
+                    }
+                </ul>
+            </div>
+        </div>
+        <div class="navbar-collapse collapse">
+
+            <ul class="nav navbar-nav navbar-right" >
+                @if (Request.IsAuthenticated)
+                {
+                    <li>@Html.ActionLink("Home", "NewsFeed", "Home")</li>
+                    <li>@Html.ActionLink("Profile", "Profile", "Home", new { id = @User.Identity.GetUserId() }, null)</li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" ><span class="caret"></span></a>
+                        <ul class="dropdown-menu nav sidebar-nav" role="menu">
+                            <li class="notLogOut"><a href="/Home/About/" style="padding-left: 15px; padding-top: 10px; padding-bottom: 10px;">About</a></li>
+                            <li class="divider"></li>
+                            <li class="notLogOut"><a href="/Account/Settings" style="padding-left: 15px; padding-top: 10px; padding-bottom: 10px;">Settings</a></li>
+                            <li>@Html.Partial("_LoginPartial")</li>
+                        </ul>
+                    </li>
+                }
+                else
+                {
+                    <li>@Html.ActionLink("About", "About", "Home")</li>
+                    <li>@Html.Partial("_LoginPartial")</li>
+                }
+            </ul>
+
+        </div>
+    </div>
+    </div>
+
+    @if (Request.IsAuthenticated)
+    {
+        <nav class="main-menu">
+            <ul>
+                <li class="has-subnav searchHover">
+                    <span>
+                        <a href="#Search" class="searchHover notLink">
+                            <i class="fa fa-search fa-2x"></i>
+
+                            <span class="nav-text searchpos">
+                                @using (Html.BeginForm("Search", "Home", FormMethod.Get))
+                                {
+                                    <span class="form-horizontal">
+                                        <input type="text" placeholder="Search..." class="search-form-control" name="searchWord" />
+                                        <input type="submit" id="submitstatus" class="btn btn-primary" style="display: none;" />
+                                    </span>
+                                }
+
+                            </span>
+                        </a>
+                    </span>
+                </li>
+                <li class="has-subnav">
+                    <a href="/Home/NewsFeed">
+                        <i class="fa fa-newspaper-o fa-2x"></i>
+                        <span class="nav-text">News Feed</span>
+                    </a>
+                </li>
+                <li class="has-subnav">
+                    <a href="/Home/Friendslist">
+                        <i class="fa fa-user fa-2x"></i>
+                        <span class="nav-text">Friends</span>
+                    </a>
+                </li>
+                <li class="has-subnav">
+                    <a href="/Group/GroupsList">
+                        <i class="fa fa-group fa-2x"></i>
+                        <span class="nav-text">Groups</span>
+                    </a>
+                </li>
+                <li class="has-subnav">
+                    <a href="/Home/Birthdays" id="birthdayClick">
+                        <i class="fa fa-birthday-cake fa-2x">
+                            <div id="birthdayBubble"></div>
+                        </i>
+                        <span class="nav-text">Birthdays</span>
+                    </a>
+                </li>
+                <li class="has-subnav">
+                    <a href="/Home/Notifications">
+                        <i class="fa fa-bell fa-2x">
+                            <div id="notificationBubble"></div>
+                        </i>
+
+                        <span class="nav-text">Notifications</span>
+                    </a>
+                </li>
+
+                <li class="has-subnav nav-logout">
+                    <a href="javascript:document.getElementById('logoutForm').submit()">
+                        <i class=" fa fa-power-off fa-2"></i>
+                        <span class="nav-text">Log out</span>
+                    </a>
+
+                    @using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm" }))
+                    {
+                        @Html.AntiForgeryToken()
+                    }
+                </li>
+
+
+
+            </ul>
+        </nav>
+    }
+
+
+    <div class="col-lg-12">
+        <div class="container body-content">
+            @RenderBody()
+            <div style="clear: both;">
+            </div>
+        </div>
+
+    </div>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+
+    <script src="~/Scripts/myScript.js"></script>
+    <script src="~/Scripts/jquery.cookie.js"></script>
+    <script src="~/Scripts/jQuery.tmpl.min.js"></script>
+    <script src="~/Scripts/jquery-dateFormat.min.js"></script>
+    <link href="~/JsLibraries/Jcrop-v0.9.12/css/jquery.Jcrop.min.css" rel="stylesheet" />
+    <script src="~/JsLibraries/Jcrop-v0.9.12/js/jquery.Jcrop.min.js"></script>
+    @RenderSection("scripts", required: false)
+
+
+<script id="postTemplate" type="text/html">
+    <div id="post-${postId}" class="post item span3">
+        <div class="well" id="FriendsListWell">
+            <div id="postContent">
+                <div class="PostPartialViewPhoto">
+                    <a href="/Home/Profile/${userId}"><img class="PartialViewResponsive  img-rounded" src="${profilePicture}" alt="Profile Picture"/></a>
+                    </div>
+                    <div class="friendsListName">
+                        <h3>
+                            <a href="/Home/Profile/${userId}">${name}</a><small class="pull-right">${date}</small>
+                            @*@Html.ActionLink(${name}, "Profile", new { id = ${userId} })<small class="pull-right">@Html.DisplayFor(modelItem => ${date})</small>*@
+                        </h3>
+                    </div>
+                    <div class="ellipsis-text preReset">
+                        <pre style="word-break: normal" class="ellipsis-text preReset">${text}</pre>
+                    </div>
+                </div>
+
+                <div id="commentsLikesDeleteDiv">
+                    <div id="commentsAndLikes">
+                        <div id="reactionButtons">
+
+                            <input type="hidden" name="postId" value="${postId}" />
+                            <button type="button" id="likeBtn-${postId}" class="btnNew btn-default-clicked likeBtn"><img id="likedislikeimg" src="${likePic}" alt="Like Picture" />${likes} Smiles</button>
+                            <button type="button" id="dislikeBtn-${postId}" class="btnNew btn-default-clicked dislikeBtn"><img id="likedislikeimg" src="${dislikePic}" alt="Dislike Picture" />${dislikes} Sadfaces</button>
+
+                            <form action="/Status/Comment" method="GET">
+                                <input type="hidden" name="postId" value="${postId}" />
+                                <button type="submit" class="btnNew btn-default-comment commentss">&nbsp; &nbsp; ${comments} Comments</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </script>
+
+    <script id="commentTemplate" type="text/html">
+        <div id="comment-${commentId}" class="post item span3">
+            <div class="well commentwell" id="FriendsListWell">
+                <div id="CommentPostWell">
+                    <div class="PostPartialViewPhoto">
+                        <img class="PartialViewResponsive img-rounded pull-left" src="${profilePicture}" alt="Profile Picture" />
+                    </div>
+                    <div id="comm" style="margin-left: 100px">
+                        <div class="friendsListName">
+                            <h4>
+                                <a href="/Home/Profile/${userId}">${name}</a>
+                                <small class="pull-right">${date}</small>
+                            </h4>
+                        </div>
+
+
+                        <div class="preReset">
+                            <pre class="preReset">${text}</pre>
+                        </div>
+
+                        <span id="reactionCommentButtons"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </script>
+</body>
+</html>

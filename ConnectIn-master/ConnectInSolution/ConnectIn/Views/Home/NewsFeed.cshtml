@@ -1,0 +1,41 @@
+﻿@using Microsoft.AspNet.Identity
+@model ConnectIn.Models.ViewModels.NewsFeedViewModel
+
+
+@if (Request.IsAuthenticated)
+{ 
+    <h2>News Feed</h2>
+
+    <!--Filters for the news feed-->
+    <div class="nav nav-justified newsFeedFilters" style="margin-bottom: 25px; margin-top: 25px; ">
+        <div class="pull-right">
+            <div class="btn-group btn-group-justified movie-views" data-toggle="buttons">
+                <label class="btn btn-default active">
+                    <input type="radio" name="filters" id="option1" autocomplete="off" value="Everyone" checked> Everyone
+                </label>
+                <label class="btn btn-default">
+                    <input type="radio" name="filters" id="option2" autocomplete="off" value="BestFriends"> Best Friends
+                </label>
+                <label class="btn btn-default">
+                    <input type="radio" name="filters" id="option3" autocomplete="off" value="Family"> Family
+                </label>
+            </div>
+        </div>
+    </div>
+
+    <div class="NewsFeedContainer">
+        <div class="form-horizontal">
+
+            <div class="PostPartialViewPhoto">
+                <a href="/Home/Profile/@User.Identity.GetUserId()"><img class="PartialViewResponsive img-rounded" src="@Url.Content(Model.User.ProfilePicture)" alt="Profile Picture" /></a>
+            </div>
+            <textarea placeholder="Share your thoughts" class="commentform-control" rows="5" id="newsfeedstatus" name="status"></textarea>
+            <button type="button" id="submitNewsFeedStatus" class="btn btn-primary">Submit</button>
+        </div>
+    </div>
+    
+    { 
+        Html.RenderPartial("PostsPartial", Model);
+    }
+}
+
