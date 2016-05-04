@@ -2,6 +2,8 @@
 using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
+using System.Data.Entity;
+using Moolien.Models.Entities;
 
 namespace Moolien.Models
 {
@@ -19,7 +21,12 @@ namespace Moolien.Models
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
-        public ApplicationDbContext _db;
+        public DbSet<Assignment> assignments { get; set; }
+        public DbSet<Course> courses { get; set; }
+        public DbSet<User> users { get; set; }
+        public DbSet<Submission> submissions { get; set; }
+
+
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
         {
