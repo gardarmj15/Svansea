@@ -144,10 +144,10 @@ namespace Moolien.Controllers
 
         //
         // POST: /Account/Register
-        [HttpPost]
+       /* [HttpPost]
         [AllowAnonymous]
-        [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Register(RegisterViewModel model)
+        [ValidateAntiForgeryToken]*/
+        /*public async Task<ActionResult> Register(RegisterViewModel model)
         {
             if (ModelState.IsValid)
             {
@@ -170,7 +170,7 @@ namespace Moolien.Controllers
 
             // If we got this far, something failed, redisplay form
             return View(model);
-        }
+        }*/
 
         //
         // GET: /Account/ConfirmEmail

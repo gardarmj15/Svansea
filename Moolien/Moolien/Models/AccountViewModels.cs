@@ -49,7 +49,7 @@ namespace Moolien.Models
     public class LoginViewModel
     {
         [Required]
-        [Display(Name = "Email")]
+        [Display(Name = "Username")]
         [EmailAddress]
         public string Email { get; set; }
 
@@ -58,11 +58,11 @@ namespace Moolien.Models
         [Display(Name = "Password")]
         public string Password { get; set; }
 
-        [Display(Name = "Remember me?")]
+        [Display(Name = "Remember me")]
         public bool RememberMe { get; set; }
     }
 
-    public class RegisterViewModel
+    /*public class RegisterViewModel
     {
         [Required]
         [EmailAddress]
@@ -79,7 +79,7 @@ namespace Moolien.Models
         [Display(Name = "Confirm password")]
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
-    }
+    }*/
 
     public class ResetPasswordViewModel
     {

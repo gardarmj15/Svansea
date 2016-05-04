@@ -7,6 +7,7 @@ using System.Web.Mvc;
 
 namespace Moolien.Controllers
 {
+    [Authorize]
     public class HomeController : Controller
     {
         public ActionResult Index()
@@ -26,7 +27,7 @@ namespace Moolien.Controllers
             return View();
         }
 
-        public ActionResult About()
+        /*public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";
 
@@ -38,7 +39,7 @@ namespace Moolien.Controllers
             ViewBag.Message = "Your contact page.";
 
             return View();
-        }
+        }*/
         public ActionResult Tabs()
         {
             ViewBag.Message = "Your tabs examples.";
