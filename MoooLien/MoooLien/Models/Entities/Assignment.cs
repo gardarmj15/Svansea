@@ -10,5 +10,7 @@ namespace MoooLien.Models.Entities
         public int ID { get; set; }
         public int courseID { get; set; }
         public string name { get; set; }
+        public string solution { get; set;}
+        public int handinCounter { get; set; }
     }
 }
