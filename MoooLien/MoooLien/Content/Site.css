@@ -26,3 +26,7 @@ textarea {
 .form-group{
     text-transform:capitalize;
 }
+
+.table th{
+    text-transform:capitalize;
+}
