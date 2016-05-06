@@ -47,7 +47,7 @@ namespace MoooLien.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,courseID,name")] Assignment assignment)
+        public ActionResult Create([Bind(Include = "ID,courseID,name,solution")] Assignment assignment)
         {
             if (ModelState.IsValid)
             {
@@ -79,7 +79,7 @@ namespace MoooLien.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,courseID,name")] Assignment assignment)
+        public ActionResult Edit([Bind(Include = "ID,courseID,name,solution")] Assignment assignment)
         {
             if (ModelState.IsValid)
             {
