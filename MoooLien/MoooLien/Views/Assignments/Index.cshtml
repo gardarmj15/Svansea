@@ -4,24 +4,28 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h2>Assignments</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    <a href="~/Assignments/Create" class="btn btn-success">Create Assignment</a>
 </p>
-<table class="table">
+<table class="table-hover">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.courseID)
+            Course ID
+            @*@Html.DisplayNameFor(model => model.courseID)*@
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.name)
+            Name
+            @*@Html.DisplayNameFor(model => model.name)*@
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.solution)
+            Solution
+            @*@Html.DisplayNameFor(model => model.solution)*@
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.handinCounter)
+            Hand-in counter
+           @* @Html.DisplayNameFor(model => model.handinCounter)*@
         </th>
         <th></th>
     </tr>
@@ -42,7 +46,6 @@
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
             @Html.ActionLink("Delete", "Delete", new { id=item.ID })
         </td>
     </tr>
