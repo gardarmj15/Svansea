@@ -49,9 +49,12 @@ namespace MoooLien.Models
     public class LoginViewModel
     {
         [Required]
+        [Display(Name = "Username")]
+        public string Username { get; set; }
+        /*[Required]
         [Display(Name = "Email")]
         [EmailAddress]
-        public string Email { get; set; }
+        public string Email { get; set; }*/
 
         [Required]
         [DataType(DataType.Password)]
@@ -79,6 +82,10 @@ namespace MoooLien.Models
         [Display(Name = "Confirm password")]
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
+
+        [Required]
+        [Display(Name = "Username")]
+        public string Username { get; set; }
     }
 
     public class ResetPasswordViewModel
