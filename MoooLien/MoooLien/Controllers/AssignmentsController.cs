@@ -8,6 +8,8 @@ using System.Web;
 using System.Web.Mvc;
 using MoooLien.DAL;
 using MoooLien.Models.Entities;
+using MoooLien.Service;
+using MoooLien.Models.ViewModel;
 
 namespace MoooLien.Controllers
 {
@@ -39,6 +41,7 @@ namespace MoooLien.Controllers
         // GET: Assignments/Create
         public ActionResult Create()
         {
+            PopulateDropDown();
             return View();
         }
 
@@ -124,5 +127,11 @@ namespace MoooLien.Controllers
             }
             base.Dispose(disposing);
         }
+        public void PopulateDropDown()
+        {
+            AssignmentsService a = new AssignmentsService();
+            ViewData["Categories"] = a.getAllCourses();
+        }
+
     }
 }

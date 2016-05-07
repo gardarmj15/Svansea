@@ -34,12 +34,19 @@ namespace MoooLien.Service
 
             return viewModel;
         }
-        public List<string> getAllCourses()
+        public List<SelectListItem> getAllCourses()
         {
-            var theList = (from x in _db.Courses
-                           orderby x.name ascending
-                           select x.name).ToList();
-            return theList;
+            List<SelectListItem> categories = new List<SelectListItem>();
+            SelectListItem item = new SelectListItem { Text = "-- Select category --", Value = "0" };
+            categories.Add(item);
+            var courses = _db.Courses.ToList();
+            foreach (var x in courses)
+            {
+                SelectListItem item0 = new SelectListItem { Text = x.name, Value = x.ID.ToString() };
+                categories.Add(item0);
+            }
+            return categories;
+
         }
     }
 }
