@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Mvc;
 
 namespace MoooLien.Service
 {
@@ -32,6 +33,13 @@ namespace MoooLien.Service
             };
 
             return viewModel;
+        }
+        public List<string> getAllCourses()
+        {
+            var theList = (from x in _db.Courses
+                           orderby x.name ascending
+                           select x.name).ToList();
+            return theList;
         }
     }
 }
