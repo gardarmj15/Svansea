@@ -34,7 +34,11 @@
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; The A-Team</p>
+            <div class="dateTime">
+                <p>
+                    @DateTime.Now.ToLongDateString()
+                </p>
+            </div>
         </footer>
     </div>
 
