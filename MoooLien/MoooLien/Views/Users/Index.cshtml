@@ -5,23 +5,30 @@
 }
 
 <h2>Users</h2>
-@Html.AntiForgeryToken()
-<table class="userTable">
-    <thead>
-        <tr>
-            <th>Username</th>
-            <th>Email</th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var user in Model.users)
-        {
-            <tr>
-                <td>@user.UserName</td>
-                <td>@user.Email</td>
-            </tr>
-        }
-    </tbody>
 
-</table>
+<div class="userActions">
+    <a href="@Url.Action("add", "user")">
+        <i class="fa fa-plus-square"></i>
+        Add User
+    </a>
+</div>
+    @Html.AntiForgeryToken()
+    <table class="userTable">
+        <thead>
+            <tr>
+                <th>Username</th>
+                <th>Email</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var user in Model.users)
+            {
+                <tr>
+                    <td>@user.UserName</td>
+                    <td>@user.Email</td>
+                </tr>
+            }
+        </tbody>
+
+    </table>
