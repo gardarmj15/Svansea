@@ -33,18 +33,7 @@ namespace MoooLien.Controllers
             UserViewModel model = service.getAllUsers();
             return View(model);
         }
-        public ActionResult Add()
-        {
-            return View();
-        }
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Add(CreateUserViewModel newUser)
-        {
-            ApplicationUser user = new ApplicationUser { UserName = newUser.Username, Email = newUser.Email };
-            IdentityResult result = await UserManager.CreateAsync(user);
-            return View(newUser);
-        }
+        
 
     }
     
