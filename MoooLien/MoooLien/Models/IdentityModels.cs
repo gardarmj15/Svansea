@@ -32,5 +32,7 @@ namespace MoooLien.Models
         {
             return new ApplicationDbContext();
         }
+
+        public System.Data.Entity.DbSet<MoooLien.Models.Entities.Course> Courses { get; set; }
     }
 }
