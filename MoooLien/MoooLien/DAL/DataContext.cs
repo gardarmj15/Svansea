@@ -17,7 +17,6 @@ namespace MoooLien.DAL
     {
         public DbSet<Assignment> Assignments { get; set; }
         public DbSet<Course> Courses { get; set; }
-        public DbSet<User> Users { get; set; }
 
         /*public System.Data.Entity.DbSet<MoooLien.Models.Course> Courses { get; set; }*/
     }
