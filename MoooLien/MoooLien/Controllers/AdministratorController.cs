@@ -8,114 +8,120 @@ using System.Web;
 using System.Web.Mvc;
 using MoooLien.DAL;
 using MoooLien.Models.Entities;
-using MoooLien.Service;
-using MoooLien.Models.ViewModel;
 
-namespace MoooLien.Controllers
+namespace MoooLien.Views.Account
 {
-    [Authorize(Roles = "Teachers")]
-    public class AssignmentsController : Controller
+    [Authorize(Roles = "Administrators")]
+    public class AdministratorController : Controller
     {
         private DefaultConnection db = new DefaultConnection();
 
-        // GET: Assignments
+        // GET: Administrator
         public ActionResult Index()
         {
-            return View(db.Assignments.ToList());
+            return View();
+        }
+        public ActionResult Users()
+        {
+            return View();
         }
 
-        // GET: Assignments/Details/5
+        public ActionResult Courses()
+        {
+            return View(db.Courses.ToList());
+        }
+
+        // GET: Administrator/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Assignment assignment = db.Assignments.Find(id);
-            if (assignment == null)
+            Course course = db.Courses.Find(id);
+            if (course == null)
             {
                 return HttpNotFound();
             }
-            return View(assignment);
+            return View(course);
         }
 
-        // GET: Assignments/Create
+        // GET: Administrator/Create
         public ActionResult Create()
         {
-            PopulateDropDown();
             return View();
         }
 
-        // POST: Assignments/Create
+        // POST: Administrator/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,courseID,name,solution")] Assignment assignment)
+        public ActionResult Create([Bind(Include = "ID,name,description")] Course course)
         {
             if (ModelState.IsValid)
             {
-                db.Assignments.Add(assignment);
+                db.Courses.Add(course);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(assignment);
+            return View(course);
         }
 
-        // GET: Assignments/Edit/5
+        // GET: Administrator/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Assignment assignment = db.Assignments.Find(id);
-            if (assignment == null)
+            Course course = db.Courses.Find(id);
+            if (course == null)
             {
                 return HttpNotFound();
             }
-            return View(assignment);
+            return View(course);
         }
 
-        // POST: Assignments/Edit/5
+        // POST: Administrator/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,courseID,name,solution")] Assignment assignment)
+        public ActionResult Edit([Bind(Include = "ID,name,description")] Course course)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(assignment).State = EntityState.Modified;
+                db.Entry(course).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(assignment);
+            return View(course);
         }
 
-        // GET: Assignments/Delete/5
+        // GET: Administrator/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Assignment assignment = db.Assignments.Find(id);
-            if (assignment == null)
+            Course course = db.Courses.Find(id);
+            if (course == null)
             {
                 return HttpNotFound();
             }
-            return View(assignment);
+            return View(course);
         }
 
-        // POST: Assignments/Delete/5
+        // POST: Administrator/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Assignment assignment = db.Assignments.Find(id);
-            db.Assignments.Remove(assignment);
+            Course course = db.Courses.Find(id);
+            db.Courses.Remove(course);
             db.SaveChanges();
             return RedirectToAction("Index");
         }
@@ -128,11 +134,5 @@ namespace MoooLien.Controllers
             }
             base.Dispose(disposing);
         }
-        public void PopulateDropDown()
-        {
-            AssignmentsService a = new AssignmentsService();
-            ViewData["Categories"] = a.getAllCourses();
-        }
-
     }
 }

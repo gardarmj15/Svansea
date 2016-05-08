@@ -11,6 +11,7 @@ using MoooLien.Models.Entities;
 
 namespace MoooLien.Controllers
 {
+    [Authorize(Roles = "Administrators")]
     public class CoursesController : Controller
     {
         private DefaultConnection db = new DefaultConnection();

@@ -8,23 +8,21 @@ using System.Web;
 using System.Web.Mvc;
 using MoooLien.DAL;
 using MoooLien.Models.Entities;
-using MoooLien.Service;
-using MoooLien.Models.ViewModel;
 
 namespace MoooLien.Controllers
 {
     [Authorize(Roles = "Teachers")]
-    public class AssignmentsController : Controller
+    public class TeacherController : Controller
     {
         private DefaultConnection db = new DefaultConnection();
 
-        // GET: Assignments
+        // GET: Teacher
         public ActionResult Index()
         {
             return View(db.Assignments.ToList());
         }
 
-        // GET: Assignments/Details/5
+        // GET: Teacher/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -39,19 +37,18 @@ namespace MoooLien.Controllers
             return View(assignment);
         }
 
-        // GET: Assignments/Create
+        // GET: Teacher/Create
         public ActionResult Create()
         {
-            PopulateDropDown();
             return View();
         }
 
-        // POST: Assignments/Create
+        // POST: Teacher/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,courseID,name,solution")] Assignment assignment)
+        public ActionResult Create([Bind(Include = "ID,courseID,name,solution,handinCounter")] Assignment assignment)
         {
             if (ModelState.IsValid)
             {
@@ -63,7 +60,7 @@ namespace MoooLien.Controllers
             return View(assignment);
         }
 
-        // GET: Assignments/Edit/5
+        // GET: Teacher/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -78,12 +75,12 @@ namespace MoooLien.Controllers
             return View(assignment);
         }
 
-        // POST: Assignments/Edit/5
+        // POST: Teacher/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,courseID,name,solution")] Assignment assignment)
+        public ActionResult Edit([Bind(Include = "ID,courseID,name,solution,handinCounter")] Assignment assignment)
         {
             if (ModelState.IsValid)
             {
@@ -94,7 +91,7 @@ namespace MoooLien.Controllers
             return View(assignment);
         }
 
-        // GET: Assignments/Delete/5
+        // GET: Teacher/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -109,7 +106,7 @@ namespace MoooLien.Controllers
             return View(assignment);
         }
 
-        // POST: Assignments/Delete/5
+        // POST: Teacher/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
@@ -128,11 +125,5 @@ namespace MoooLien.Controllers
             }
             base.Dispose(disposing);
         }
-        public void PopulateDropDown()
-        {
-            AssignmentsService a = new AssignmentsService();
-            ViewData["Categories"] = a.getAllCourses();
-        }
-
     }
 }

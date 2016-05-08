@@ -1,0 +1,51 @@
+﻿@model MoooLien.Models.Entities.Assignment
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Teacher/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Assignment</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.courseID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.courseID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.solution)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.solution)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.handinCounter)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.handinCounter)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
