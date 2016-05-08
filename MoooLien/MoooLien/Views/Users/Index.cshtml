@@ -9,13 +9,6 @@
 <p>
     <a href="~/Account/Register" class="btn btn-success">Create User</a>
 </p>
-
-<div class="userActions">
-    <a href="@Url.Action("add", "user")">
-        <i class="fa fa-plus-square"></i>
-        Add User
-    </a>
-</div>
     @Html.AntiForgeryToken()
     <table class="userTable">
         <thead>
