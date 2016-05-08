@@ -16,6 +16,7 @@ namespace MoooLien.Controllers
             IdentityManager manager = new IdentityManager();
             //var user = manager.GetUser("admin@admin.com");
             var user1 = manager.GetUser("teacher@teacher.com");
+        
 /*
             if (manager.UserIsInRole(user.Id, "Administrators"))
             {
