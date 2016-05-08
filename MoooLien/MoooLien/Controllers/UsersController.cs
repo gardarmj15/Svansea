@@ -1,4 +1,6 @@
 ﻿using MoooLien.Models;
+using MoooLien.Models.ViewModel;
+using MoooLien.Service;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,11 +11,13 @@ namespace MoooLien.Controllers
 {
     public class UsersController : Controller
     {
-        private ApplicationDbContext db = new ApplicationDbContext();
+        private UsersService service = new UsersService();
+
         // GET: Users
         public ActionResult Index()
         {
-            return View();
+            UserViewModel model = service.getAllUsers();
+            return View(model);
         }
     }
 }

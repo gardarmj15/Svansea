@@ -1,30 +1,27 @@
-﻿@model IEnumerable<MoooLien.Models.ViewModel.UserViewModel>
+﻿@model MoooLien.Models.ViewModel.UserViewModel
+
 @{
     ViewBag.Title = "Index";
 }
 
-<h2>User</h2>
-<table class="table table-hover">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.email)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.username)
-        </th>
-        <th></th>
-    </tr>
-
-    @foreach (var item in Model)
-    {
+<h2>Users</h2>
+@Html.AntiForgeryToken()
+<table class="userTable">
+    <thead>
         <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.email)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.username)
-            </td>
+            <th>Username</th>
+            <th>Email</th>
+            <th></th>
         </tr>
-    }
+    </thead>
+    <tbody>
+        @foreach (var user in Model.users)
+        {
+            <tr>
+                <td>@user.UserName</td>
+                <td>@user.Email</td>
+            </tr>
+        }
+    </tbody>
 
 </table>

@@ -1,4 +1,5 @@
-﻿using MoooLien.Models;
+﻿using MoooLien.DAL;
+using MoooLien.Models;
 using MoooLien.Models.ViewModel;
 using System;
 using System.Collections.Generic;
@@ -10,10 +11,10 @@ namespace MoooLien.Service
 {
     public class AssignmentsService
     {
-        private ApplicationDbContext _db;
+        private DefaultConnection _db;
         public AssignmentsService()
         {
-            _db = new ApplicationDbContext();
+            _db = new DefaultConnection();
         }
         public List<AssignmentViewModel> getAssignmentsInCourse(int assignmentID)
         {

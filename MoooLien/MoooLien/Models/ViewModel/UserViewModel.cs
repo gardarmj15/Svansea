@@ -7,8 +7,6 @@ namespace MoooLien.Models.ViewModel
 {
     public class UserViewModel
     {
-        private ApplicationDbContext db = new ApplicationDbContext();
-        public string username { get; set; }
-        public string email { get; set; }
+        public List<ApplicationUser> users { get; set; }
     }
 }
