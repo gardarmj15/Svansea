@@ -7,7 +7,6 @@ namespace MoooLien.Service
 {
     public class UsersService
     {
-        public string username { get; set; }
-        public string email { get; set; }
+        
     }
 }
