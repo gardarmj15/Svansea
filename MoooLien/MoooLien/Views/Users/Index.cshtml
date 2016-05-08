@@ -10,29 +10,28 @@
     <a href="~/Account/Register" class="btn btn-success">Create User</a>
 </p>
 
-<div class="userActions">
-    <a href="@Url.Action("add", "user")">
-        <i class="fa fa-plus-square"></i>
-        Add User
-    </a>
-</div>
-    @Html.AntiForgeryToken()
-    <table class="userTable">
-        <thead>
-            <tr>
-                <th>Username</th>
-                <th>Email</th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var user in Model.users)
-            {
-                <tr>
-                    <td>@user.UserName</td>
-                    <td>@user.Email</td>
-                </tr>
-            }
-        </tbody>
+@Html.AntiForgeryToken()
+<table class="table table-hover">
 
-    </table>
+<tr>
+    <th>Username</th>
+    <th>Email</th>
+    <th>Role</th>
+    <th></th>
+</tr>
+
+@foreach (var user in Model.users)
+{
+    <tr>
+        <td>@user.UserName</td>
+        <td>@user.Email</td>
+        <td>@user.Roles</td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id = User.Identity }) |
+            @Html.ActionLink("Delete", "Delete", new { id = User.Identity })
+        </td>
+
+    </tr>
+
+}
+</table>
