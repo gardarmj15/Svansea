@@ -36,16 +36,16 @@ namespace MoooLien.Service
         }
         public List<SelectListItem> getAllCourses()
         {
-            List<SelectListItem> categories = new List<SelectListItem>();
-            SelectListItem item = new SelectListItem { Text = "-- Select category --", Value = "0" };
-            categories.Add(item);
+            List<SelectListItem> courseList = new List<SelectListItem>();
+            SelectListItem item = new SelectListItem { Text = "-- Select category --", Value = "" };
+            courseList.Add(item);
             var courses = _db.Courses.ToList();
             foreach (var x in courses)
             {
-                SelectListItem item0 = new SelectListItem { Text = x.name, Value = x.ID.ToString() };
-                categories.Add(item0);
+                SelectListItem item0 = new SelectListItem { Text = x.name, Value = x.name.ToString() };
+                courseList.Add(item0);
             }
-            return categories;
+            return courseList;
 
         }
     }

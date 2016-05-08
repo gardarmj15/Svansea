@@ -1,8 +1,19 @@
-﻿@model IEnumerable<MoooLien.Models.Entities.Course>
-
+﻿@using Microsoft.AspNet.Identity
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Manage Users";
     Layout = "~/Views/Administrator/_Layout.cshtml";
 }
 
-<h2>Hér verður hægt að sýsla með notendur ef guð og lukkan verður með okkur!</h2>
+<h2>@ViewBag.Title</h2>
+
+<p>
+    <a href="~/Account/Register" class="btn btn-success">Create User</a>
+</p>
+
+<p>
+  
+</p>
+
+<li>
+    @Html.ActionLink(User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
+</li>

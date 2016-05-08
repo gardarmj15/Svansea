@@ -1,4 +1,4 @@
-﻿ using System;
+﻿using System;
 using System.Globalization;
 using System.Linq;
 using System.Security.Claims;
@@ -9,6 +9,7 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using MoooLien.Models;
+using MoooLien.Service;
 
 namespace MoooLien.Controllers
 {
@@ -149,6 +150,7 @@ namespace MoooLien.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Register(RegisterViewModel model)
         {
+            PopulateDropDown();
             if (ModelState.IsValid)
             {
                 var user = new ApplicationUser { UserName = model.Username, Email = model.Email};
@@ -422,7 +424,11 @@ namespace MoooLien.Controllers
 
             base.Dispose(disposing);
         }
-
+        public void PopulateDropDown()
+        {
+            UsersController a = new UsersController();
+            ViewData["Categories"] = a.getAllRoles();
+        }
         #region Helpers
         // Used for XSRF protection when adding external logins
         private const string XsrfKey = "XsrfId";

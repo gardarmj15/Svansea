@@ -14,15 +14,16 @@ namespace MoooLien.Controllers
         public ActionResult Index()
         {
             IdentityManager manager = new IdentityManager();
-            //var user = manager.GetUser("admin@admin.com");
+            var user = manager.GetUser("admin@admin.com");
             var user1 = manager.GetUser("teacher@teacher.com");
-        
-/*
+            //var user = UserManager.FindById(User.Identity.GetUserId());
+
+            
             if (manager.UserIsInRole(user.Id, "Administrators"))
             {
                 return RedirectToAction("Index", "Administrator");
             }
-*/
+            
             if (manager.UserIsInRole(user1.Id, "Teachers"))
             {
                 return RedirectToAction("Index", "Teacher");

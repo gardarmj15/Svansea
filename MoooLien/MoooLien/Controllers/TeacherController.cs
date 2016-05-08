@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using MoooLien.DAL;
 using MoooLien.Models.Entities;
+using MoooLien.Service;
 
 namespace MoooLien.Controllers
 {
@@ -40,6 +41,7 @@ namespace MoooLien.Controllers
         // GET: Teacher/Create
         public ActionResult Create()
         {
+            PopulateDropDown();
             return View();
         }
 
@@ -50,6 +52,7 @@ namespace MoooLien.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "ID,courseID,name,solution,handinCounter")] Assignment assignment)
         {
+            PopulateDropDown();
             if (ModelState.IsValid)
             {
                 db.Assignments.Add(assignment);
@@ -63,6 +66,7 @@ namespace MoooLien.Controllers
         // GET: Teacher/Edit/5
         public ActionResult Edit(int? id)
         {
+            PopulateDropDown();
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -82,6 +86,7 @@ namespace MoooLien.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "ID,courseID,name,solution,handinCounter")] Assignment assignment)
         {
+            PopulateDropDown();
             if (ModelState.IsValid)
             {
                 db.Entry(assignment).State = EntityState.Modified;
@@ -124,6 +129,11 @@ namespace MoooLien.Controllers
                 db.Dispose();
             }
             base.Dispose(disposing);
+        }
+        public void PopulateDropDown()
+        {
+            AssignmentsService a = new AssignmentsService();
+            ViewData["Categories"] = a.getAllCourses();
         }
     }
 }
