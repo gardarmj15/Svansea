@@ -29,8 +29,8 @@
             @course.description
         </td>
         <td width="10%">
-            @Html.ActionLink("Edit", "Edit", new { id=course.ID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=course.ID })
+            @Html.ActionLink("Edit", "Edit", new { id=course.ID }, new { @class = "green" }) |
+            @Html.ActionLink("Delete", "Delete", new { id=course.ID }, new { @class = "red" })
         </td>
     </tr>
 }
