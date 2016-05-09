@@ -1,4 +1,4 @@
-﻿@model MoooLien.Models.Entities.Course
+﻿@model MoooLien.Models.ViewModel.CreateCourseViewModel
 
 @{
     ViewBag.Title = "Create";
@@ -7,7 +7,7 @@
 <h2>Create</h2>
 
 
-@using (Html.BeginForm()) 
+@using (Html.BeginForm("add", "course", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
 {
     @Html.AntiForgeryToken()
     
@@ -16,18 +16,26 @@
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
-            @Html.LabelFor(model => model.name, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.name, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.name, "", new { @class = "text-danger" })
+            <div class="col-md-12">
+                @Html.TextBoxFor(m => m.name, new { @class = "form-control", placeholder = "Name" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.description, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.description, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.description, "", new { @class = "text-danger" })
+            <div class="col-md-12">
+                @Html.TextBoxFor(m => m.description, new { @class = "form-control", placeholder = "Description" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-12">
+               @Html.TextBoxFor(m => m.startDate, new { @class = "form-control datepicker", placeholder = "Start Date"})
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-12">
+                @Html.TextBoxFor(m => m.endDate, new { @class = "form-control datepicker", placeholder = "End Date" })
             </div>
         </div>
 
