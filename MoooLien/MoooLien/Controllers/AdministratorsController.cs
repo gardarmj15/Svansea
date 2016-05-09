@@ -26,6 +26,17 @@ namespace MoooLien.Controllers
             return View(roles);
         }
 
+        public ActionResult ManageUsers()
+        {
+            UserViewModel model = service.getAllUsers();
+            return View(model);
+        }
+
+        public ActionResult ManageCourses()
+        {
+            return View();
+        }
+
         public ActionResult List()
         {
             UserViewModel model = service.getAllUsers();
