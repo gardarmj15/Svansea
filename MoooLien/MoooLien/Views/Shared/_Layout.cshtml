@@ -11,14 +11,18 @@
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
-            <div class="navbar-header">
+            <div class="navbar-header" style="width:10%;height: 7%"/>
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("MoooLien", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-            </div>
+                <a href="@Url.Action("index", "home")">
+                    <img src="@Url.Content("~/Content/MooLien.png")"style="width: 50%; height: 20%"/>
+                    @Html.ActionLink(" ", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                    
+                </a>       
+                </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
@@ -26,6 +30,7 @@
                     <li>@Html.ActionLink("Assignments", "Index", "Assignments")</li>
                     <li>@Html.ActionLink("Users", "Index", "Users")</li>
                     <li>@Html.ActionLink("Admin View", "Index", "Administrators")</li>
+                    
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>
