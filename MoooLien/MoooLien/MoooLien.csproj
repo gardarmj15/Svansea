@@ -208,7 +208,10 @@
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Entities\Assignment.cs" />
+    <Compile Include="Models\Entities\AssignmentsInCourse.cs" />
     <Compile Include="Models\Entities\Course.cs" />
+    <Compile Include="Models\Entities\Roles.cs" />
+    <Compile Include="Models\Entities\UsersInCourse.cs" />
     <Compile Include="Models\IdentityManager.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
