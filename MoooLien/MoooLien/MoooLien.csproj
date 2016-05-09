@@ -299,6 +299,10 @@
     <Content Include="Views\Administrators\_Layout.cshtml" />
     <Content Include="Views\Administrators\List.cshtml" />
     <Content Include="Views\Administrators\CreateUser.cshtml" />
+    <Content Include="Views\Shared\_LayoutLoggin.cshtml" />
+    <None Include="Views\Shared\_LayoutAdmin.cshtml" />
+    <Content Include="Views\Shared\_LayoutTeacher.cshtml" />
+    <Content Include="Views\Shared\_LayoutStudent.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
