@@ -42,3 +42,8 @@ textarea {
 .green{
     color:green;
 }
+
+.navbar .nav > li > a { 
+    color: #00ff00; 
+
+}
