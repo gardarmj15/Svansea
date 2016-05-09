@@ -34,5 +34,7 @@ namespace MoooLien.Models
         }
 
         public System.Data.Entity.DbSet<MoooLien.Models.Entities.Course> Courses { get; set; }
+
+        public System.Data.Entity.DbSet<MoooLien.Models.Entities.Assignment> Assignments { get; set; }
     }
 }
