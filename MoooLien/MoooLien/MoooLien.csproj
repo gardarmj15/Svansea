@@ -209,6 +209,7 @@
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Entities\Assignment.cs" />
     <Compile Include="Models\Entities\Course.cs" />
+    <Compile Include="Models\IdentityManager.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\ViewModel\AssignmentViewModel.cs" />
@@ -295,6 +296,7 @@
     <Content Include="Views\Administrators\ManageUserRoles.cshtml" />
     <Content Include="Views\Administrators\_Layout.cshtml" />
     <Content Include="Views\Administrators\List.cshtml" />
+    <Content Include="Views\Administrators\CreateUser.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

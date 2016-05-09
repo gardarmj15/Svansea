@@ -57,6 +57,11 @@ namespace MoooLien.Controllers
                 return View();
             }
         }
+        public ActionResult CreateUser(FormCollection collection)
+        {
+                return View();
+
+        }
         public ActionResult Delete(string RoleName)
         {
             var thisRole = context.Roles.Where(r => r.Name.Equals(RoleName, StringComparison.CurrentCultureIgnoreCase)).FirstOrDefault();
@@ -105,9 +110,13 @@ namespace MoooLien.Controllers
         public ActionResult RoleAddToUser(string UserName, string RoleName)
         {
             ApplicationUser user = context.Users.Where(u => u.UserName.Equals(UserName, StringComparison.CurrentCultureIgnoreCase)).FirstOrDefault();
+
+            var um = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new ApplicationDbContext()));
+            var idResult = um.AddToRole(user.Id, RoleName);
+            /*
             var account = new AccountController();
             account.UserManager.AddToRole(user.Id, RoleName);
-
+            */
             ViewBag.ResultMessage = "Role created successfully !";
 
             // prepopulat roles for the view dropdown
