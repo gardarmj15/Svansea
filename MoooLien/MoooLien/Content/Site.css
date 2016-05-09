@@ -30,3 +30,15 @@ textarea {
 .table th{
     text-transform:capitalize;
 }
+
+.delLink{
+    color: red;
+}
+
+.red{
+    color:red;
+}
+
+.green{
+    color:green;
+}
