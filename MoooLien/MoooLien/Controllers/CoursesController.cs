@@ -8,17 +8,21 @@ using System.Web;
 using System.Web.Mvc;
 using MoooLien.DAL;
 using MoooLien.Models.Entities;
+using MoooLien.Service;
+using MoooLien.Models.ViewModel;
 
 namespace MoooLien.Controllers
 {
     public class CoursesController : Controller
     {
         private DefaultConnection db = new DefaultConnection();
+        private CourseService cService = new CourseService();
 
         // GET: Courses
         public ActionResult Index()
         {
-            return View(db.Courses.ToList());
+            CourseViewModel cView = cService.getAllCourses();
+            return View(cView);
         }
 
         // GET: Courses/Details/5
