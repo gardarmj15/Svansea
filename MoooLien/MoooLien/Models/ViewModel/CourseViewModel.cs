@@ -26,13 +26,5 @@ namespace MoooLien.Models.ViewModel
         [Display(Name = "Description")]
         public string description { get; set; }
 
-        [Required]
-        [DataType(DataType.DateTime)]
-        [DisplayFormat(DataFormatString = "{0:yyyy-dd-MM}", ApplyFormatInEditMode = true)]
-        public DateTime startDate { get; set; }
-
-        [Required]
-        public DateTime endDate { get; set; }
-
     }
 }
