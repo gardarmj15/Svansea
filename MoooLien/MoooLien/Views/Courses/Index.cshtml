@@ -32,6 +32,14 @@
             @Html.ActionLink("Edit", "Edit", new { id=course.ID }, new { @class = "green" }) |
             @Html.ActionLink("Delete", "Delete", new { id=course.ID }, new { @class = "red" })
         </td>
+        <td>
+            <a class="delete" href="@Url.Action("Delete", new { ID = course.ID })">
+                <i class="fa fa-minus-square" title="Remove @course.name"></i>
+            </a>
+            <a class="edit" href="@Url.Action("Edit", new { ID = course.ID })">
+                <i class="fa fa-pencil-square" title="Edit @course.name"></i>
+            </a>
+        </td>
     </tr>
 }
 

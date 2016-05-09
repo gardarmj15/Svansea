@@ -25,6 +25,20 @@ namespace MoooLien.Models.ViewModel
         [DataType(DataType.Text)]
         [Display(Name = "Description")]
         public string description { get; set; }
+    }
+    public class EditCourseViewModel
+    {
+        public int ID { get; set; }
 
+        [Required]
+        [DataType(DataType.Text)]
+        [Display(Name = "Name")]
+        [StringLength(100, ErrorMessage = "Please enter valid course name", MinimumLength = 2)]
+        public string name { get; set; }
+
+        [Required]
+        [DataType(DataType.Text)]
+        [Display(Name = "Description")]
+        public string description { get; set; }
     }
 }

@@ -4,7 +4,9 @@ using MoooLien.Models.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Web;
+using System.Web.Mvc;
 
 namespace MoooLien.Service
 {
@@ -34,6 +36,30 @@ namespace MoooLien.Service
             result.courses = courses;
 
             return result;
+        }
+        public bool add(CreateCourseViewModel newCourse)
+        {
+            Course temp = new Course() { name = newCourse.name, description = newCourse.description};
+            db.Courses.Add(temp);
+            return Convert.ToBoolean(db.SaveChanges());
+        }
+        
+        public bool deleteCourse(int id)
+        {
+            db.Courses.Remove(getCourseByID(id));
+
+            return Convert.ToBoolean(db.SaveChanges());
+        }
+        public bool editCourse(EditCourseViewModel editC)
+        {
+            var givenCourse = (from co in db.Courses
+                               where co.ID == editC.ID
+                               select co).SingleOrDefault();
+            givenCourse.ID = editC.ID;
+            givenCourse.name = editC.name;
+            givenCourse.description = editC.description;
+
+            return Convert.ToBoolean(db.SaveChanges());
         }
     }
 }
