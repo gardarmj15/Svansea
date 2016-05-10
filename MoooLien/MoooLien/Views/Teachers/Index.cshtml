@@ -1,11 +1,11 @@
-﻿@model IEnumerable<MoooLien.Models.Entities.Course>
+﻿@model IEnumerable<MoooLien.Models.Entities.Assignment>
 
 @{
     ViewBag.Title = "Index";
-    Layout = "~/Views/Shared/_LayoutStudent.cshtml";
+    Layout = "~/Views/Shared/_LayoutTeacher.cshtml";
 }
 
-<h2>Index</h2>
+<h2>Teachers View</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
@@ -13,10 +13,16 @@
 <table class="table">
     <tr>
         <th>
+            @Html.DisplayNameFor(model => model.courseID)
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.name)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.description)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.solution)
         </th>
         <th></th>
     </tr>
@@ -24,14 +30,20 @@
 @foreach (var item in Model) {
     <tr>
         <td>
+            @Html.DisplayFor(modelItem => item.courseID)
+        </td>
+        <td>
             @Html.DisplayFor(modelItem => item.name)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.description)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
+            @Html.DisplayFor(modelItem => item.solution)
+        </td>
+        <td>
+            @Html.ActionLink("Hand-in's", "HandIns", new { id = item.ID }) |
+            @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
             @Html.ActionLink("Delete", "Delete", new { id=item.ID })
         </td>
     </tr>
