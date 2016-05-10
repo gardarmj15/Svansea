@@ -8,6 +8,7 @@ namespace MoooLien.Models.ViewModel
 {
     public class UsersCoursesViewModel
     {
-        public string name { get; set; }
+        public List<Course> courses { get; set; }
+        public Course course { get; set; }
     }
 }

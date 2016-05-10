@@ -308,6 +308,7 @@
     <Content Include="Views\Shared\_LayoutLoggin.cshtml" />
     <Content Include="Views\Administrators\ManageCourses.cshtml" />
     <Content Include="Views\Assignments\Index.cshtml" />
+    <Content Include="Views\Courses\UserIndex.cshtml" />
     <None Include="Views\Shared\_LayoutAdmin.cshtml" />
     <Content Include="Views\Shared\_LayoutTeacher.cshtml" />
     <Content Include="Views\Shared\_LayoutStudent.cshtml" />
