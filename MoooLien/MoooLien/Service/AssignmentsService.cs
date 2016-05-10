@@ -12,10 +12,10 @@ namespace MoooLien.Service
 {
     public class AssignmentsService
     {
-        private DefaultConnection db;
+        private ApplicationDbContext db;
         public AssignmentsService()
         {
-            db = new DefaultConnection();
+            db = new ApplicationDbContext();
         }
         public List<AssignmentViewModel> getAssignmentsInCourse(int assignmentID)
         {
@@ -37,6 +37,10 @@ namespace MoooLien.Service
             result.assignments = assignments;
 
             return result;
+
+        }
+        public AssignmentViewModel getAssignmentsInCourse()
+        {
 
         }
     }

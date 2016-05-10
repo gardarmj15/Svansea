@@ -12,16 +12,14 @@ namespace MoooLien.Service
 {
     public class UsersService
     {
-        private DefaultConnection db;
-        private ApplicationDbContext Db;
+        private ApplicationDbContext db;
         public UsersService()
         {
-            db = new DefaultConnection();
-            Db = new ApplicationDbContext();
+            db = new ApplicationDbContext();
         }
         public List<ApplicationUser> GetAllUsersAsEntity()
         {
-            var users = (from user in Db.Users
+            var users = (from user in db.Users
                          orderby user.UserName ascending
                          select user).ToList();
             return users;
@@ -29,14 +27,14 @@ namespace MoooLien.Service
         public UserViewModel getAllUsers()
         {
             UserViewModel theModel = new UserViewModel();
-            theModel.users = (from user in Db.Users
+            theModel.users = (from user in db.Users
                               orderby user.Email ascending
                               select user).ToList();
             return theModel;
         }
         public ApplicationUser getUserByID(string ID)
         {
-            ApplicationUser user = (from users in Db.Users
+            ApplicationUser user = (from users in db.Users
                                     where users.Id == ID
                                     select users).SingleOrDefault();
             return user;

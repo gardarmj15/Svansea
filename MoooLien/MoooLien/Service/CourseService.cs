@@ -36,14 +36,13 @@ namespace MoooLien.Service
                         where u.Id == currentUser
                         select u).SingleOrDefault();
 
-            var userCourses = (from userC in db.UserInCourse
-                               join courses in db.Courses on userC.courseID
-                               equals courses.ID into result
-                               where userC.userID == user.Id
+            var userCourses = (from cUsers in db.UsersInCourse
+                               join courses in db.Courses on cUsers.courseID equals courses.ID into result
+                               where cUsers.ID == user.Id
                                from x in result
                                select x).ToList();
 
-            CourseViewModel all = new CourseViewModel();
+            var all = new CourseViewModel();
             all.courses = userCourses;
 
             return all;
