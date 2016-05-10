@@ -48,5 +48,11 @@ namespace MoooLien.Service
 
             return all;
         }
+
+        public bool createAssignment(Assignment assignment)
+        {
+            db.Assignments.Add(assignment);
+            return Convert.ToBoolean(db.SaveChanges());
+        }
     }
 }
