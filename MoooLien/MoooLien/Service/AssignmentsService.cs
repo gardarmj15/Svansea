@@ -17,7 +17,7 @@ namespace MoooLien.Service
         {
             db = new ApplicationDbContext();
         }
-        public Assignment getAssignmentByID(string assignmentID)
+        public Assignment getAssignmentByID(int assignmentID)
         {
             Assignment assignment = (from assign in db.Assignments
                               where assign.ID == assignmentID
@@ -35,7 +35,7 @@ namespace MoooLien.Service
             return result;
 
         }
-        public AssignmentViewModel getAssignmentsInCourse(string courseID)
+        public AssignmentViewModel getAssignmentsInCourse(int courseID)
         {
             var assignmentInCourse = (from asInCo in db.AssingmentInCourse
                                       join assignment in db.Assignments on asInCo.assignmentID equals assignment.ID into result

@@ -20,7 +20,7 @@ namespace MoooLien.Service
             db = new ApplicationDbContext();
         }
 
-        public Course getCourseByID(string Id)
+        public Course getCourseByID(int Id)
         {
             Course course = (from co in db.Courses
                           where co.ID == Id
@@ -66,7 +66,7 @@ namespace MoooLien.Service
             return Convert.ToBoolean(db.SaveChanges());
         }
         
-        public bool deleteCourse(string id)
+        public bool deleteCourse(int id)
         {
             db.Courses.Remove(getCourseByID(id));
 
