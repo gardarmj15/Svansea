@@ -18,10 +18,16 @@ namespace MoooLien.Controllers
         private CourseService cService = new CourseService();
 
         // GET: Courses
+        [Authorize(Roles = "Administrator")]
         public ActionResult Index()
         {
             CourseViewModel cView = cService.getAllCourses();
             return View(cView);
+        }
+
+        public ActionResult UserIndex()
+        {
+            return View();
         }
 
         // GET: Courses/Details/5

@@ -16,15 +16,16 @@ namespace MoooLien.Controllers
     public class AssignmentsController : Controller
     {
         private DefaultConnection db = new DefaultConnection();
+        private AssignmentsService aService = new AssignmentsService();
 
         // GET: Assignments
         public ActionResult Index()
         {
-            return View(db.Assignments.ToList());
+            return View(aService.getAllCourses());
         }
 
         // GET: Assignments/Details/5
-        public ActionResult Details(int? id)
+        /*public ActionResult Details(int? id)
         {
             if (id == null)
             {
@@ -131,7 +132,7 @@ namespace MoooLien.Controllers
         {
             AssignmentsService a = new AssignmentsService();
             ViewData["Categories"] = a.getAllCourses();
-        }
+        }*/
 
     }
 }

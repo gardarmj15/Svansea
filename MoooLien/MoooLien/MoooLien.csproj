@@ -223,6 +223,7 @@
     <Compile Include="Models\Person.cs" />
     <Compile Include="Models\ViewModel\AssignmentViewModel.cs" />
     <Compile Include="Models\ViewModel\CourseViewModel.cs" />
+    <Compile Include="Models\ViewModel\UsersInCourseViewModel.cs" />
     <Compile Include="Models\ViewModel\UserViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Service\AssignmentsService.cs" />
@@ -310,6 +311,7 @@
     <Content Include="Views\Administrators\ManageUsers.cshtml" />
     <Content Include="Views\Shared\_LayoutLoggin.cshtml" />
     <Content Include="Views\Administrators\ManageCourses.cshtml" />
+    <Content Include="Views\Assignments\Index.cshtml" />
     <None Include="Views\Shared\_LayoutAdmin.cshtml" />
     <Content Include="Views\Shared\_LayoutTeacher.cshtml" />
     <Content Include="Views\Shared\_LayoutStudent.cshtml" />

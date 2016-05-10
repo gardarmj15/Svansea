@@ -21,6 +21,9 @@ namespace MoooLien.Models
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
+        public DbSet<UserRoles> UserRoles { get; set; }
+        public DbSet<UsersInCourse> UserInCourse { get; set; }
+        public DbSet<AssignmentsInCourse> AssingmentInCourse { get; set; }
         /*public DbSet<Assignment> Assignments { get; set; }
         public DbSet<Course> Courses { get; set; }*/
         public ApplicationDbContext()
