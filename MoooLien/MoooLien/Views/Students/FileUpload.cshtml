@@ -1,0 +1,17 @@
+﻿@model FileUpload.ViewModel.FileUploadViewModel
+
+@{
+    ViewBag.Title = "FileUpload";
+}
+
+<h2>FileUpload</h2>
+
+
+
+<div>
+    @using (Html.BeginForm("UploadMultipleFiles", "FileUpload", FormMethod.Post, new { @enctype = "multipart/form-data" }))
+    {
+        @Html.TextBoxFor(c => c.File, new { type = "file", multiple = "true" })
+        <input type="submit" style="margin-left:40px;cursor:pointer;" id="upload" value="Upload" />
+    }
+</div>

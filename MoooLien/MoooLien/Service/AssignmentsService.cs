@@ -17,10 +17,6 @@ namespace MoooLien.Service
         {
             db = new ApplicationDbContext();
         }
-        public List<AssignmentViewModel> getAssignmentsInCourse(int assignmentID)
-        {
-            return null;
-        }
         public Assignment getAssignmentByID(int assignmentID)
         {
             Assignment assignment = (from assign in db.Assignments
@@ -39,9 +35,18 @@ namespace MoooLien.Service
             return result;
 
         }
-        public AssignmentViewModel getAssignmentsInCourse()
+        public AssignmentViewModel getAssignmentsInCourse(int courseID)
         {
+            var assignmentInCourse = (from asInCo in db.AssingmentInCourse
+                                      join assignment in db.Assignments on asInCo.assignmentID equals assignment.ID into result
+                                      where asInCo.courseID == courseID
+                                      from x in result
+                                      select x).ToList();
 
+            var all = new AssignmentViewModel();
+            all.assignments = assignmentInCourse;
+
+            return all;
         }
     }
 }

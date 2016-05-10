@@ -22,6 +22,7 @@ namespace MoooLien.DAL
         public DbSet<AssignmentsInCourse> AssingmentInCourse { get; set; }
         public DbSet<File> Files { get; set; }
 
+
         /*public System.Data.Entity.DbSet<MoooLien.Models.Course> Courses { get; set; }*/
     }
     /*protected override void OnModelCreating(DbModelBuilder modelBuilder)
