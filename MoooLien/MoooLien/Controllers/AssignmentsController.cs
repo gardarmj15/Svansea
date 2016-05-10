@@ -24,6 +24,28 @@ namespace MoooLien.Controllers
             return View(aService.getAssignmentsInCourse(id));
         }
 
+        public ActionResult Create()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Create(AssignmentViewModel newAssignment)
+        {
+            var assignment = newAssignment.assignment;
+
+            if (aService.createAssignment(assignment))
+            {
+                return RedirectToAction("Index", "Assignments");
+            }
+            else
+            {
+                ModelState.AddModelError("", "Could not add the assignment!");
+                return RedirectToAction("Create", "Assignments");
+            }
+        }
+
         // GET: Assignments/Details/5
         /*public ActionResult Details(int? id)
         {
