@@ -1,4 +1,5 @@
-﻿using MoooLien.Models;
+﻿using MoooLien.DAL;
+using MoooLien.Models;
 using MoooLien.Models.ViewModel;
 using System;
 using System.Collections.Generic;
@@ -11,14 +12,16 @@ namespace MoooLien.Service
 {
     public class UsersService
     {
-        private ApplicationDbContext db;
+        private DefaultConnection db;
+        private ApplicationDbContext Db;
         public UsersService()
         {
-            db = new ApplicationDbContext();
+            db = new DefaultConnection();
+            Db = new ApplicationDbContext();
         }
         public List<ApplicationUser> GetAllUsersAsEntity()
         {
-            var users = (from user in db.Users
+            var users = (from user in Db.Users
                          orderby user.UserName ascending
                          select user).ToList();
             return users;
@@ -26,14 +29,14 @@ namespace MoooLien.Service
         public UserViewModel getAllUsers()
         {
             UserViewModel theModel = new UserViewModel();
-            theModel.users = (from user in db.Users
+            theModel.users = (from user in Db.Users
                               orderby user.Email ascending
                               select user).ToList();
             return theModel;
         }
         public ApplicationUser getUserByID(string ID)
         {
-            ApplicationUser user = (from users in db.Users
+            ApplicationUser user = (from users in Db.Users
                                     where users.Id == ID
                                     select users).SingleOrDefault();
             return user;

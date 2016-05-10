@@ -1,5 +1,6 @@
 ﻿using MoooLien.DAL;
 using MoooLien.Models;
+using MoooLien.Models.Entities;
 using MoooLien.Models.ViewModel;
 using System;
 using System.Collections.Generic;
@@ -11,36 +12,28 @@ namespace MoooLien.Service
 {
     public class AssignmentsService
     {
-        private DefaultConnection _db;
+        private DefaultConnection db;
         public AssignmentsService()
         {
-            _db = new DefaultConnection();
+            db = new DefaultConnection();
         }
         public List<AssignmentViewModel> getAssignmentsInCourse(int assignmentID)
         {
             return null;
         }
-        public AssignmentViewModel getAssignmentByID(int assignmentID)
+        public Assignment getAssignmentByID(int assignmentID)
         {
-            var assignment = _db.Assignments.SingleOrDefault(x => x.ID == assignmentID);
-            if (assignment == null)
-            {
-                return null;
-            }
-
-            var viewModel = new AssignmentViewModel
-            {
-                name = assignment.name
-            };
-
-            return viewModel;
+            Assignment assignment = (from assign in db.Assignments
+                              where assign.ID == assignmentID
+                              select assign).SingleOrDefault();
+            return assignment;
         }
         public List<SelectListItem> getAllCourses()
         {
             List<SelectListItem> categories = new List<SelectListItem>();
             SelectListItem item = new SelectListItem { Text = "-- Select category --", Value = "0" };
             categories.Add(item);
-            var courses = _db.Courses.ToList();
+            var courses = db.Courses.ToList();
             foreach (var x in courses)
             {
                 SelectListItem item0 = new SelectListItem { Text = x.name, Value = x.ID.ToString() };

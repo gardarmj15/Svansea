@@ -1,4 +1,5 @@
-﻿using MoooLien.Models;
+﻿using Microsoft.AspNet.Identity;
+using MoooLien.Models;
 using MoooLien.Models.Entities;
 using MoooLien.Models.ViewModel;
 using System;
@@ -25,6 +26,25 @@ namespace MoooLien.Service
                           where co.ID == Id
                           select co).SingleOrDefault();
             return course;
+        }
+
+        public List<Course> getCourseByUserID()
+        {
+            var currentUser = HttpContext.Current.User.Identity.GetUserId();
+
+            var user = (from u in db.Users
+                        where u.Id == currentUser
+                        select u).SingleOrDefault();
+
+            var userCourses = (from userC in db.UserInCourse
+                               join courses in db.Courses on userC.courseID
+                               equals courses.ID into result
+                               where userC.userID == user.Id
+                               from x in result
+                               select x).ToList();
+
+            return (userCourses);
+            
         }
 
         public CourseViewModel getAllCourses()
