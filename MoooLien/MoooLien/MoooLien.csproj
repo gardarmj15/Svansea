@@ -214,9 +214,13 @@
     <Compile Include="Models\Entities\Course.cs" />
     <Compile Include="Models\Entities\UserRoles.cs" />
     <Compile Include="Models\Entities\UsersInCourse.cs" />
+    <Compile Include="Models\File.cs" />
+    <Compile Include="Models\FilePath.cs" />
+    <Compile Include="Models\FileType.cs" />
     <Compile Include="Models\IdentityManager.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\Person.cs" />
     <Compile Include="Models\ViewModel\AssignmentViewModel.cs" />
     <Compile Include="Models\ViewModel\CourseViewModel.cs" />
     <Compile Include="Models\ViewModel\UsersInCourseViewModel.cs" />
@@ -308,6 +312,7 @@
     <Content Include="Views\Shared\_LayoutLoggin.cshtml" />
     <Content Include="Views\Administrators\ManageCourses.cshtml" />
     <Content Include="Views\Assignments\Index.cshtml" />
+    <Content Include="Views\Courses\UserIndex.cshtml" />
     <None Include="Views\Shared\_LayoutAdmin.cshtml" />
     <Content Include="Views\Shared\_LayoutTeacher.cshtml" />
     <Content Include="Views\Shared\_LayoutStudent.cshtml" />
@@ -322,6 +327,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\File\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
