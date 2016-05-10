@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using MoooLien.Models;
 using MoooLien.Models.Entities;
+using FileUpload.ViewModel;
 
 namespace MoooLien.Controllers
 {
@@ -138,5 +139,6 @@ namespace MoooLien.Controllers
             }
             base.Dispose(disposing);
         }
+
     }
 }
