@@ -21,7 +21,7 @@ namespace MoooLien.Controllers
         // GET: Assignments
         public ActionResult Index()
         {
-            return View(aService.getAllCourses());
+            return View(aService.getAllAssignments());
         }
 
         // GET: Assignments/Details/5

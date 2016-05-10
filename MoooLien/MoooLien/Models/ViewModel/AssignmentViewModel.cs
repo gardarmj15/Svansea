@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MoooLien.Models.Entities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,12 +9,7 @@ namespace MoooLien.Models.ViewModel
 {
     public class AssignmentViewModel
     {
-        public int ID { get; set; }
-        public int courseID { get; set; }
-        public string name { get; set; }
-        public string description { get; set; }
-        public string solution { get; set; }
-        public DateTime startDate { get; set; }
-        public DateTime endDate { get; set; }
+        public List<Assignment> assignments { get; set; }
+        public Assignment assignment { get; set; }
     }
 }
