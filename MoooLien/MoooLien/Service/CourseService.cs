@@ -28,7 +28,7 @@ namespace MoooLien.Service
             return course;
         }
 
-        public CourseViewModel getCourseByUserID()
+        public UsersCoursesViewModel getCourseByUserID()
         {
             var currentUser = HttpContext.Current.User.Identity.GetUserId();
 
@@ -38,11 +38,11 @@ namespace MoooLien.Service
 
             var userCourses = (from cUsers in db.UsersInCourse
                                join courses in db.Courses on cUsers.courseID equals courses.ID into result
-                               where cUsers.ID == user.Id
+                               where cUsers.userID == user.Id
                                from x in result
                                select x).ToList();
 
-            var all = new CourseViewModel();
+            var all = new UsersCoursesViewModel();
             all.courses = userCourses;
 
             return all;
