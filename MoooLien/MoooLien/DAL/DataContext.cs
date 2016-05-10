@@ -20,6 +20,7 @@ namespace MoooLien.DAL
         public DbSet<UserRoles> UserRoles { get; set; }
         public DbSet<UsersInCourse> UserInCourse { get; set; }
         public DbSet<AssignmentsInCourse> AssingmentInCourse { get; set; }
+        public DbSet<File> Files { get; set; }
 
         /*public System.Data.Entity.DbSet<MoooLien.Models.Course> Courses { get; set; }*/
     }
