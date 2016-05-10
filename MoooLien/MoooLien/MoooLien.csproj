@@ -340,6 +340,7 @@
     <Content Include="Views\File\Upload.cshtml" />
     <Content Include="Views\Courses\UserIndex.cshtml" />
     <Content Include="Views\Courses\Create.cshtml" />
+    <Content Include="Views\Assignments\Create.cshtml" />
     <None Include="Views\Shared\_LayoutAdmin.cshtml" />
     <Content Include="Views\Shared\_LayoutTeacher.cshtml" />
     <Content Include="Views\Shared\_LayoutStudent.cshtml" />
