@@ -42,6 +42,7 @@ namespace MoooLien.Service
                                       where asInCo.courseID == courseID
                                       from x in result
                                       select x).ToList();
+
             var all = new AssignmentViewModel();
             all.assignments = assignmentInCourse;
 
