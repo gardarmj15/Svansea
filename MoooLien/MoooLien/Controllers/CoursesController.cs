@@ -29,6 +29,10 @@ namespace MoooLien.Controllers
         {
             return View(cService.getCourseByUserID());
         }
+        public ActionResult UsersIndex()
+        {
+            return View(cService.getCourseByUserID());
+        }
 
         // GET: Courses/Details/5
         public ActionResult Create()
