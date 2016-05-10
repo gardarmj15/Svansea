@@ -19,9 +19,9 @@ namespace MoooLien.Controllers
         private AssignmentsService aService = new AssignmentsService();
 
         // GET: Assignments
-        public ActionResult Index()
+        public ActionResult Index(int id)
         {
-            return View(aService.getAllAssignments());
+            return View(aService.getAssignmentsInCourse(id));
         }
 
         // GET: Assignments/Details/5
