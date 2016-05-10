@@ -28,7 +28,7 @@ namespace MoooLien.Service
             return course;
         }
 
-        public List<Course> getCourseByUserID()
+        public CourseViewModel getCourseByUserID()
         {
             var currentUser = HttpContext.Current.User.Identity.GetUserId();
 
@@ -43,8 +43,11 @@ namespace MoooLien.Service
                                from x in result
                                select x).ToList();
 
-            return (userCourses);
-            
+            CourseViewModel all = new CourseViewModel();
+            all.courses = userCourses;
+
+            return all;
+
         }
 
         public CourseViewModel getAllCourses()

@@ -28,18 +28,15 @@ namespace MoooLien.Service
                               select assign).SingleOrDefault();
             return assignment;
         }
-        public List<SelectListItem> getAllCourses()
+        public AssignmentViewModel getAllAssignments()
         {
-            List<SelectListItem> categories = new List<SelectListItem>();
-            SelectListItem item = new SelectListItem { Text = "-- Select category --", Value = "0" };
-            categories.Add(item);
-            var courses = db.Courses.ToList();
-            foreach (var x in courses)
-            {
-                SelectListItem item0 = new SelectListItem { Text = x.name, Value = x.ID.ToString() };
-                categories.Add(item0);
-            }
-            return categories;
+            var assignments = (from assign in db.Assignments
+                               select assign).ToList();
+
+            AssignmentViewModel result = new AssignmentViewModel();
+            result.assignments = assignments;
+
+            return result;
 
         }
     }
