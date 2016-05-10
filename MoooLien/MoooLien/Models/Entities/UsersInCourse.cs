@@ -11,7 +11,7 @@ namespace MoooLien.Models.Entities
     {
         public string ID { get; set; }
         public string userID { get; set; }
-        public int courseID { get; set; }
+        public string courseID { get; set; }
         public int roleID { get; set; }
     }
 }

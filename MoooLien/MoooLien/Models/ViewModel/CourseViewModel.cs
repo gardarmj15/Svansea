@@ -28,7 +28,7 @@ namespace MoooLien.Models.ViewModel
     }
     public class EditCourseViewModel
     {
-        public int ID { get; set; }
+        public string ID { get; set; }
 
         [Required]
         [DataType(DataType.Text)]

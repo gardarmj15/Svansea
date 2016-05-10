@@ -8,7 +8,7 @@ namespace MoooLien.Models.Entities
     public class AssignmentsInCourse
     {
         public int ID { get; set; }
-        public int assignmentID { get; set; }
-        public int courseID { get; set; }
+        public string assignmentID { get; set; }
+        public string courseID { get; set; }
     }
 }

@@ -1,51 +1,28 @@
 ﻿@model MoooLien.Models.ViewModel.AssignmentViewModel
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "AssignmentsInCourse";
 }
 
 <h2>Assignments</h2>
-@*<p>
-        <a href="~/Assignments/Create" class="btn btn-success">Create Assignment</a>
-    </p>*@
-<table class="table table-hover">
-    <tr>
-        <th>
-            Name
-        </th>
-        <th>
-            Course
-        </th>
-        <th>
-            Description
-        </th>
-        <th>
-            StartDate
-        </th>
-        <th>
-            EndDate
-        </th>
-        <th></th>
-    </tr>
 
-    @foreach (var assignment in Model.assignments)
-    {
-        <tr>
-            <td>
-                @assignment.name
-            </td>
-            <td>
-                @assignment.courseID
-            </td>
-            <td>
-                @assignment.description
-            </td>
-            <td>
-                @assignment.startDate
-            </td>
-            <td>
-                @assignment.endDate
-            </td>
-        </tr>
-     }
-</table>
+
+<div class="col-md-6" id="Assignments">
+    <h1>@ViewBag.Title</h1>
+    <div>
+        <table class="table-bordered table table-striped table-responsive table-hover">
+            <tbody>
+                @foreach (var x in Model.assignments)
+                {
+                    <tr>
+                        <td>
+                            <a href="@Url.Action("details", "assignments", new { id = x.ID})">
+                                @x.name
+                            </a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

@@ -54,7 +54,7 @@ namespace MoooLien.Controllers
                 return (RedirectToAction("Create"));
             }
         }
-        public ActionResult Delete(int id)
+        public ActionResult Delete(string id)
         {
             if(cService.deleteCourse(id))
             {
@@ -66,7 +66,7 @@ namespace MoooLien.Controllers
                 return RedirectToAction("Index");
             }
         }
-        public ActionResult Edit(int id)
+        public ActionResult Edit(string id)
         {
             Course course = cService.getCourseByID(id);
             EditCourseViewModel model = new EditCourseViewModel();
@@ -76,7 +76,7 @@ namespace MoooLien.Controllers
             return View(model);
         }
 
-        [HttpPost]
+        /*[HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(EditCourseViewModel editCourse)
         {
@@ -92,6 +92,6 @@ namespace MoooLien.Controllers
 
             
 
-        }
+        }*/
     }
 }

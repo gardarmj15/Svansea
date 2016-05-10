@@ -20,7 +20,7 @@ namespace MoooLien.Service
             db = new ApplicationDbContext();
         }
 
-        public Course getCourseByID(int Id)
+        public Course getCourseByID(string Id)
         {
             Course course = (from co in db.Courses
                           where co.ID == Id
@@ -66,13 +66,13 @@ namespace MoooLien.Service
             return Convert.ToBoolean(db.SaveChanges());
         }
         
-        public bool deleteCourse(int id)
+        public bool deleteCourse(string id)
         {
             db.Courses.Remove(getCourseByID(id));
 
             return Convert.ToBoolean(db.SaveChanges());
         }
-        public bool editCourse(EditCourseViewModel editC)
+        /*public bool editCourse(EditCourseViewModel editC)
         {
             var givenCourse = (from co in db.Courses
                                where co.ID == editC.ID
@@ -82,6 +82,6 @@ namespace MoooLien.Service
             givenCourse.description = editC.description;
 
             return Convert.ToBoolean(db.SaveChanges());
-        }
+        }*/
     }
 }
