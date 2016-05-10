@@ -52,3 +52,9 @@ textarea {
     background-color:black;
     border-color:black;
 }
+
+.moolienImagesBig {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
