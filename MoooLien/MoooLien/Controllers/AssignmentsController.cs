@@ -24,16 +24,16 @@ namespace MoooLien.Controllers
             return View(aService.getAssignmentsInCourse(id));
         }
 
-        public ActionResult Create()
+        public ActionResult Create(int id)
         {
             return View();
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(AssignmentViewModel newAssignment)
+        public ActionResult Create(CreateAssignmentViewModel newAssignment)
         {
-            var assignment = newAssignment.assignment;
+            var assignment = newAssignment;
 
             if (aService.createAssignment(assignment))
             {

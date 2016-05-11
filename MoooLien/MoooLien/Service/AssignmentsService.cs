@@ -51,9 +51,21 @@ namespace MoooLien.Service
             return all;
         }
 
-        public bool createAssignment(Assignment assignment)
+        public bool createAssignment(CreateAssignmentViewModel newAssignment)
         {
-            db.Assignments.Add(assignment);
+            Assignment temp = new Assignment() { name = newAssignment.name, solution = newAssignment.solution,
+                                                 description = newAssignment.description, startDate = newAssignment.startDate,
+                                                 endDate = newAssignment.endDate};
+            db.Assignments.Add(temp);
+            db.SaveChanges();
+
+            var assignID = (from assign in db.Assignments
+                                where temp.name == assign.name
+                                select assign.ID).SingleOrDefault();
+
+            AssignmentsInCourse link = new AssignmentsInCourse() { assignmentID = assignID, courseID = cID };
+            db.AssingmentInCourse.Add(link);
+            
             return Convert.ToBoolean(db.SaveChanges());
         }
     }
