@@ -24,7 +24,7 @@ namespace MoooLien.Controllers
             return View(aService.getAssignmentsInCourse(id));
         }
 
-        public ActionResult Create(int id)
+        public ActionResult Create()
         {
             return View();
         }
@@ -33,9 +33,9 @@ namespace MoooLien.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(CreateAssignmentViewModel newAssignment)
         {
-            var assignment = newAssignment;
+            //var assignment = newAssignment;
 
-            if (aService.createAssignment(assignment))
+            if (aService.createAssignment(newAssignment))
             {
                 return RedirectToAction("Index", "Assignments");
             }
