@@ -13,7 +13,7 @@ namespace MoooLien.Service
     public class AssignmentsService
     {
         private ApplicationDbContext db;
-        private int cID;
+        //private int cID;
         public AssignmentsService()
         {
             db = new ApplicationDbContext();
@@ -38,7 +38,7 @@ namespace MoooLien.Service
         }
         public AssignmentViewModel getAssignmentsInCourse(int courseID)
         {
-            cID = courseID;
+            //cID = courseID;
             var assignmentInCourse = (from asInCo in db.AssingmentInCourse
                                       join assignment in db.Assignments on asInCo.assignmentID equals assignment.ID into result
                                       where asInCo.courseID == courseID
@@ -57,14 +57,14 @@ namespace MoooLien.Service
                                                  description = newAssignment.description, startDate = newAssignment.startDate,
                                                  endDate = newAssignment.endDate};
             db.Assignments.Add(temp);
-            db.SaveChanges();
+            //db.SaveChanges();
 
-            var assignID = (from assign in db.Assignments
+            /*var assignID = (from assign in db.Assignments
                                 where temp.name == assign.name
-                                select assign.ID).SingleOrDefault();
+                                select assign.ID).SingleOrDefault();*/
 
-            AssignmentsInCourse link = new AssignmentsInCourse() { assignmentID = assignID, courseID = cID };
-            db.AssingmentInCourse.Add(link);
+            /*AssignmentsInCourse link = new AssignmentsInCourse() { assignmentID = assignID, courseID = cID };
+            db.AssingmentInCourse.Add(link);*/
             
             return Convert.ToBoolean(db.SaveChanges());
         }
