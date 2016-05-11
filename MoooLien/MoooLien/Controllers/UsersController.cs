@@ -12,7 +12,7 @@ namespace MoooLien.Controllers
 {
     public class UsersController : Controller
     {
-        private UsersService service = new UsersService();
+        private UsersService uService = new UsersService();
         private ApplicationUserManager userManager;
 
         public ApplicationUserManager UserManager
@@ -30,14 +30,8 @@ namespace MoooLien.Controllers
         // GET: Users
         public ActionResult Index()
         {
-            UserViewModel model = service.getAllUsers();
-            populateCourseDropDown();
+            UserViewModel model = uService.getAllUsers();
             return View(model);
-        }
-        public void populateCourseDropDown()
-        {
-            CourseService cService = new CourseService();
-            ViewData["Courses"] = cService.getAllCourses();
         }
 
         public async Task<ActionResult> Remove(string id)
@@ -45,7 +39,7 @@ namespace MoooLien.Controllers
             if (id != null)
             {
                 ApplicationUser user = await UserManager.FindByIdAsync(id);
-                if (service.CanDeleteUser(user))
+                if (uService.CanDeleteUser(user))
                 {
                     var result = UserManager.Delete(user);
                     if (result.Succeeded)
@@ -60,6 +54,20 @@ namespace MoooLien.Controllers
                 return RedirectToAction("index", "user");
             }
             return View("404");
+        }
+
+        public ActionResult Enrole()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Enrole(FormCollection wasIstDas)
+        {
+            uService.getUsersCoursesAndRole();
+
+            return null;
         }
 
     }

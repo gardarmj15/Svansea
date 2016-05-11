@@ -1,4 +1,5 @@
-﻿using MoooLien.DAL;
+﻿using Microsoft.AspNet.Identity;
+using MoooLien.DAL;
 using MoooLien.Models;
 using MoooLien.Models.ViewModel;
 using System;
@@ -51,6 +52,17 @@ namespace MoooLien.Service
             }
 
             return true;
+        }
+
+        public UsersCoursesViewModel getUsersCoursesAndRole()
+        {
+            var currentUser = HttpContext.Current.User.Identity.GetUserId();
+
+            var user = (from u in db.UsersInCourse
+                        where u.userID == currentUser
+                        select u).ToList();
+
+            return null;
         }
     }
 }
