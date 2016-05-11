@@ -354,6 +354,7 @@
     <Content Include="Views\Teachers\HandIns.cshtml" />
     <Content Include="Views\Students\FileUpload.cshtml" />
     <Content Include="Views\Users\Index.cshtml" />
+    <Content Include="Views\Users\Remove.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

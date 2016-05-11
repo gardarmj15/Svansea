@@ -40,5 +40,17 @@ namespace MoooLien.Service
                                     select users).SingleOrDefault();
             return user;
         }
+        public bool CanDeleteUser(ApplicationUser user)
+        {
+            var exists = (from x in db.Users
+                          where x.Id == user.Id
+                          select x).FirstOrDefault();
+            if (exists != null)
+            {
+                return false;
+            }
+
+            return true;
+        }
     }
 }

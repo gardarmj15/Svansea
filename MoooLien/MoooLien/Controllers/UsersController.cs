@@ -40,6 +40,28 @@ namespace MoooLien.Controllers
             ViewData["Courses"] = cService.getAllCourses();
         }
 
+        public async Task<ActionResult> Remove(string id)
+        {
+            if (id != null)
+            {
+                ApplicationUser user = await UserManager.FindByIdAsync(id);
+                if (service.CanDeleteUser(user))
+                {
+                    var result = UserManager.Delete(user);
+                    if (result.Succeeded)
+                    {
+                        TempData["message"] = user.UserName + " has be deleted from the system";
+                    }
+                    else
+                    {
+                        TempData["errorMessage"] = "An error occured while trying to delete " + user.UserName;
+                    }
+                }
+                return RedirectToAction("index", "user");
+            }
+            return View("404");
+        }
+
     }
     
 }
