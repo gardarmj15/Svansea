@@ -56,24 +56,25 @@ namespace MoooLien.Service
 
         public EnroleViewModel getUsersByCourseID(int id)
         {
-            var courseUser = (from u in db.UsersInCourse
-                              join us in db.Users on u.userID equals us.Id into result
-                              where u.courseID == id
-                              from x in result
-                              select x).ToList();
+            var courseStudents = (from u in db.UsersInCourse
+                                  join us in db.Users on u.userID equals us.Id into result
+                                  where u.courseID == id && u.roleID == 1
+                                  from x in result
+                                  select x);
 
-            var users = (from user in db.Users
-                           orderby user.Email ascending
-                           select user).ToList();
+            var courseTeachers = (from u in db.UsersInCourse
+                                  join us in db.Users on u.userID equals us.Id into result
+                                  where u.courseID == id && u.roleID == 2
+                                  from x in result
+                                  select x);
 
-            var roles = (from role in db.UserRoles
-                         orderby role.Role ascending
-                         select role).ToList();
+            var notEnroledUsers = (from u in db.Users
+                                   select u).Except(courseStudents).Except(courseTeachers);
 
             var all = new EnroleViewModel();
-            all.usersInCourse = courseUser;
-            all.users = users;
-            all.userRoles = roles;
+            all.students = courseStudents.ToList();
+            all.teachers = courseTeachers.ToList();
+            all.notEnroled = notEnroledUsers.ToList();
 
             return all;
         }

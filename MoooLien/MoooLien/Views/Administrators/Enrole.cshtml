@@ -8,34 +8,43 @@
 
 @Html.AntiForgeryToken()
 <div>
+    <h4>Teachers</h4>
     <table class="table table-hover">
-
-    @foreach (var user in Model.usersInCourse)
+    
+    @foreach (var user in Model.teachers)
     {
         <tr>
             <td>@user.UserName</td>
+            <td><a href="@Url.Action("moveToStudent", "Administrators", new { userID = user.Id, courseID = ViewBag.courseID})">Change Role</a></td>
+            <td><a href="@Url.Action("removeFromCourse", "Administrators", new { userID = user.Id, courseID = ViewBag.courseID})">Remove Role</a></td>
         </tr>
     }
     </table>
 </div>
 <div>
+    <h4>Students</h4>
     <table class="table table-hover">
 
-        @foreach (var user in Model.users)
+        @foreach (var user in Model.students)
         {
             <tr>
                 <td>@user.UserName</td>
+                <td><a href="@Url.Action("moveToTeacher", "Administrators", new { userID = user.Id, courseID = ViewBag.courseID})">Change Role</a></td>
+                <td><a href="@Url.Action("removeFromCourse", "Administrators", new { userID = user.Id, courseID = ViewBag.courseID})">Remove Role</a></td>
             </tr>
         }
     </table>
 </div>
 <div>
+    <h4>Not Enroled</h4>
     <table class="table table-hover">
 
-        @foreach (var user in Model.userRoles)
+        @foreach (var user in Model.notEnroled)
         {
             <tr>
-                <td>@user.Role</td>
+                <td>@user.UserName</td>
+                <td><a href="@Url.Action("moveToTeacher", "Administrators", new { userID = user.Id, courseID = ViewBag.courseID})">Add Teacher</a></td>
+                <td><a href="@Url.Action("moveToStudent", "Administrators", new { userID = user.Id, courseID = ViewBag.courseID})">Add Student</a></td>
             </tr>
         }
     </table>

@@ -20,6 +20,7 @@ namespace MoooLien.Controllers
         ApplicationDbContext context = new ApplicationDbContext();
         private UsersService uService = new UsersService();
         private CourseService cService = new CourseService();
+        private UsersInCourseService uInCService = new UsersInCourseService();
 
         public ActionResult Index()
         {
@@ -44,6 +45,24 @@ namespace MoooLien.Controllers
             ViewBag.courseID = id;
             
             return View(uService.getUsersByCourseID(id));
+        }
+
+        public ActionResult moveToStudent(string userID, int courseID)
+        {
+            uInCService.createLink(userID, courseID, 1);
+            return RedirectToAction("Enrole", "Administrators", new { id = courseID });
+        }
+
+        public ActionResult moveToTeacher(string userID, int courseID)
+        {
+            uInCService.createLink(userID, courseID, 2);
+            return RedirectToAction("Enrole", "Administrators", new { id = courseID });
+        }
+
+        public ActionResult removeFromCourse(string userID, int courseID)
+        {
+            uInCService.removeLink(userID, courseID);
+            return RedirectToAction("Enrole", "Administrators", new { id = courseID });
         }
 
         public ActionResult List()

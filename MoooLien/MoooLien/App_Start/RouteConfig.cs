@@ -18,6 +18,12 @@ namespace MoooLien
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
             );
+
+            routes.MapRoute(
+                name: "Skiptirekkimali",
+                url: "{controller}/{action}/{userID}/{courseID}",
+                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
+            );
         }
     }
 }

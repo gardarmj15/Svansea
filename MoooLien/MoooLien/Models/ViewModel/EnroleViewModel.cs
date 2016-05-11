@@ -8,8 +8,10 @@ namespace MoooLien.Models.ViewModel
 {
     public class EnroleViewModel
     {
-        public List<ApplicationUser> usersInCourse { get; set; }
-        public List<ApplicationUser> users { get; set; }
-        public List<UserRoles> userRoles { get; set; }
+        public List<ApplicationUser> teachers { get; set; }
+        public List<ApplicationUser> students { get; set; }
+        public List<ApplicationUser> notEnroled { get; set; }
+
+        //public int courseID { get; set; }
     }
 }
