@@ -246,6 +246,7 @@
     <Compile Include="Models\Person.cs" />
     <Compile Include="Models\ViewModel\AssignmentViewModel.cs" />
     <Compile Include="Models\ViewModel\CourseViewModel.cs" />
+    <Compile Include="Models\ViewModel\EnroleViewModel.cs" />
     <Compile Include="Models\ViewModel\FileUpload.cs" />
     <Compile Include="Models\ViewModel\UsersInCourseViewModel.cs" />
     <Compile Include="Models\ViewModel\UserViewModel.cs" />
@@ -341,6 +342,7 @@
     <Content Include="Views\Courses\UserIndex.cshtml" />
     <Content Include="Views\Courses\Create.cshtml" />
     <Content Include="Views\Assignments\Create.cshtml" />
+    <Content Include="Views\Administrators\Enrole.cshtml" />
     <None Include="Views\Shared\_LayoutAdmin.cshtml" />
     <Content Include="Views\Shared\_LayoutTeacher.cshtml" />
     <Content Include="Views\Shared\_LayoutStudent.cshtml" />

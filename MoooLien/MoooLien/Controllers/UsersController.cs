@@ -65,7 +65,7 @@ namespace MoooLien.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Enrole(FormCollection wasIstDas)
         {
-            uService.getUsersCoursesAndRole();
+            /*uService.getUsersCoursesAndRole();*/
 
             return null;
         }

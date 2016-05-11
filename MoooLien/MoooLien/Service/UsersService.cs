@@ -54,15 +54,28 @@ namespace MoooLien.Service
             return true;
         }
 
-        public UsersCoursesViewModel getUsersCoursesAndRole()
+        public EnroleViewModel getUsersByCourseID(int id)
         {
-            var currentUser = HttpContext.Current.User.Identity.GetUserId();
+            var courseUser = (from u in db.UsersInCourse
+                              join us in db.Users on u.userID equals us.Id into result
+                              where u.courseID == id
+                              from x in result
+                              select x).ToList();
 
-            var user = (from u in db.UsersInCourse
-                        where u.userID == currentUser
-                        select u).ToList();
+            var users = (from user in db.Users
+                           orderby user.Email ascending
+                           select user).ToList();
 
-            return null;
+            var roles = (from role in db.UserRoles
+                         orderby role.Role ascending
+                         select role).ToList();
+
+            var all = new EnroleViewModel();
+            all.usersInCourse = courseUser;
+            all.users = users;
+            all.userRoles = roles;
+
+            return all;
         }
     }
 }

@@ -18,7 +18,7 @@ namespace MoooLien.Controllers
     public class AdministratorsController : Controller
     {
         ApplicationDbContext context = new ApplicationDbContext();
-        private UsersService service = new UsersService();
+        private UsersService uService = new UsersService();
         private CourseService cService = new CourseService();
 
         public ActionResult Index()
@@ -29,7 +29,7 @@ namespace MoooLien.Controllers
 
         public ActionResult ManageUsers()
         {
-            UserViewModel model = service.getAllUsers();
+            UserViewModel model = uService.getAllUsers();
             return View(model);
         }
 
@@ -39,9 +39,16 @@ namespace MoooLien.Controllers
             return View(cService.getAllCourses());
         }
 
+        public ActionResult Enrole(int id)
+        {
+            ViewBag.courseID = id;
+            
+            return View(uService.getUsersByCourseID(id));
+        }
+
         public ActionResult List()
         {
-            UserViewModel model = service.getAllUsers();
+            UserViewModel model = uService.getAllUsers();
             return View(model);
         }
         // GET: /Roles/Create

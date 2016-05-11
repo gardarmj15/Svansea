@@ -1,0 +1,42 @@
+﻿@model MoooLien.Models.ViewModel.EnroleViewModel
+
+@{
+    ViewBag.Title = "Enrole";
+}
+
+<h2>Enrole</h2>
+
+@Html.AntiForgeryToken()
+<div>
+    <table class="table table-hover">
+
+    @foreach (var user in Model.usersInCourse)
+    {
+        <tr>
+            <td>@user.UserName</td>
+        </tr>
+    }
+    </table>
+</div>
+<div>
+    <table class="table table-hover">
+
+        @foreach (var user in Model.users)
+        {
+            <tr>
+                <td>@user.UserName</td>
+            </tr>
+        }
+    </table>
+</div>
+<div>
+    <table class="table table-hover">
+
+        @foreach (var user in Model.userRoles)
+        {
+            <tr>
+                <td>@user.Role</td>
+            </tr>
+        }
+    </table>
+</div>
