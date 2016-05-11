@@ -74,10 +74,16 @@ namespace MoooLien.Controllers
             // Specify the directory you want to manipulate.
             //string path = @"c:\MyDir";
 
-            string path = Server.MapPath("~/Files/");
+            string path = Server.MapPath("~/Files/" + User.Identity.Name + "/");
 
             try
             {
+                if (!Directory.Exists(path))
+                {
+                    // Try to create the directory.
+                    DirectoryInfo di = Directory.CreateDirectory(path);
+                    Console.WriteLine("The directory was created successfully at {0}.", Directory.GetCreationTime(path));
+                }
                 // Determine whether the directory exists.
                 if (Directory.Exists(path))
                 {
@@ -88,12 +94,12 @@ namespace MoooLien.Controllers
                 }
 
                 // Try to create the directory.
-                DirectoryInfo di = Directory.CreateDirectory(path);
-                Console.WriteLine("The directory was created successfully at {0}.", Directory.GetCreationTime(path));
+                //DirectoryInfo di = Directory.CreateDirectory(path);
+                //Console.WriteLine("The directory was created successfully at {0}.", Directory.GetCreationTime(path));
 
                 // Delete the directory.
-                di.Delete();
-                Console.WriteLine("The directory was deleted successfully.");
+                //di.Delete();
+                //Console.WriteLine("The directory was deleted successfully.");
             }
             catch (Exception e)
             {
