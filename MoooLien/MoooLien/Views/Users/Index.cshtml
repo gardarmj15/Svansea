@@ -1,0 +1,36 @@
+﻿@model MoooLien.Models.ViewModel.UserViewModel
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Users</h2>
+
+<p>
+    <a href="~/Account/Register" class="btn btn-success">Create User</a>
+</p>
+
+@Html.AntiForgeryToken()
+<table class="table table-hover">
+
+    <tr>
+        <th>Username</th>
+        <th>Email</th>
+        <th></th>
+    </tr>
+
+    @foreach (var user in Model.users)
+    {
+        <tr>
+            <td>@user.UserName</td>
+            <td>@user.Email</td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = User.Identity }, new { @class = "green" }) |
+                @Html.ActionLink("Delete", "Delete", new { id = User.Identity }, new { @class = "red" })
+            </td>
+
+        </tr>
+
+    }
+</table>
+
