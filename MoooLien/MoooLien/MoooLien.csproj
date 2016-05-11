@@ -221,7 +221,6 @@
     <Compile Include="Controllers\AdministratorsController.cs" />
     <Compile Include="Controllers\AssignmentsController.cs" />
     <Compile Include="Controllers\CoursesController.cs" />
-    <Compile Include="Controllers\FileController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\SolutionsController.cs" />
@@ -295,8 +294,6 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
     <Content Include="Views\Account\ConfirmEmail.cshtml" />
@@ -318,17 +315,6 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
-    <Content Include="Views\Old_Assignments\Create.cshtml" />
-    <Content Include="Views\Old_Assignments\Delete.cshtml" />
-    <Content Include="Views\Old_Assignments\Details.cshtml" />
-    <Content Include="Views\Old_Assignments\Edit.cshtml" />
-    <Content Include="Views\Old_Assignments\Index.cshtml" />
-    <Content Include="Views\Old_Courses\Create.cshtml" />
-    <Content Include="Views\Old_Courses\Delete.cshtml" />
-    <Content Include="Views\Old_Courses\Details.cshtml" />
-    <Content Include="Views\Old_Courses\Edit.cshtml" />
-    <Content Include="Views\Old_Courses\Index.cshtml" />
-    <Content Include="Views\Old_Users\Index.cshtml" />
     <Content Include="Views\Administrators\Index.cshtml" />
     <Content Include="Views\Administrators\Old_Create.cshtml" />
     <Content Include="Views\Administrators\Old_Edit.cshtml" />
@@ -339,8 +325,6 @@
     <Content Include="Views\Shared\_LayoutLoggin.cshtml" />
     <Content Include="Views\Administrators\ManageCourses.cshtml" />
     <Content Include="Views\Assignments\Index.cshtml" />
-    <Content Include="Views\File\Index.cshtml" />
-    <Content Include="Views\File\Upload.cshtml" />
     <Content Include="Views\Courses\UserIndex.cshtml" />
     <Content Include="Views\Courses\Create.cshtml" />
     <Content Include="Views\Assignments\Create.cshtml" />
@@ -352,23 +336,19 @@
     <Content Include="Views\Teachers\Delete.cshtml" />
     <Content Include="Views\Teachers\Edit.cshtml" />
     <Content Include="Views\Teachers\Index.cshtml" />
-    <Content Include="Views\Students\Solve.cshtml" />
-    <Content Include="Views\Students\Index.cshtml" />
-    <Content Include="Views\Students\Submissions.cshtml" />
     <Content Include="Views\Teachers\HandIns.cshtml" />
-    <Content Include="Views\Students\FileUpload.cshtml" />
     <Content Include="Views\Users\Index.cshtml" />
     <Content Include="Views\Users\Remove.cshtml" />
     <Content Include="Views\Solutions\Details.cshtml" />
     <Content Include="Views\Solutions\Index.cshtml" />
     <Content Include="Views\Solutions\Handin.cshtml" />
     <Content Include="Views\Solutions\UploadStatus.cshtml" />
+    <Content Include="Views\Solutions\Edit.cshtml" />
+    <Content Include="Views\Solutions\Compiler.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Files\Compiler\" />
-    <Folder Include="Files\UserSolution\" />
-    <Folder Include="Views\UserFile\" />
+    <Folder Include="Files\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
