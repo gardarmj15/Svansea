@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MoooLien.Models.Entities;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -9,5 +10,6 @@ namespace MoooLien.Models.ViewModel
     public class UserViewModel
     {
         public List<ApplicationUser> users { get; set; }
+        public List<Course> courses { get; set; }
     }
 }

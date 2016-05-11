@@ -21,23 +21,25 @@ namespace MoooLien.Controllers
         // GET: Assignments
         public ActionResult Index(int id)
         {
+            ViewBag.courseID = id;
             return View(aService.getAssignmentsInCourse(id));
         }
 
-        public ActionResult Create()
+        public ActionResult Create(int id)
         {
             return View();
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(CreateAssignmentViewModel newAssignment)
+        public ActionResult Create(CreateAssignmentViewModel newAssignment, int id)
         {
             //var assignment = newAssignment;
+            newAssignment.courseID = id;
 
             if (aService.createAssignment(newAssignment))
             {
-                return RedirectToAction("Index", "Assignments");
+                return RedirectToAction("Index", "Assignments", new { id = id });
             }
             else
             {

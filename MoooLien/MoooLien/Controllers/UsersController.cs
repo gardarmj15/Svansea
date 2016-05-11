@@ -31,9 +31,14 @@ namespace MoooLien.Controllers
         public ActionResult Index()
         {
             UserViewModel model = service.getAllUsers();
+            populateCourseDropDown();
             return View(model);
         }
-        
+        public void populateCourseDropDown()
+        {
+            CourseService cService = new CourseService();
+            ViewData["Courses"] = cService.getAllCourses();
+        }
 
     }
     

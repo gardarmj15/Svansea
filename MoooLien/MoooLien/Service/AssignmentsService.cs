@@ -57,14 +57,10 @@ namespace MoooLien.Service
                                                  description = newAssignment.description, startDate = newAssignment.startDate,
                                                  endDate = newAssignment.endDate};
             db.Assignments.Add(temp);
-            //db.SaveChanges();
+            db.SaveChanges();
 
-            /*var assignID = (from assign in db.Assignments
-                                where temp.name == assign.name
-                                select assign.ID).SingleOrDefault();*/
-
-            /*AssignmentsInCourse link = new AssignmentsInCourse() { assignmentID = assignID, courseID = cID };
-            db.AssingmentInCourse.Add(link);*/
+            AssignmentsInCourse link = new AssignmentsInCourse() { assignmentID = temp.ID, courseID = newAssignment.courseID };
+            db.AssingmentInCourse.Add(link);
             
             return Convert.ToBoolean(db.SaveChanges());
         }

@@ -15,6 +15,8 @@ namespace MoooLien.Models.ViewModel
     }
     public class CreateAssignmentViewModel
     {
+        public int courseID { get; set; }
+
         [Required]
         [DataType(DataType.Text)]
         [Display(Name = "Name")]

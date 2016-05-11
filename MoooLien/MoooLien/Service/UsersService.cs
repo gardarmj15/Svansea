@@ -40,8 +40,5 @@ namespace MoooLien.Service
                                     select users).SingleOrDefault();
             return user;
         }
-
-
-
     }
 }
