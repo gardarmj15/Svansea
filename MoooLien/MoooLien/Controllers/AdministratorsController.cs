@@ -19,6 +19,7 @@ namespace MoooLien.Controllers
     {
         ApplicationDbContext context = new ApplicationDbContext();
         private UsersService service = new UsersService();
+        private CourseService cService = new CourseService();
 
         public ActionResult Index()
         {
@@ -34,7 +35,8 @@ namespace MoooLien.Controllers
 
         public ActionResult ManageCourses()
         {
-            return View();
+            cService.getAllCourses();
+            return View(cService.getAllCourses());
         }
 
         public ActionResult List()

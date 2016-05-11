@@ -1,7 +1,29 @@
-﻿@{
+﻿@model MoooLien.Models.ViewModel.CourseViewModel
+
+@{
     ViewBag.Title = "Create";
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
 
 <h2>Manage Courses</h2>
 
+@Html.AntiForgeryToken()
+<div class="col-md-6" id="Courses">
+    <h1>@ViewBag.Title</h1>
+    <div>
+        <table class="table-bordered table table-striped table-responsive table-hover">
+            <tbody>
+                @foreach (var x in Model.courses)
+                {
+                    <tr>
+                        <td>
+                            <a href="@Url.Action("Index", "Assignments", new { id = x.ID})">
+                                @x.name
+                            </a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
