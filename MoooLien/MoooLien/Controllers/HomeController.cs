@@ -12,7 +12,7 @@ namespace MoooLien.Controllers
         {
             return View();
         }
-
+        /*
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";
@@ -122,6 +122,6 @@ namespace MoooLien.Controllers
             // may be files we should delete etc.
 
             return View();
-        }
+        }*/
     }
 }
