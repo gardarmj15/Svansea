@@ -44,7 +44,8 @@ namespace MoooLien.Controllers
             // In this example, this is all hardcoded, but in a
             // real life scenario, there should probably be individual
             // folders for each user/assignment/milestone.
-            var workingFolder = "C:\\Users\\Svanur\\Documents\\GitHub\\Svansea\\MoooLien\\MoooLien\\Tests\\";
+            //var workingFolder = "C:\\Users\\Svanur\\Documents\\GitHub\\Svansea\\MoooLien\\MoooLien\\Tests\\";
+            var workingFolder = "C:\\Temp\\Mooshak2Code\\";
             var cppFileName = "Hello.cpp";
             var exeFilePath = workingFolder + "Hello.exe";
 

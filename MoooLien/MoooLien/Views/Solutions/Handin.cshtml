@@ -1,0 +1,19 @@
+﻿@model MoooLien.Models.Entities.Assignment
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Hand-in - @Html.DisplayFor(model => model.name) </h2>
+
+@using (Html.BeginForm("UploadStatus", "Solutions", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <input type="file" name="file" id="file" /> <br />
+
+    <input type="submit" value="Upload" />
+}
+<br />
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

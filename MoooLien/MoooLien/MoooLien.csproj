@@ -224,6 +224,7 @@
     <Compile Include="Controllers\FileController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\SolutionsController.cs" />
     <Compile Include="Controllers\StudentsController.cs" />
     <Compile Include="Controllers\TeachersController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
@@ -357,10 +358,15 @@
     <Content Include="Views\Students\FileUpload.cshtml" />
     <Content Include="Views\Users\Index.cshtml" />
     <Content Include="Views\Users\Remove.cshtml" />
+    <Content Include="Views\Solutions\Details.cshtml" />
+    <Content Include="Views\Solutions\Index.cshtml" />
+    <Content Include="Views\Solutions\Handin.cshtml" />
+    <Content Include="Views\Solutions\UploadStatus.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Files\" />
+    <Folder Include="Files\Compiler\" />
+    <Folder Include="Files\UserSolution\" />
     <Folder Include="Views\UserFile\" />
   </ItemGroup>
   <ItemGroup>

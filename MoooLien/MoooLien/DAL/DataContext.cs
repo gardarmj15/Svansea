@@ -15,6 +15,7 @@ namespace MoooLien.DAL
     }
     public class DefaultConnection : DbContext
     {
+        public System.Data.Entity.DbSet<MoooLien.Models.Entities.Assignment> Assignments { get; set; }
         /*public System.Data.Entity.DbSet<MoooLien.Models.Course> Courses { get; set; }*/
     }
     /*protected override void OnModelCreating(DbModelBuilder modelBuilder)
