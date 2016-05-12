@@ -1,4 +1,5 @@
-﻿using MoooLien.DAL;
+﻿using Microsoft.AspNet.Identity;
+using MoooLien.DAL;
 using MoooLien.Models;
 using MoooLien.Models.Entities;
 using MoooLien.Models.ViewModel;
@@ -63,6 +64,18 @@ namespace MoooLien.Service
             db.AssingmentInCourse.Add(link);
             
             return Convert.ToBoolean(db.SaveChanges());
+        }
+        public bool isTeacher(int id)
+        {
+            var getRole = (from role in db.UsersInCourse
+                           where role.courseID == id
+                           select role.roleID).SingleOrDefault();
+
+            if(getRole == 2)
+            {
+                return true;
+            }
+            return false;
         }
     }
 }

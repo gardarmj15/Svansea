@@ -10,7 +10,14 @@ namespace MoooLien.Controllers
         [Authorize]
         public ActionResult Index()
         {
-            return View();
+            if (User.IsInRole("Administrators"))
+            {
+                return RedirectToAction("ManageCourses", "Administrators");
+            }
+            else
+            {
+                return RedirectToAction("UserIndex", "Courses");
+            }
         }
         /*
         public ActionResult About()

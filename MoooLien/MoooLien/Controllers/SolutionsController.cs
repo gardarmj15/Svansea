@@ -138,8 +138,9 @@ namespace MoooLien.Controllers
             }
             finally { }
 
-            
-            return View();
+
+            //return View();
+            return View("Details");
         }
 
         // GET: TempSolution/Delete/5
