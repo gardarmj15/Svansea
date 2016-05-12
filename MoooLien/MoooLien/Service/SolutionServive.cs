@@ -1,4 +1,6 @@
-﻿using MoooLien.Models;
+﻿using Microsoft.AspNet.Identity;
+using MoooLien.Models;
+using MoooLien.Models.Entities;
 using MoooLien.Models.ViewModel;
 using System;
 using System.Collections.Generic;
@@ -11,8 +13,28 @@ namespace MoooLien.Service
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
-        public SolutionViewModel createHandin()
+        public SolutionViewModel createHandinAttempt(int assignmentId, string solution)
         {
+            var currentUser = HttpContext.Current.User.Identity.GetUserId();
+
+            var assignmentSolution = (from assign in db.Assignments
+                                      where assign.ID == assignmentId
+                                      select assign.solution).ToString();
+
+            var acceptedOrNot = "String";
+
+            if(assignmentSolution == solution)
+            {
+                acceptedOrNot = "Accepted";
+            }
+            else
+            {
+                acceptedOrNot = "Not Accepted";
+            }
+
+            Solution sol = new Solution() { userID = currentUser, assignmentID = assignmentId, accepted = acceptedOrNot, handinDate = DateTime.Now };
+
+
 
 
 
