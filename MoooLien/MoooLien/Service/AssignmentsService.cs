@@ -67,8 +67,14 @@ namespace MoooLien.Service
         }
         public bool isTeacher(int id)
         {
+            var currentUser = HttpContext.Current.User.Identity.GetUserId();
+
+            var user = (from u in db.Users
+                        where u.Id == currentUser
+                        select u).SingleOrDefault();
+
             var getRole = (from role in db.UsersInCourse
-                           where role.courseID == id
+                           where role.courseID == id && role.userID == user.Id
                            select role.roleID).SingleOrDefault();
 
             if(getRole == 2)
