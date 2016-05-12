@@ -19,14 +19,25 @@ namespace MoooLien.Models
         }
     }
 
-    public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
+    public interface IDataContext
     {
-        public DbSet<Assignment> Assignments { get; set; }
-        public DbSet<Course> Courses { get; set; }
-        public DbSet<UserRoles> UserRoles { get; set; }
-        public DbSet<UsersInCourse> UsersInCourse { get; set; }
-        public DbSet<AssignmentsInCourse> AssingmentInCourse { get; set; }
-        public DbSet<File> Files { get; set; }
+        IDbSet<Assignment> Assignments { get; set; }
+        IDbSet<Course> Courses { get; set; }
+        IDbSet<UserRoles> UserRoles { get; set; }
+        IDbSet<UsersInCourse> UsersInCourse { get; set; }
+        IDbSet<AssignmentsInCourse> AssingmentInCourse { get; set; }
+        IDbSet<File> Files { get; set; }
+        int SaveChanges();
+    }
+
+    public class ApplicationDbContext : IdentityDbContext<ApplicationUser>, IDataContext
+    {
+        public IDbSet<Assignment> Assignments { get; set; }
+        public IDbSet<Course> Courses { get; set; }
+        public IDbSet<UserRoles> UserRoles { get; set; }
+        public IDbSet<UsersInCourse> UsersInCourse { get; set; }
+        public IDbSet<AssignmentsInCourse> AssingmentInCourse { get; set; }
+        public IDbSet<File> Files { get; set; }
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
         {

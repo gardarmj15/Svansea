@@ -8,7 +8,8 @@
 .body-content {
     padding-left: 15px;
     padding-right: 15px;
-    background-color:#e5eaec
+    background-color:#e5eaec;
+    margin-top:30px;
 }
 
 /* Override the default bootstrap behavior where horizontal description lists 
@@ -64,4 +65,13 @@ textarea {
     color:#ffffff;
     background-color:#00449A;
     border-color:#00449A;
+}
+
+.navbar .nav > li > a:hover{
+    background-color:#15426b;
+    height:10%;
+}
+
+a{
+    text-decoration: none !important;
 }
