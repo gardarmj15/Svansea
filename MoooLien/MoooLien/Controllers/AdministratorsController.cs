@@ -49,12 +49,21 @@ namespace MoooLien.Controllers
 
         public ActionResult moveToStudent(string userID, int courseID)
         {
+
+            if (uInCService.userExists(userID, courseID, 2))
+            {
+                uInCService.removeLink(userID, courseID);
+            }
             uInCService.createLink(userID, courseID, 1);
             return RedirectToAction("Enrole", "Administrators", new { id = courseID });
         }
 
         public ActionResult moveToTeacher(string userID, int courseID)
         {
+            if (uInCService.userExists(userID, courseID, 1))
+            {
+                uInCService.removeLink(userID, courseID);
+            }
             uInCService.createLink(userID, courseID, 2);
             return RedirectToAction("Enrole", "Administrators", new { id = courseID });
         }
