@@ -248,6 +248,7 @@
     <Compile Include="Models\ViewModel\CourseViewModel.cs" />
     <Compile Include="Models\ViewModel\EnroleViewModel.cs" />
     <Compile Include="Models\ViewModel\FileUpload.cs" />
+    <Compile Include="Models\ViewModel\SolutionViewModel.cs" />
     <Compile Include="Models\ViewModel\UsersInCourseViewModel.cs" />
     <Compile Include="Models\ViewModel\UserViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
