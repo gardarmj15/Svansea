@@ -5,10 +5,9 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Details</h2>
+<h2>Hand-in for @Html.DisplayFor(model => model.name) </h2>
 
 <div>
-    <h4>Assignment</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -53,9 +52,39 @@
 
     </dl>
 </div>
+<h3>Hand-in your solution </h3>
+@using (Html.BeginForm("UploadStatus", "Solutions", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <input type="file" name="file" id="file" /> <br />
+
+    <input type="submit" value="Upload" />
+
+}
+<br/>
+@using (Html.BeginForm())
+{
+    <input type="Submit" class="btn btn-primary" value="Compile file" />}
+
+@if (ViewBag.Output != null)
+{
+    <ul>
+        @foreach (var line in ViewBag.Output)
+        {
+            <li>@line</li>
+        }
+    </ul>}
+<br />
+
+<h4>File  uploaded to: @ViewBag.Path</h4>
+
+
+@*
 <p>
 @Html.ActionLink("Hand-in", "Handin", new { id = ViewBag.AssId }) |
 </p>
+
+
 <p>
     @Html.ActionLink("Back to List", "Index")
 </p>
+*@

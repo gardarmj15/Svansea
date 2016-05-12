@@ -12,22 +12,21 @@
 </p>
 
 @Html.AntiForgeryToken()
-<div class="col-md-6" id="Courses">
-    <h1>@ViewBag.Title</h1>
-    <div>
-        <table class="table-bordered table table-striped table-responsive table-hover">
-            <tbody>
-                @foreach (var x in Model.courses)
-                {
-                    <tr>
-                        <td>
-                            <a href="@Url.Action("Enrole", "Administrators", new { id = x.ID})">
-                                @x.name
-                            </a>
-                        </td>
-                    </tr>
-                }
-            </tbody>
-        </table>
-    </div>
+
+<div>
+    <table class="table-bordered table table-striped table-responsive table-hover">
+        <tbody>
+            @foreach (var x in Model.courses)
+            {
+                <tr>
+                    <td>
+                        <a href="@Url.Action("Enrole", "Administrators", new { id = x.ID})">
+                            @x.name
+                        </a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
 </div>
+

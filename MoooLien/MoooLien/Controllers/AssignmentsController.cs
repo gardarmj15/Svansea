@@ -21,6 +21,11 @@ namespace MoooLien.Controllers
         // GET: Assignments
         public ActionResult Index(int id)
         {
+            
+            if(aService.isTeacher(id))
+            {
+                return null;
+            }
             ViewBag.courseID = id;
             return View(aService.getAssignmentsInCourse(id));
         }
