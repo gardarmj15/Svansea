@@ -13,48 +13,57 @@
         <dt>
             @Html.DisplayNameFor(model => model.name)
         </dt>
+
         <dd>
             @Html.DisplayFor(model => model.name)
         </dd>
+
         <dt>
             @Html.DisplayNameFor(model => model.description)
         </dt>
+
         <dd>
             @Html.DisplayFor(model => model.description)
         </dd>
+
         <dt>
             @Html.DisplayNameFor(model => model.solution)
         </dt>
+
         <dd>
             @Html.DisplayFor(model => model.solution)
         </dd>
+
         <dt>
             @Html.DisplayNameFor(model => model.startDate)
         </dt>
+
         <dd>
             @Html.DisplayFor(model => model.startDate)
         </dd>
+
         <dt>
             @Html.DisplayNameFor(model => model.endDate)
         </dt>
+
         <dd>
             @Html.DisplayFor(model => model.endDate)
         </dd>
+
     </dl>
 </div>
-
 <h3>Hand-in your solution </h3>
-
 @using (Html.BeginForm("UploadStatus", "Solutions", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     <input type="file" name="file" id="file" accept=".txt, .cpp" /> <br />
+
     <input type="submit" value="Upload" />
+
 }
 
 <h4>File  uploaded to: @ViewBag.Path</h4>
 
 <br />
-
 <div class="row">
     <div class="col-md-4">
 
@@ -75,9 +84,8 @@
 <div>
     <br />
     <br />
-    @Html.ActionLink("Back to My Courses", "UserIndex","Courses")
+    @Html.ActionLink("My Assignments", "UserIndex","Courses")
 </div>
-
 @*
 <p>
 @Html.ActionLink("Hand-in", "Handin", new { id = ViewBag.AssId }) |
