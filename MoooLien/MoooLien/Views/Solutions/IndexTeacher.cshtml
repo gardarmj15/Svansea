@@ -7,6 +7,10 @@
 
 <h2>My Assignments</h2>
 
+<p>
+    <a href="@Url.Action("Create", "Assignments", new { id = ViewBag.courseID }) " class="btn btn-primary">Create Assignment</a>
+</p>
+
 <table class="table">
     <tr>
         <th>
@@ -22,8 +26,8 @@
                 @Html.DisplayFor(modelItem => item.name)
             </td>
     <td>
-        @Html.ActionLink("Hand-in", "Handin", new { id = item.ID }) |
-        @Html.ActionLink("Details", "Details", new { id = item.ID })
+        @Html.ActionLink("Grades", "Grades", new { id = item.ID }) |
+        @Html.ActionLink("Edit", "Edit", new { id = item.ID })
     </td>
     </tr>
     }

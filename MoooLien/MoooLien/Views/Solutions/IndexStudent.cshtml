@@ -2,7 +2,7 @@
 
 @{
     ViewBag.Title = "Index";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    Layout = "~/Views/Shared/_LayoutStudent.cshtml";
 }
 
 <h2>My Assignments</h2>
@@ -19,13 +19,9 @@
     {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.name)
+                <a href="@Url.Action("Details", "Solutions", new { id = item.ID})"/> @Html.DisplayFor(modelItem => item.name)
             </td>
-    <td>
-        @Html.ActionLink("Hand-in", "Handin", new { id = item.ID }) |
-        @Html.ActionLink("Details", "Details", new { id = item.ID })
-    </td>
-    </tr>
+        </tr>
     }
 
-    </table>
+</table>

@@ -28,6 +28,7 @@ namespace MoooLien.Controllers
 
         public ActionResult UserIndex()
         {
+            
             return View(cService.getCourseByUserID());
         }
 
