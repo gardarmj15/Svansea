@@ -2,6 +2,7 @@
 
 @{
     ViewBag.Title = "StudentIndex";
+    Layout = "~/Views/Shared/_LayoutUsers.cshtml";
 }
 
 <h2>My Assignments</h2>
@@ -21,4 +22,7 @@
             }
         </tbody>
     </table>
+    <div>
+        @Html.ActionLink("Back to My Courses", "UserIndex", "Courses")
+    </div>
 </div>

@@ -13,57 +13,79 @@
         <dt>
             @Html.DisplayNameFor(model => model.name)
         </dt>
+
         <dd>
             @Html.DisplayFor(model => model.name)
         </dd>
+
         <dt>
             @Html.DisplayNameFor(model => model.description)
         </dt>
+
         <dd>
             @Html.DisplayFor(model => model.description)
         </dd>
+
         <dt>
             @Html.DisplayNameFor(model => model.solution)
         </dt>
+
         <dd>
             @Html.DisplayFor(model => model.solution)
         </dd>
+
         <dt>
             @Html.DisplayNameFor(model => model.startDate)
         </dt>
+
         <dd>
             @Html.DisplayFor(model => model.startDate)
         </dd>
+
         <dt>
             @Html.DisplayNameFor(model => model.endDate)
         </dt>
+
         <dd>
             @Html.DisplayFor(model => model.endDate)
         </dd>
+
     </dl>
 </div>
-
 <h3>Hand-in your solution </h3>
-
-@using (Html.BeginForm("UploadStatus", "Solutions", new { id = ViewBag.assId }, FormMethod.Post, new { enctype = "multipart/form-data" }))
+@using (Html.BeginForm("UploadStatus", "Solutions", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     <input type="file" name="file" id="file" accept=".txt, .cpp" /> <br />
+
     <input type="submit" value="Upload" />
+
 }
 
-<p>File  uploaded to: @ViewBag.Path</p>
+<h4>File  uploaded to: @ViewBag.Path</h4>
 
 <br />
-<p>
-    @*<a href="~/Solutions/Compiler" class="btn btn-primary">Test my code</a>*@
-    <a href="@Url.Action("Compiler", "Solutions", new { id = ViewBag.assId }) " class="btn btn-primary">Test my code</a>
-</p>
+<div class="row">
+    <div class="col-md-4">
+
+        @using (Html.BeginForm())
+        {
+            <input type="Submit" class="btn btn-primary" value="Compile Test Code" />}
+
+        @if (ViewBag.Output != null)
+        {
+            <ul>
+                @foreach (var line in ViewBag.Output)
+                {
+                    <li>@line</li>
+                }
+            </ul>}
+    </div>
+</div>
 <div>
     <br />
     <br />
-    @Html.ActionLink("Back to My Courses", "UserIndex","Courses")
+    @Html.ActionLink("My Assignments", "UserIndex","Courses")
 </div>
-
 @*
 <p>
 @Html.ActionLink("Hand-in", "Handin", new { id = ViewBag.AssId }) |

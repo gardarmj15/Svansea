@@ -1,6 +1,6 @@
 ﻿@{
     ViewBag.Title = "C++ Compile test page";
-    Layout = "~/Views/Shared/_LayoutStudent.cshtml";
+    Layout = "~/Views/Shared/_LayoutUsers.cshtml";
 }
 
 <h2>C++ Compile</h2>
@@ -9,16 +9,18 @@
 
         @using (Html.BeginForm())
         {
-            <input type="Submit" class="btn btn-primary" value="Compile Test Code" />}
+            <input type="Submit" class="btn btn-primary" value="Compile Code" />}
+        
+        <br />
 
         @if (ViewBag.Output != null)
         {
-            <ul>
+            <ol>
                 @foreach (var line in ViewBag.Output)
                 {
                     <li>@line</li>
                 }
-            </ul>}
+            </ol>}
     </div>
     <div class="col-md-4">
     </div>

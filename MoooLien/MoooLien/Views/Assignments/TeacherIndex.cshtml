@@ -2,9 +2,10 @@
 
 @{
     ViewBag.Title = "TeacherIndex";
+    Layout = "~/Views/Shared/_LayoutUsers.cshtml";
 }
 
-<h2>TeacherIndex</h2>
+<h2>Name of the course...</h2>
 
 <p>
     <a href="@Url.Action("Create", "Assignments", new { id = ViewBag.courseID }) " class="btn btn-primary">Create Assignment</a>
@@ -25,4 +26,7 @@
             }
         </tbody>
     </table>
+    <div>
+        @Html.ActionLink("Back to My Courses", "UserIndex", "Courses")
+    </div>
 </div>

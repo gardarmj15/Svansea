@@ -26,115 +26,25 @@ namespace MoooLien.Controllers
         // GET: Solutions
         public ActionResult Index()
         {
-            return View(db.Assignments.ToList());
-        }
-        public ActionResult IndexStudent()
-        {
-            return View(db.Assignments.ToList());
-        }
-        public ActionResult IndexTeacher()
-        {
-            return View(db.Assignments.ToList());
+            return View();
         }
 
         // GET: Solutions/Details/5
-        public ActionResult Details(int? id)
+        public ActionResult Details(int id)
         {
             ViewBag.AssId = id;
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Assignment assignment = db.Assignments.Find(id);
-            if (assignment == null)
-            {
-                return HttpNotFound();
-            }
-            return View(assignment);
-        }
-        public ActionResult Edit(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Assignment assignment = db.Assignments.Find(id);
-            if (assignment == null)
-            {
-                return HttpNotFound();
-            }
-            return View(assignment);
+            return View(aService.getAssignmentByID(id));
         }
 
-        // POST: TempSolution/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,name,description,solution,startDate,endDate")] Assignment assignment)
-        {
-            if (ModelState.IsValid)
-            {
-                db.Entry(assignment).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-            return View(assignment);
-        }
-
-        public ActionResult Handin(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Assignment assignment = db.Assignments.Find(id);
-            if (assignment == null)
-            {
-                return HttpNotFound();
-            }
-            return View(assignment);
-        }
-
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Handin([Bind(Include = "ID,name,description,solution,startDate,endDate")] Assignment assignment)
-        {
-            if (ModelState.IsValid)
-            {
-                db.Assignments.Add(assignment);
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-
-            return View(assignment);
-        }
-        public ActionResult Create(int id)
+        public ActionResult Create()
         {
             return View();
         }
 
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create(CreateAssignmentViewModel newAssignment, int id)
+        public ActionResult UploadStatus(HttpPostedFileBase file, int id)
         {
-            //var assignment = newAssignment;
-            newAssignment.courseID = id;
-
-            if (aService.createAssignment(newAssignment))
-            {
-                return RedirectToAction("Index", "Assignments", new { id = id });
-            }
-            else
-            {
-                ModelState.AddModelError("", "Could not add the assignment!");
-                return RedirectToAction("Create", "Assignments");
-            }
-        }
-
-        [HttpPost]
-        public ActionResult UploadStatus(HttpPostedFileBase file)
-        {
+            ViewBag.assId = id;
             //var userName = User.Identity.Name;
 
             // Specify the directory you want to manipulate.
@@ -178,32 +88,6 @@ namespace MoooLien.Controllers
             return View("Details");
         }
 
-        // GET: TempSolution/Delete/5
-        public ActionResult Delete(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Assignment assignment = db.Assignments.Find(id);
-            if (assignment == null)
-            {
-                return HttpNotFound();
-            }
-            return View(assignment);
-        }
-
-        // POST: TempSolution/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
-        {
-            Assignment assignment = db.Assignments.Find(id);
-            db.Assignments.Remove(assignment);
-            db.SaveChanges();
-            return RedirectToAction("Index");
-        }
-
         protected override void Dispose(bool disposing)
         {
             if (disposing)
@@ -214,14 +98,15 @@ namespace MoooLien.Controllers
         }
 
 
-        public ActionResult Compiler()
+        public ActionResult Compiler(int id)
         {
+            ViewBag.assId = id;
             ViewBag.Message = "Your contact page.";
 
             return View();
         }
         [HttpPost]
-        public ActionResult Compiler(FormCollection data, int id)
+        public ActionResult Compiler(FormCollection data)
         {
             //ViewBag.AssId = id;
 
@@ -323,7 +208,7 @@ namespace MoooLien.Controllers
             // TODO: We might want to clean up after the process, there
             // may be files we should delete etc.
 
-            return View("Details");
+            return View();
         }
 
 
