@@ -45,7 +45,7 @@
 
 <h3>Hand-in your solution </h3>
 
-@using (Html.BeginForm("UploadStatus", "Solutions", FormMethod.Post, new { enctype = "multipart/form-data" }))
+@using (Html.BeginForm("UploadStatus", "Solutions", new { id = ViewBag.assId }, FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     <input type="file" name="file" id="file" accept=".txt, .cpp" /> <br />
     <input type="submit" value="Upload" />
@@ -55,7 +55,8 @@
 
 <br />
 <p>
-    <a href="~/Solutions/Compiler" class="btn btn-primary">Test my code</a>
+    @*<a href="~/Solutions/Compiler" class="btn btn-primary">Test my code</a>*@
+    <a href="@Url.Action("Compiler", "Solutions", new { id = ViewBag.assId }) " class="btn btn-primary">Test my code</a>
 </p>
 <div>
     <br />

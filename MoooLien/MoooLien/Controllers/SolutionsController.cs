@@ -42,8 +42,9 @@ namespace MoooLien.Controllers
         }
 
         [HttpPost]
-        public ActionResult UploadStatus(HttpPostedFileBase file)
+        public ActionResult UploadStatus(HttpPostedFileBase file, int id)
         {
+            ViewBag.assId = id;
             //var userName = User.Identity.Name;
 
             // Specify the directory you want to manipulate.
@@ -97,8 +98,9 @@ namespace MoooLien.Controllers
         }
 
 
-        public ActionResult Compiler()
+        public ActionResult Compiler(int id)
         {
+            ViewBag.assId = id;
             ViewBag.Message = "Your contact page.";
 
             return View();
