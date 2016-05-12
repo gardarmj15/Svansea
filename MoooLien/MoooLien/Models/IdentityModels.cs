@@ -19,7 +19,7 @@ namespace MoooLien.Models
         }
     }
 
-    public interface IDataContext
+    public interface IAppDataContext
     {
         IDbSet<Assignment> Assignments { get; set; }
         IDbSet<Course> Courses { get; set; }
@@ -27,10 +27,12 @@ namespace MoooLien.Models
         IDbSet<UsersInCourse> UsersInCourse { get; set; }
         IDbSet<AssignmentsInCourse> AssingmentInCourse { get; set; }
         IDbSet<File> Files { get; set; }
+        IDbSet<ApplicationUser> Users { get; set; }
+        IDbSet<Solution> Solutions { get; set; }
         int SaveChanges();
     }
 
-    public class ApplicationDbContext : IdentityDbContext<ApplicationUser>, IDataContext
+    public class ApplicationDbContext : IdentityDbContext<ApplicationUser>, IAppDataContext
     {
         public IDbSet<Assignment> Assignments { get; set; }
         public IDbSet<Course> Courses { get; set; }
@@ -38,6 +40,7 @@ namespace MoooLien.Models
         public IDbSet<UsersInCourse> UsersInCourse { get; set; }
         public IDbSet<AssignmentsInCourse> AssingmentInCourse { get; set; }
         public IDbSet<File> Files { get; set; }
+        public IDbSet<Solution> Solutions { get; set; }
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
         {

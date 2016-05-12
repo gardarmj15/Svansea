@@ -19,8 +19,9 @@ namespace MoooLien.Controllers
     [Authorize]
     public class SolutionsController : Controller
     {
-        private DefaultConnection db = new DefaultConnection();
+
         private AssignmentsService aService = new AssignmentsService();
+        private SolutionServive sService = new SolutionServive();
 
 
         // GET: Solutions
@@ -42,8 +43,9 @@ namespace MoooLien.Controllers
         }
 
         [HttpPost]
-        public ActionResult UploadStatus(HttpPostedFileBase file)
+        public ActionResult UploadStatus(HttpPostedFileBase file, int id)
         {
+            ViewBag.assId = id;
             //var userName = User.Identity.Name;
 
             // Specify the directory you want to manipulate.
@@ -89,6 +91,7 @@ namespace MoooLien.Controllers
 
         protected override void Dispose(bool disposing)
         {
+            ApplicationDbContext db = new ApplicationDbContext();
             if (disposing)
             {
                 db.Dispose();
@@ -97,8 +100,9 @@ namespace MoooLien.Controllers
         }
 
 
-        public ActionResult Compiler()
+        public ActionResult Compiler(int id)
         {
+            ViewBag.assId = id;
             ViewBag.Message = "Your contact page.";
 
             return View();
@@ -193,12 +197,14 @@ namespace MoooLien.Controllers
                     // to above.
 
                     // We then read the output of the program:
+
                     var lines = new List<string>();
                     while (!processExe.StandardOutput.EndOfStream)
                     {
                         lines.Add(processExe.StandardOutput.ReadLine());
                     }
-
+                    var allLines = lines.ToString();
+                    sService.createHandinAttempt(id, allLines);
                     ViewBag.Output = lines;
                 }
             }
@@ -206,7 +212,7 @@ namespace MoooLien.Controllers
             // TODO: We might want to clean up after the process, there
             // may be files we should delete etc.
 
-            return View("Details");
+            return View();
         }
 
 
