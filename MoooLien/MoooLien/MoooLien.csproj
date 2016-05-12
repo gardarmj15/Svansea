@@ -350,6 +350,7 @@
     <Content Include="Views\Shared\_LayoutUsers.cshtml" />
     <Content Include="Views\Solutions\Grades.cshtml" />
     <Content Include="Views\Solutions\IndexTeacher.cshtml" />
+    <Content Include="Views\Solutions\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -11,6 +11,8 @@ using MoooLien.Models.Entities;
 using MoooLien.Models;
 using System.IO;
 using System.Diagnostics;
+using MoooLien.Models.ViewModel;
+using MoooLien.Service;
 
 namespace MoooLien.Controllers
 {
@@ -18,6 +20,8 @@ namespace MoooLien.Controllers
     public class SolutionsController : Controller
     {
         private DefaultConnection db = new DefaultConnection();
+        private AssignmentsService aService = new AssignmentsService();
+
 
         // GET: Solutions
         public ActionResult Index()
@@ -104,6 +108,28 @@ namespace MoooLien.Controllers
             }
 
             return View(assignment);
+        }
+        public ActionResult Create(int id)
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Create(CreateAssignmentViewModel newAssignment, int id)
+        {
+            //var assignment = newAssignment;
+            newAssignment.courseID = id;
+
+            if (aService.createAssignment(newAssignment))
+            {
+                return RedirectToAction("Index", "Assignments", new { id = id });
+            }
+            else
+            {
+                ModelState.AddModelError("", "Could not add the assignment!");
+                return RedirectToAction("Create", "Assignments");
+            }
         }
 
         [HttpPost]
