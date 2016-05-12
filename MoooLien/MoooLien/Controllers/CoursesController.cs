@@ -16,7 +16,7 @@ namespace MoooLien.Controllers
     public class CoursesController : Controller
     {
 
-        private CourseService cService = new CourseService();
+        private CourseService cService = new CourseService(null);
 
         // GET: Courses
         [Authorize(Roles = "Administrator")]

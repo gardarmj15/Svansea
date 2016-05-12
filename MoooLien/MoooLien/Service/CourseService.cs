@@ -13,11 +13,12 @@ namespace MoooLien.Service
 {
     public class CourseService
     {
-        private ApplicationDbContext db;
+        private readonly IAppDataContext db;
 
-        public CourseService()
+        
+        public CourseService(IAppDataContext context)
         {
-            db = new ApplicationDbContext();
+            db = context ?? new ApplicationDbContext();
         }
 
         public Course getCourseByID(int Id)
