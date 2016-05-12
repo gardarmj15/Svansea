@@ -1,0 +1,24 @@
+﻿@model MoooLien.Models.ViewModel.AssignmentViewModel
+
+@{
+    ViewBag.Title = "StudentIndex";
+}
+
+<h2>My Assignments</h2>
+
+<div>
+    <table class="table-bordered table table-striped table-responsive table-hover">
+        <tbody>
+            @foreach (var x in Model.assignments)
+            {
+                <tr>
+                    <td>
+                        <a href="@Url.Action("Details", "Solutions", new { id = x.ID})">
+                            @x.name
+                        </a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
