@@ -15,9 +15,14 @@ namespace MoooLien.Service
     public class UsersService
     {
         private ApplicationDbContext db;
+        private readonly IAppDataContext _db;
         public UsersService()
         {
             db = new ApplicationDbContext();
+        }
+        public UsersService(IAppDataContext context)
+        {
+            _db = context ??  new ApplicationDbContext();
         }
         public List<ApplicationUser> GetAllUsersAsEntity()
         {

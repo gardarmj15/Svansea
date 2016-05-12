@@ -19,7 +19,7 @@ namespace MoooLien.Controllers
     {
         ApplicationDbContext context = new ApplicationDbContext();
         private UsersService uService = new UsersService();
-        private CourseService cService = new CourseService();
+        private CourseService cService = new CourseService(null);
         private UsersInCourseService uInCService = new UsersInCourseService();
 
         public ActionResult Index()
