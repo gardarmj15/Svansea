@@ -110,6 +110,8 @@ namespace MoooLien.Controllers
                 return View();
 
         }
+
+		//Delete
         public ActionResult Delete(string RoleName)
         {
             var thisRole = context.Roles.Where(r => r.Name.Equals(RoleName, StringComparison.CurrentCultureIgnoreCase)).FirstOrDefault();
