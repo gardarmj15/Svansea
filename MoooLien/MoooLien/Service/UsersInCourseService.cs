@@ -1,5 +1,6 @@
 ﻿using MoooLien.Models;
 using MoooLien.Models.Entities;
+using MoooLien.Models.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,6 +15,7 @@ namespace MoooLien.Service
         {
             UsersInCourse uInC = new UsersInCourse() { userID = userID, courseID = courseID, roleID = roleID};
             db.UsersInCourse.Add(uInC);
+            
             return(Convert.ToBoolean(db.SaveChanges())); 
         }
         public bool removeLink(string userID, int courseID)
@@ -23,6 +25,21 @@ namespace MoooLien.Service
                                 select us).SingleOrDefault();
             db.UsersInCourse.Remove(userToRemove);
             return (Convert.ToBoolean(db.SaveChanges()));
+        }
+        public bool userExists(string userID, int courseID, int roleID)
+        {
+            var exists = (from uInC in db.UsersInCourse
+                          where uInC.userID == userID && uInC.courseID == courseID && uInC.roleID == roleID
+                          select uInC).ToList();
+
+            if(exists.Count == 0)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
         }
     }
 }
