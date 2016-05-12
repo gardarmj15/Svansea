@@ -28,6 +28,7 @@ namespace Moolien.Tests
             this.AssingmentInCourse = new InMemoryDbSet<AssignmentsInCourse>();
             this.Files = new InMemoryDbSet<File>();
             this.Users = new InMemoryDbSet<ApplicationUser>();
+            this.Solutions = new InMemoryDbSet<Solution>();
         }
 
         public IDbSet<Assignment> Assignments { get; set; }
@@ -37,6 +38,7 @@ namespace Moolien.Tests
         public IDbSet<AssignmentsInCourse> AssingmentInCourse { get; set; }
         public IDbSet<File> Files { get; set; }
         public IDbSet<ApplicationUser> Users { get; set; }
+        public IDbSet<Solution> Solutions { get; set; }
 
         public int SaveChanges()
         {

@@ -19,8 +19,9 @@ namespace MoooLien.Controllers
     [Authorize]
     public class SolutionsController : Controller
     {
-        private DefaultConnection db = new DefaultConnection();
+
         private AssignmentsService aService = new AssignmentsService();
+        private SolutionServive sService = new SolutionServive();
 
 
         // GET: Solutions
@@ -90,6 +91,7 @@ namespace MoooLien.Controllers
 
         protected override void Dispose(bool disposing)
         {
+            ApplicationDbContext db = new ApplicationDbContext();
             if (disposing)
             {
                 db.Dispose();
@@ -106,7 +108,7 @@ namespace MoooLien.Controllers
             return View();
         }
         [HttpPost]
-        public ActionResult Compiler(FormCollection data)
+        public ActionResult Compiler(FormCollection data, int id)
         {
             //ViewBag.AssId = id;
 
@@ -195,12 +197,14 @@ namespace MoooLien.Controllers
                     // to above.
 
                     // We then read the output of the program:
+
                     var lines = new List<string>();
                     while (!processExe.StandardOutput.EndOfStream)
                     {
                         lines.Add(processExe.StandardOutput.ReadLine());
                     }
-
+                    var allLines = lines.ToString();
+                    sService.createHandinAttempt(id, allLines);
                     ViewBag.Output = lines;
                 }
             }

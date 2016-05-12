@@ -110,6 +110,8 @@ namespace MoooLien.Controllers
                 return View();
 
         }
+
+		//Delete
         public ActionResult Delete(string RoleName)
         {
             var thisRole = context.Roles.Where(r => r.Name.Equals(RoleName, StringComparison.CurrentCultureIgnoreCase)).FirstOrDefault();
@@ -118,7 +120,7 @@ namespace MoooLien.Controllers
             return RedirectToAction("Index");
         }
 
-        // GET: /Roles/Edit/5
+        // GET: /Roles/Edit/
         public ActionResult Edit(string roleName)
         {
             var thisRole = context.Roles.Where(r => r.Name.Equals(roleName, StringComparison.CurrentCultureIgnoreCase)).FirstOrDefault();
@@ -127,7 +129,7 @@ namespace MoooLien.Controllers
         }
 
         //
-        // POST: /Roles/Edit/5
+        // POST: /Roles/Edit/
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(Microsoft.AspNet.Identity.EntityFramework.IdentityRole role)
@@ -146,7 +148,6 @@ namespace MoooLien.Controllers
         }
         public ActionResult ManageUserRoles()
         {
-            // prepopulat roles for the view dropdown
             var list = context.Roles.OrderBy(r => r.Name).ToList().Select(rr =>
 
             new SelectListItem { Value = rr.Name.ToString(), Text = rr.Name }).ToList();
@@ -167,7 +168,6 @@ namespace MoooLien.Controllers
             */
             ViewBag.ResultMessage = "Role created successfully !";
 
-            // prepopulat roles for the view dropdown
             var list = context.Roles.OrderBy(r => r.Name).ToList().Select(rr => new SelectListItem { Value = rr.Name.ToString(), Text = rr.Name }).ToList();
             ViewBag.Roles = list;
 
@@ -185,7 +185,6 @@ namespace MoooLien.Controllers
 
                 ViewBag.RolesForThisUser = account.UserManager.GetRoles(user.Id);
 
-                // prepopulat roles for the view dropdown
                 var list = context.Roles.OrderBy(r => r.Name).ToList().Select(rr => new SelectListItem { Value = rr.Name.ToString(), Text = rr.Name }).ToList();
                 ViewBag.Roles = list;
             }
@@ -193,6 +192,7 @@ namespace MoooLien.Controllers
             return View("ManageUserRoles");
         }
 
+		//Delete role of a user
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteRoleForUser(string UserName, string RoleName)
@@ -209,7 +209,7 @@ namespace MoooLien.Controllers
             {
                 ViewBag.ResultMessage = "This user doesn't belong to selected role.";
             }
-            // prepopulat roles for the view dropdown
+            
             var list = context.Roles.OrderBy(r => r.Name).ToList().Select(rr => new SelectListItem { Value = rr.Name.ToString(), Text = rr.Name }).ToList();
             ViewBag.Roles = list;
 
