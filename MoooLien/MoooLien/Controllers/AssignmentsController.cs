@@ -16,7 +16,6 @@ namespace MoooLien.Controllers
     [Authorize]
     public class AssignmentsController : Controller
     {
-        private DefaultConnection db = new DefaultConnection();
         private AssignmentsService aService = new AssignmentsService();
 
         // GET: Assignments
