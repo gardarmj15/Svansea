@@ -11,6 +11,7 @@ using MoooLien.Models.Entities;
 
 namespace MoooLien.Controllers
 {
+    [Authorize]
     public class TeachersController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();

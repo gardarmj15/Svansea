@@ -12,6 +12,7 @@ using FileUpload.ViewModel;
 
 namespace MoooLien.Controllers
 {
+    [Authorize]
     public class StudentsController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();

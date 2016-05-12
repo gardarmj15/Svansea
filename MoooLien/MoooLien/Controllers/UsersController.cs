@@ -10,6 +10,7 @@ using Microsoft.AspNet.Identity.Owin;
 
 namespace MoooLien.Controllers
 {
+    [Authorize]
     public class UsersController : Controller
     {
         private UsersService uService = new UsersService();

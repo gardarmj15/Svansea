@@ -14,12 +14,21 @@ using System.Diagnostics;
 
 namespace MoooLien.Controllers
 {
+    [Authorize]
     public class SolutionsController : Controller
     {
         private DefaultConnection db = new DefaultConnection();
 
         // GET: Solutions
         public ActionResult Index()
+        {
+            return View(db.Assignments.ToList());
+        }
+        public ActionResult IndexStudent()
+        {
+            return View(db.Assignments.ToList());
+        }
+        public ActionResult IndexTeacher()
         {
             return View(db.Assignments.ToList());
         }
@@ -186,9 +195,11 @@ namespace MoooLien.Controllers
             return View();
         }
         [HttpPost]
-        public ActionResult Compiler(FormCollection data)
+        public ActionResult Compiler(FormCollection data, int id)
         {
-            Compiler();
+            //ViewBag.AssId = id;
+
+            //Compiler();
             // To simplify matters, we declare the code here.
             // The code would of course come from the student!
             /*
@@ -286,7 +297,7 @@ namespace MoooLien.Controllers
             // TODO: We might want to clean up after the process, there
             // may be files we should delete etc.
 
-            return View();
+            return View("Details");
         }
 
 

@@ -13,6 +13,7 @@ using MoooLien.Models.ViewModel;
 
 namespace MoooLien.Controllers
 {
+    [Authorize]
     public class AssignmentsController : Controller
     {
         private DefaultConnection db = new DefaultConnection();
