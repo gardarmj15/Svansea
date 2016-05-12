@@ -4,8 +4,8 @@
     ViewBag.Title = "Enrole";
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
-
-<h2>Enrole</h2>
+ 
+<h2>Enrole to @Html.DisplayFor(model => model.courses)</h2>
 
 @Html.AntiForgeryToken()
 <div>
