@@ -28,6 +28,7 @@ namespace MoooLien.Models
         IDbSet<AssignmentsInCourse> AssingmentInCourse { get; set; }
         IDbSet<File> Files { get; set; }
         IDbSet<ApplicationUser> Users { get; set; }
+        IDbSet<Solution> Solutions { get; set; }
         int SaveChanges();
     }
 
@@ -39,7 +40,7 @@ namespace MoooLien.Models
         public IDbSet<UsersInCourse> UsersInCourse { get; set; }
         public IDbSet<AssignmentsInCourse> AssingmentInCourse { get; set; }
         public IDbSet<File> Files { get; set; }
-        public IDbSet<ApplicationUser> Users { get; set; }
+        public IDbSet<Solution> Solutions { get; set; }
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
         {

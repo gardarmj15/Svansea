@@ -33,7 +33,8 @@ namespace MoooLien.Service
             }
 
             Solution sol = new Solution() { userID = currentUser, assignmentID = assignmentId, accepted = acceptedOrNot, handinDate = DateTime.Now };
-
+            db.Solutions.Add(sol);
+            db.SaveChanges();
 
 
 

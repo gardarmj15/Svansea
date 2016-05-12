@@ -1,10 +1,17 @@
 #include <iostream>
+
 using namespace std;
+
+int sum(int a, int b)
+{
+    int sum = a + b;
+    return sum;
+}
+
 int main()
 {
-cout << "2" << endl;
-cout << "5" << endl;
-cout << "6" << endl;
+    int sumof = sum(2, 7);
 
-return 0;
+    cout << sumof;
+    return 0;
 }
