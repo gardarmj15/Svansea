@@ -4,28 +4,32 @@
     ViewBag.Title = "AssignmentsInCourse";
 }
 
-<h2>Assignments</h2>
+<h2>My Assignments</h2>
 
+@*Sýna þennan takka ef user role == teacher*@
 <p>
     <a href="@Url.Action("Create", "Assignments", new { id = ViewBag.courseID }) " class="btn btn-success">Create Assignment</a>
 </p>
 
-<div class="col-md-6" id="Assignments">
-    <h1>@ViewBag.Title</h1>
-    <div>
-        <table class="table-bordered table table-striped table-responsive table-hover">
-            <tbody>
-                @foreach (var x in Model.assignments)
-                {
-                    <tr>
-                        <td>
-                            <a href="@Url.Action("Index", "Assignments", new { id = x.ID})">
-                                @x.name
-                            </a>
-                        </td>
-                    </tr>
-                }
-            </tbody>
-        </table>
-    </div>
+<div>
+    <table class="table-bordered table table-striped table-responsive table-hover">
+        <tbody>
+            @foreach (var x in Model.assignments)
+            {
+                <tr>
+                    <td>
+                        <a href="@Url.Action("Details", "Solutions", new { id = x.ID})">
+                            @x.name
+                        </a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+
+
+<div>
+    @Html.ActionLink("Back to my courses", "UserIndex", "Courses")
 </div>

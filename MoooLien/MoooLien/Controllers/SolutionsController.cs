@@ -27,6 +27,7 @@ namespace MoooLien.Controllers
         // GET: Solutions/Details/5
         public ActionResult Details(int? id)
         {
+            ViewBag.AssId = id;
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);

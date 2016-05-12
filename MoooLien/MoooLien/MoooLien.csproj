@@ -345,6 +345,7 @@
     <Content Include="Views\Solutions\UploadStatus.cshtml" />
     <Content Include="Views\Solutions\Edit.cshtml" />
     <Content Include="Views\Solutions\Compiler.cshtml" />
+    <Content Include="Views\Shared\_LayoutUsers.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

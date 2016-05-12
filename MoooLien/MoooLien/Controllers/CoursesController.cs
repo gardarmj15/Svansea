@@ -42,7 +42,7 @@ namespace MoooLien.Controllers
         {
             if(cService.add(newCourse))
             {
-                return RedirectToAction("Index");
+                return RedirectToAction("ManageCourses", "Administrators");
             }
             else
             {
