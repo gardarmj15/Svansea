@@ -55,28 +55,36 @@
 <h3>Hand-in your solution </h3>
 @using (Html.BeginForm("UploadStatus", "Solutions", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
-    <input type="file" name="file" id="file" /> <br />
+    <input type="file" name="file" id="file" accept=".txt, .cpp" /> <br />
 
     <input type="submit" value="Upload" />
 
 }
-<br/>
-@using (Html.BeginForm())
-{
-    <input type="Submit" class="btn btn-primary" value="Compile file" />}
-
-@if (ViewBag.Output != null)
-{
-    <ul>
-        @foreach (var line in ViewBag.Output)
-        {
-            <li>@line</li>
-        }
-    </ul>}
-<br />
 
 <h4>File  uploaded to: @ViewBag.Path</h4>
 
+<br />
+<div class="row">
+    <div class="col-md-4">
+
+        @using (Html.BeginForm())
+        {
+            <input type="Submit" class="btn btn-primary" value="Compile Test Code" />}
+
+        @if (ViewBag.Output != null)
+        {
+            <ul>
+                @foreach (var line in ViewBag.Output)
+                {
+                    <li>@line</li>
+                }
+            </ul>}
+    </div>
+    <div class="col-md-4">
+    </div>
+    <div class="col-md-4">
+    </div>
+</div>
 
 @*
 <p>

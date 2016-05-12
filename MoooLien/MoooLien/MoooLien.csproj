@@ -340,12 +340,14 @@
     <Content Include="Views\Users\Index.cshtml" />
     <Content Include="Views\Users\Remove.cshtml" />
     <Content Include="Views\Solutions\Details.cshtml" />
-    <Content Include="Views\Solutions\Index.cshtml" />
+    <Content Include="Views\Solutions\IndexStudent.cshtml" />
     <Content Include="Views\Solutions\Handin.cshtml" />
     <Content Include="Views\Solutions\UploadStatus.cshtml" />
     <Content Include="Views\Solutions\Edit.cshtml" />
     <Content Include="Views\Solutions\Compiler.cshtml" />
     <Content Include="Views\Shared\_LayoutUsers.cshtml" />
+    <Content Include="Views\Solutions\Grades.cshtml" />
+    <Content Include="Views\Solutions\IndexTeacher.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
