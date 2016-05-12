@@ -186,6 +186,7 @@ namespace MoooLien.Controllers
         [HttpPost]
         public ActionResult Compiler(FormCollection data)
         {
+            Compiler();
             // To simplify matters, we declare the code here.
             // The code would of course come from the student!
             /*
