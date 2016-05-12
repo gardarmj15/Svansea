@@ -11,5 +11,6 @@ namespace MoooLien.Models.Entities
         public int assignmentID { get; set; }
         public DateTime handinDate { get; set; }
         public string accepted { get; set; }
+        public string file { get; set; }
     }
 }
