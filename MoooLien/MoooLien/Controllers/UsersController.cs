@@ -13,7 +13,7 @@ namespace MoooLien.Controllers
     [Authorize]
     public class UsersController : Controller
     {
-        private UsersService uService = new UsersService();
+        private UsersService uService = new UsersService(null);
         private ApplicationUserManager userManager;
 
         public ApplicationUserManager UserManager

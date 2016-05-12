@@ -18,7 +18,7 @@ namespace MoooLien.Controllers
     public class AdministratorsController : Controller
     {
         ApplicationDbContext context = new ApplicationDbContext();
-        private UsersService uService = new UsersService();
+        private UsersService uService = new UsersService(null);
         private CourseService cService = new CourseService(null);
         private UsersInCourseService uInCService = new UsersInCourseService();
 
