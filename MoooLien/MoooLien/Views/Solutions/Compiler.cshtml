@@ -9,16 +9,16 @@
 
         @using (Html.BeginForm())
         {
-            <input type="Submit" class="btn btn-primary" value="Compile Test Code" />}
+            <input type="Submit" class="btn btn-primary" value="Compile Code" />}
 
         @if (ViewBag.Output != null)
         {
-            <ul>
+            <ol>
                 @foreach (var line in ViewBag.Output)
                 {
                     <li>@line</li>
                 }
-            </ul>}
+            </ol>}
     </div>
     <div class="col-md-4">
     </div>

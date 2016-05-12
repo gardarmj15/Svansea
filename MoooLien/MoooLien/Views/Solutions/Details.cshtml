@@ -51,27 +51,12 @@
     <input type="submit" value="Upload" />
 }
 
-<h4>File  uploaded to: @ViewBag.Path</h4>
+<p>File  uploaded to: @ViewBag.Path</p>
 
 <br />
-
-<div class="row">
-    <div class="col-md-4">
-
-        @using (Html.BeginForm())
-        {
-            <input type="Submit" class="btn btn-primary" value="Compile Test Code" />}
-
-        @if (ViewBag.Output != null)
-        {
-            <ul>
-                @foreach (var line in ViewBag.Output)
-                {
-                    <li>@line</li>
-                }
-            </ul>}
-    </div>
-</div>
+<p>
+    <a href="~/Solutions/Compiler" class="btn btn-primary">Test my code</a>
+</p>
 <div>
     <br />
     <br />

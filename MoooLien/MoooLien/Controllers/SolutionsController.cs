@@ -104,7 +104,7 @@ namespace MoooLien.Controllers
             return View();
         }
         [HttpPost]
-        public ActionResult Compiler(FormCollection data, int id)
+        public ActionResult Compiler(FormCollection data)
         {
             //ViewBag.AssId = id;
 
@@ -206,7 +206,7 @@ namespace MoooLien.Controllers
             // TODO: We might want to clean up after the process, there
             // may be files we should delete etc.
 
-            return View("Details");
+            return View();
         }
 
 
