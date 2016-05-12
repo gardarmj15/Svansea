@@ -329,6 +329,8 @@
     <Content Include="Views\Courses\Create.cshtml" />
     <Content Include="Views\Assignments\Create.cshtml" />
     <Content Include="Views\Administrators\Enrole.cshtml" />
+    <Content Include="Views\Assignments\TeacherIndex.cshtml" />
+    <Content Include="Views\Assignments\StudentIndex.cshtml" />
     <None Include="Views\Shared\_LayoutAdmin.cshtml" />
     <Content Include="Views\Shared\_LayoutTeacher.cshtml" />
     <Content Include="Views\Shared\_LayoutStudent.cshtml" />

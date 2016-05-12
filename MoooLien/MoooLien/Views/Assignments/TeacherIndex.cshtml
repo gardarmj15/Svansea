@@ -1,12 +1,11 @@
 ﻿@model MoooLien.Models.ViewModel.AssignmentViewModel
 
 @{
-    ViewBag.Title = "AssignmentsInCourse";
+    ViewBag.Title = "TeacherIndex";
 }
 
-<h2>My Assignments</h2>
+<h2>TeacherIndex</h2>
 
-@*Sýna þennan takka ef user role == teacher*@
 <p>
     <a href="@Url.Action("Create", "Assignments", new { id = ViewBag.courseID }) " class="btn btn-primary">Create Assignment</a>
 </p>
@@ -26,10 +25,4 @@
             }
         </tbody>
     </table>
-</div>
-
-
-
-<div>
-    @Html.ActionLink("Back to my courses", "UserIndex", "Courses")
 </div>

@@ -25,10 +25,12 @@ namespace MoooLien.Controllers
             
             if(aService.isTeacher(id))
             {
-                return null;
+                return RedirectToAction("TeacherIndex", "Assignments", new { id = id });
             }
-            ViewBag.courseID = id;
-            return View(aService.getAssignmentsInCourse(id));
+            else
+            {
+                return RedirectToAction("StudentIndex", "Assignments", new { id = id });
+            }
         }
 
         public ActionResult Create(int id)
@@ -52,6 +54,18 @@ namespace MoooLien.Controllers
                 ModelState.AddModelError("", "Could not add the assignment!");
                 return RedirectToAction("Create", "Assignments");
             }
+        }
+
+        public ActionResult TeacherIndex(int id)
+        {
+            ViewBag.courseID = id;
+            return View(aService.getAssignmentsInCourse(id));
+        }
+
+        public ActionResult StudentIndex(int id)
+        {
+            ViewBag.courseID = id;
+            return View(aService.getAssignmentsInCourse(id));
         }
 
         // GET: Assignments/Details/5
