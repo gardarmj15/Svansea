@@ -15,21 +15,27 @@ namespace MoooLien.Service
     {
         private readonly IAppDataContext db;
 
-        
-        public CourseService(IAppDataContext context)
+		#region Course Service 
+		public CourseService(IAppDataContext context)
         {
             db = context ?? new ApplicationDbContext();
         }
+		#endregion
 
-        public Course getCourseByID(int Id)
+		#region Get Course by ID
+		//get course by ID from db.course
+		public Course getCourseByID(int Id)
         {
             Course course = (from co in db.Courses
                           where co.ID == Id
                           select co).SingleOrDefault();
             return course;
         }
+		#endregion
 
-        public UsersCoursesViewModel getCourseByUserID(string id)
+		#region Get Course by UserID
+		//Get course by UserID from db.UserInCourse
+		public UsersCoursesViewModel getCourseByUserID(string id)
         {
 
             var userCourses = (from cUsers in db.UsersInCourse
@@ -44,8 +50,11 @@ namespace MoooLien.Service
             return all;
 
         }
+		#endregion
 
-        public CourseViewModel getAllCourses()
+		#region Get all Courses
+		//Get all courses from db.Courses
+		public CourseViewModel getAllCourses()
         {
             var courses = (from co in db.Courses
                            select co).ToList();
@@ -55,31 +64,26 @@ namespace MoooLien.Service
 
             return result;
         }
-        public bool add(CreateCourseViewModel newCourse)
+		#endregion
+
+		#region Create Course
+		//Add Course to db.Courses
+		public bool add(CreateCourseViewModel newCourse)
         {
             Course temp = new Course() { name = newCourse.name, description = newCourse.description};
             db.Courses.Add(temp);
             return Convert.ToBoolean(db.SaveChanges());
         }
-        
-        public bool deleteCourse(int id)
+		#endregion
+
+		#region Delete Course
+		//Delete course from db.courses
+		public bool deleteCourse(int id)
         {
             db.Courses.Remove(getCourseByID(id));
 
             return Convert.ToBoolean(db.SaveChanges());
         }
-
-       
-        /*public bool editCourse(EditCourseViewModel editC)
-        {
-            var givenCourse = (from co in db.Courses
-                               where co.ID == editC.ID
-                               select co).SingleOrDefault();
-            givenCourse.ID = editC.ID;
-            givenCourse.name = editC.name;
-            givenCourse.description = editC.description;
-
-            return Convert.ToBoolean(db.SaveChanges());
-        }*/
-    }
+		#endregion
+	}
 }
