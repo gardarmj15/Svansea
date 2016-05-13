@@ -29,12 +29,11 @@ namespace MoooLien.Service
             return course;
         }
 
-        public UsersCoursesViewModel getCourseByUserID()
+        public UsersCoursesViewModel getCourseByUserID(string id)
         {
-            var currentUser = HttpContext.Current.User.Identity.GetUserId();
 
             var user = (from u in db.Users
-                        where u.Id == currentUser
+                        where u.Id == id
                         select u).SingleOrDefault();
 
             var userCourses = (from cUsers in db.UsersInCourse
