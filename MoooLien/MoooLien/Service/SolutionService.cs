@@ -76,9 +76,9 @@ namespace MoooLien.Service
 
         public SolutionViewModel getSolution(int id)
         {
-            var solution = (from sol in db.Solutions
-                            where sol.assignmentID == id
-                            select sol.file).SingleOrDefault();
+            var solution = (from sol in db.Assignments
+                            where sol.ID == id
+                            select sol.solution).SingleOrDefault();
 
             SolutionViewModel solu = new SolutionViewModel() { theSolution = solution };
 
