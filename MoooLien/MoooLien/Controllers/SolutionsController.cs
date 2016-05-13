@@ -49,13 +49,13 @@ namespace MoooLien.Controllers
             ViewBag.assignId = id;
             return View(sService.getUsersBestHandin(id));
         }
-
+        /*
         public ActionResult viewStudentsInCourse(int id)
         {
             ViewBag.assignId = id;
             return View(uSerivice.getUsersByAssignmentId(id));
         }
-
+        */
         [HttpPost]
         public ActionResult UploadStatus(HttpPostedFileBase file, int id)
         {
