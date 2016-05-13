@@ -117,6 +117,7 @@ namespace MoooLien.Controllers
             // To simplify matters, we declare the code here.
             // The code would of course come from the student!
             var assignment = aService.getAssignmentByID(id);
+            
 
             var path = Server.MapPath("~/Files/" + User.Identity.Name + "/"  + assignment.name + "/" + "main.cpp");
             var code = System.IO.File.ReadAllText(path);
