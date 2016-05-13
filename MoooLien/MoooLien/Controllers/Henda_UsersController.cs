@@ -11,7 +11,7 @@ using Microsoft.AspNet.Identity.Owin;
 namespace MoooLien.Controllers
 {
     [Authorize]
-    public class UsersController : Controller
+    public class Henda_UsersController : Controller
     {
         private UsersService uService = new UsersService(null);
         private ApplicationUserManager userManager;

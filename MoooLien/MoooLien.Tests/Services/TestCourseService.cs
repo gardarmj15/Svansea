@@ -176,9 +176,27 @@ namespace MoooLien.Tests.Services
                 ID = 6,
                 userID = "5",
                 courseID = 2,
-                roleID = 2
+                roleID = 1
             };
             mockDB.UsersInCourse.Add(uc6);
+
+            var uc7 = new UsersInCourse
+            {
+                ID = 7,
+                userID = "2",
+                courseID = 2,
+                roleID = 1
+            };
+            mockDB.UsersInCourse.Add(uc7);
+
+            var uc8 = new UsersInCourse
+            {
+                ID = 8,
+                userID = "1",
+                courseID = 4,
+                roleID = 2
+            };
+            mockDB.UsersInCourse.Add(uc8);
 
             #endregion
 
@@ -238,7 +256,7 @@ namespace MoooLien.Tests.Services
         }
 
         [TestMethod]
-        public void TestGetCourseByID()
+        public void testGetCourseByID()
         {
             // arrange
             const int ID = 2;
@@ -261,7 +279,7 @@ namespace MoooLien.Tests.Services
             Assert.AreEqual("Stærðfræði", result3.name);
         }
         [TestMethod]
-        public void TestGetAllCourses()
+        public void testGetAllCourses()
         {
             // arrange
  
@@ -275,7 +293,7 @@ namespace MoooLien.Tests.Services
             Assert.AreEqual(5,result.courses.Count);
         }
         [TestMethod]
-        public void TestAddCourse()
+        public void testAddCourse()
         {
             // arrange
             var c1 = new CreateCourseViewModel
@@ -285,12 +303,33 @@ namespace MoooLien.Tests.Services
             };
 
             // act
-
+            var beforeadd = _service.getAllCourses();
             var result = _service.add(c1);
+            var afteradd = _service.getAllCourses();
+            // assert
+
+            Assert.AreEqual(5, beforeadd.courses.Count);
+            Assert.AreEqual(6, afteradd.courses.Count);
+        }
+        [TestMethod]
+        public void testGetCourseByUserID()
+        {
+            // arrange
+            const string ID = "2";
+            const string ID2 = "3";
+            const string ID3 = "5";
+
+            // act
+
+            var result1 = _service.getCourseByUserID(ID);
+            var result2 = _service.getCourseByUserID(ID2);
+            var result3 = _service.getCourseByUserID(ID3);
 
             // assert
 
-            Assert.IsTrue(result);
+            Assert.AreEqual(2, result1.courses.Count);
+            Assert.AreEqual(1, result2.courses.Count);
+            Assert.AreEqual(2, result3.courses.Count);
         }
     }
 }

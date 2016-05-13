@@ -19,8 +19,9 @@ namespace MoooLien.Controllers
     {
         private AssignmentsService aService = new AssignmentsService(null);
 
-        // GET: Assignments
-        public ActionResult Index(int id)
+		#region Get Assignments
+		// GET: Assignments
+		public ActionResult Index(int id)
         {
             var currentUser = User.Identity.GetUserId();
 
@@ -33,8 +34,11 @@ namespace MoooLien.Controllers
                 return RedirectToAction("StudentIndex", "Assignments", new { id = id });
             }
         }
+		#endregion
 
-        public ActionResult Create(int id)
+		#region Create Assignment
+		//Create Assignment
+		public ActionResult Create(int id)
         {
             return View();
         }
@@ -43,7 +47,6 @@ namespace MoooLien.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(CreateAssignmentViewModel newAssignment, int id)
         {
-            //var assignment = newAssignment;
             newAssignment.courseID = id;
 
             if (aService.createAssignment(newAssignment))
@@ -56,128 +59,24 @@ namespace MoooLien.Controllers
                 return RedirectToAction("Create", "Assignments");
             }
         }
+		#endregion
 
-        public ActionResult TeacherIndex(int id)
+		#region Teacher Index
+		//Teacher Index
+		public ActionResult TeacherIndex(int id)
         {
             ViewBag.courseID = id;
             return View(aService.getAssignmentsInCourse(id));
         }
+		#endregion
 
-        public ActionResult StudentIndex(int id)
+		#region Student Index
+		//Student Index
+		public ActionResult StudentIndex(int id)
         {
             ViewBag.courseID = id;
             return View(aService.getAssignmentsInCourse(id));
         }
-
-        // GET: Assignments/Details/5
-        /*public ActionResult Details(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Assignment assignment = db.Assignments.Find(id);
-            if (assignment == null)
-            {
-                return HttpNotFound();
-            }
-            return View(assignment);
-        }
-
-        // GET: Assignments/Create
-        public ActionResult Create()
-        {
-            PopulateDropDown();
-            return View();
-        }
-
-        // POST: Assignments/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,courseID,name,solution")] Assignment assignment)
-        {
-            if (ModelState.IsValid)
-            {
-                db.Assignments.Add(assignment);
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-
-            return View(assignment);
-        }
-
-        // GET: Assignments/Edit/5
-        public ActionResult Edit(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Assignment assignment = db.Assignments.Find(id);
-            if (assignment == null)
-            {
-                return HttpNotFound();
-            }
-            return View(assignment);
-        }
-
-        // POST: Assignments/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,courseID,name,solution")] Assignment assignment)
-        {
-            if (ModelState.IsValid)
-            {
-                db.Entry(assignment).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-            return View(assignment);
-        }
-
-        // GET: Assignments/Delete/5
-        public ActionResult Delete(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Assignment assignment = db.Assignments.Find(id);
-            if (assignment == null)
-            {
-                return HttpNotFound();
-            }
-            return View(assignment);
-        }
-
-        // POST: Assignments/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
-        {
-            Assignment assignment = db.Assignments.Find(id);
-            db.Assignments.Remove(assignment);
-            db.SaveChanges();
-            return RedirectToAction("Index");
-        }
-
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                db.Dispose();
-            }
-            base.Dispose(disposing);
-        }
-        public void PopulateDropDown()
-        {
-            AssignmentsService a = new AssignmentsService();
-            ViewData["Categories"] = a.getAllCourses();
-        }*/
-
-    }
+		#endregion
+	}
 }

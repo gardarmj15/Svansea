@@ -224,9 +224,9 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\SolutionsController.cs" />
-    <Compile Include="Controllers\StudentsController.cs" />
-    <Compile Include="Controllers\TeachersController.cs" />
-    <Compile Include="Controllers\UsersController.cs" />
+    <Compile Include="Controllers\Henda_StudentsController.cs" />
+    <Compile Include="Controllers\Henda_TeachersController.cs" />
+    <Compile Include="Controllers\Henda_UsersController.cs" />
     <Compile Include="DAL\DataContext.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -238,9 +238,9 @@
     <Compile Include="Models\Entities\Solution.cs" />
     <Compile Include="Models\Entities\UserRoles.cs" />
     <Compile Include="Models\Entities\UsersInCourse.cs" />
-    <Compile Include="Models\File.cs" />
-    <Compile Include="Models\FilePath.cs" />
-    <Compile Include="Models\FileType.cs" />
+    <Compile Include="Models\Henda_File.cs" />
+    <Compile Include="Models\Henda_FilePath.cs" />
+    <Compile Include="Models\Henda_FileType.cs" />
     <Compile Include="Models\IdentityManager.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
@@ -335,15 +335,15 @@
     <Content Include="Views\Assignments\TeacherIndex.cshtml" />
     <Content Include="Views\Assignments\StudentIndex.cshtml" />
     <None Include="Views\Shared\_LayoutAdmin.cshtml" />
-    <Content Include="Views\Shared\_LayoutTeacher.cshtml" />
-    <Content Include="Views\Shared\_LayoutStudent.cshtml" />
-    <Content Include="Views\Teachers\Create.cshtml" />
-    <Content Include="Views\Teachers\Delete.cshtml" />
-    <Content Include="Views\Teachers\Edit.cshtml" />
-    <Content Include="Views\Teachers\Index.cshtml" />
-    <Content Include="Views\Teachers\HandIns.cshtml" />
-    <Content Include="Views\Users\Index.cshtml" />
-    <Content Include="Views\Users\Remove.cshtml" />
+    <Content Include="Views\Shared\Henda__LayoutTeacher.cshtml" />
+    <Content Include="Views\Shared\Henda__LayoutStudent.cshtml" />
+    <Content Include="Views\Henda_Teachers\Create.cshtml" />
+    <Content Include="Views\Henda_Teachers\Delete.cshtml" />
+    <Content Include="Views\Henda_Teachers\Edit.cshtml" />
+    <Content Include="Views\Henda_Teachers\Index.cshtml" />
+    <Content Include="Views\Henda_Teachers\HandIns.cshtml" />
+    <Content Include="Views\Henda_Users\Index.cshtml" />
+    <Content Include="Views\Henda_Users\Remove.cshtml" />
     <Content Include="Views\Solutions\Details.cshtml" />
     <Content Include="Views\Solutions\IndexStudent.cshtml" />
     <Content Include="Views\Solutions\Handin.cshtml" />
@@ -354,7 +354,7 @@
     <Content Include="Views\Solutions\Grades.cshtml" />
     <Content Include="Views\Solutions\IndexTeacher.cshtml" />
     <Content Include="Views\Solutions\Create.cshtml" />
-    <Content Include="Views\Solutions\Details - Copy.cshtml" />
+    <Content Include="Views\Solutions\Henda_Details - Copy.cshtml" />
     <Content Include="Views\Solutions\viewHandin.cshtml" />
     <Content Include="Views\Solutions\viewStudentsInCourse.cshtml" />
   </ItemGroup>

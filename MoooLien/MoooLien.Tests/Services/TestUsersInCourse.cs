@@ -237,7 +237,7 @@ namespace MoooLien.Tests.Services
             _service = new UsersInCourseService(mockDB);
         }
         [TestMethod]
-        public void TestUserExists()
+        public void testUserExists()
         {
             // arrange
             const string uid1 = "1";
@@ -261,7 +261,7 @@ namespace MoooLien.Tests.Services
             Assert.IsFalse(result3);
         }
         [TestMethod]
-        public void TestCreateLink()
+        public void testCreateLink()
         {
             const string uid1 = "1";
             const string uid2 = "8";
@@ -271,17 +271,15 @@ namespace MoooLien.Tests.Services
             const int teacher = 2;
 
             // act
-
+            
             var result1 = _service.createLink(uid1, cid1, teacher);
             var result2 = _service.createLink(uid2, cid2, student);
-            var result3 = _service.createLink(uid1, cid2, student);
 
 
             // assert
 
             Assert.IsTrue(result1);
             Assert.IsTrue(result2);
-            Assert.IsTrue(result3);
         }
     }
 }
