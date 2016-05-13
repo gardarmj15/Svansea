@@ -13,11 +13,10 @@ namespace MoooLien.Service
 {
     public class AssignmentsService
     {
-        private ApplicationDbContext db;
-        //private int cID;
-        public AssignmentsService()
+        private readonly IAppDataContext db;
+        public AssignmentsService(IAppDataContext context)
         {
-            db = new ApplicationDbContext();
+            db = context ?? new ApplicationDbContext();
         }
         public Assignment getAssignmentByID(int assignmentID)
         {

@@ -16,7 +16,7 @@ namespace MoooLien.Controllers
     [Authorize]
     public class AssignmentsController : Controller
     {
-        private AssignmentsService aService = new AssignmentsService();
+        private AssignmentsService aService = new AssignmentsService(null);
 
         // GET: Assignments
         public ActionResult Index(int id)

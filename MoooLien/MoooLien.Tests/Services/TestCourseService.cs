@@ -4,6 +4,7 @@ using MoooLien.Service;
 using Moolien.Tests;
 using MoooLien.Models.Entities;
 using MoooLien.Models;
+using MoooLien.Models.ViewModel;
 
 namespace MoooLien.Tests.Services
 {
@@ -53,6 +54,7 @@ namespace MoooLien.Tests.Services
             };
             mockDB.Courses.Add(c5);
             #endregion
+
             #region Assignments
 
             var a1 = new Assignment
@@ -109,7 +111,19 @@ namespace MoooLien.Tests.Services
                 solution = "4"
             };
             mockDB.Assignments.Add(a5);
+
+            var a6 = new Assignment
+            {
+                ID = 6,
+                name = "Get highest number",
+                description = "Get the highest number from an array",
+                startDate = new DateTime(2016, 06, 10, 00, 00, 00),
+                endDate = new DateTime(2016, 06, 20, 23, 59, 59),
+                solution = "8"
+            };
+            mockDB.Assignments.Add(a6);
             #endregion
+
             #region Users in course
 
             var uc1 = new UsersInCourse
@@ -170,9 +184,53 @@ namespace MoooLien.Tests.Services
 
             #region Assignments in courses
 
-            #endregion
+            var ac1 = new AssignmentsInCourse
+            {
+                ID = 1,
+                assignmentID = 1,
+                courseID = 1
+            };
+            mockDB.AssingmentInCourse.Add(ac1);
 
-            #region User roles
+            var ac2 = new AssignmentsInCourse
+            {
+                ID = 2,
+                assignmentID = 2,
+                courseID = 2
+            };
+            mockDB.AssingmentInCourse.Add(ac2);
+
+            var ac3 = new AssignmentsInCourse
+            {
+                ID = 3,
+                assignmentID = 3,
+                courseID = 3
+            };
+            mockDB.AssingmentInCourse.Add(ac3);
+
+            var ac4 = new AssignmentsInCourse
+            {
+                ID = 4,
+                assignmentID = 4,
+                courseID = 4
+            };
+            mockDB.AssingmentInCourse.Add(ac4);
+
+            var ac5 = new AssignmentsInCourse
+            {
+                ID = 5,
+                assignmentID = 5,
+                courseID = 5
+            };
+            mockDB.AssingmentInCourse.Add(ac5);
+
+            var ac6 = new AssignmentsInCourse
+            {
+                ID = 6,
+                assignmentID = 6,
+                courseID = 1
+            };
+            mockDB.AssingmentInCourse.Add(ac6);
 
             #endregion
 
@@ -226,6 +284,38 @@ namespace MoooLien.Tests.Services
 
             Assert.AreEqual(4, result.ID);
             //Assert.AreEqual(1, result.Count);
+        }
+        [TestMethod]
+        public void TestGetAllCourses()
+        {
+            // arrange
+
+
+            // act
+
+            var result = _service.getAllCourses();
+
+            // assert
+
+            Assert.AreEqual(5,result.courses.Count);
+        }
+        [TestMethod]
+        public void TestAddCourse()
+        {
+            // arrange
+            var c1 = new CreateCourseViewModel
+            {
+                name = "Goho",
+                description = "Kröfulistar"
+            };
+
+            // act
+
+            var result = _service.add(c1);
+
+            // assert
+
+            Assert.IsFalse(result);
         }
     }
 }

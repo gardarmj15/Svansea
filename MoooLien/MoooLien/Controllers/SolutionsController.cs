@@ -20,8 +20,8 @@ namespace MoooLien.Controllers
     public class SolutionsController : Controller
     {
 
-        private AssignmentsService aService = new AssignmentsService();
-        private SolutionServive sService = new SolutionServive();
+        private AssignmentsService aService = new AssignmentsService(null);
+        private SolutionService sService = new SolutionService(null);
 
 
         // GET: Solutions
