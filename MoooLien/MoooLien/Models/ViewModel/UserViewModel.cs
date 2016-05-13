@@ -10,5 +10,6 @@ namespace MoooLien.Models.ViewModel
     public class UserViewModel
     {
         public List<ApplicationUser> users { get; set; }
+        public List<string> userName { get; set; }
     }
 }

@@ -22,6 +22,8 @@ namespace MoooLien.Controllers
 
         private AssignmentsService aService = new AssignmentsService(null);
         private SolutionService sService = new SolutionService(null);
+        private UsersService uSerivice = new UsersService(null);
+ 
 
 
         // GET: Solutions
@@ -40,6 +42,18 @@ namespace MoooLien.Controllers
         public ActionResult Create()
         {
             return View();
+        }
+
+        public ActionResult viewHandin(int id)
+        {
+            ViewBag.assignId = id;
+            return View(sService.getUsersBestHandin(id));
+        }
+
+        public ActionResult viewStudentsInCourse(int id)
+        {
+            ViewBag.assignId = id;
+            return View(uSerivice.getUsersByAssignmentId(id));
         }
 
         [HttpPost]
