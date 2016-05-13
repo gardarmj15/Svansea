@@ -10,6 +10,7 @@ using MoooLien.DAL;
 using MoooLien.Models.Entities;
 using MoooLien.Service;
 using MoooLien.Models.ViewModel;
+using Microsoft.AspNet.Identity;
 
 namespace MoooLien.Controllers
 {
@@ -21,8 +22,9 @@ namespace MoooLien.Controllers
         // GET: Assignments
         public ActionResult Index(int id)
         {
-            
-            if(aService.isTeacher(id))
+            var currentUser = User.Identity.GetUserId();
+
+            if (aService.isTeacher(id, currentUser))
             {
                 return RedirectToAction("TeacherIndex", "Assignments", new { id = id });
             }

@@ -294,7 +294,30 @@ namespace MoooLien.Tests.Services
 
             Assert.AreEqual(2, result1.assignments.Count);
             Assert.AreEqual(1, result2.assignments.Count);
-            //Assert.AreEqual("For loop", result3.assignment.name);
+            Assert.AreEqual(1, result3.assignments.Count);
+        }
+        [TestMethod]
+        public void testIsTeacher()
+        {
+            // arrange
+            const int courseID1 = 2;
+            const int courseID2 = 1;
+            const int courseID3 = 2;
+            const string userid1 = "2";
+            const string userid2 = "4";
+            const string userid3 = "5";
+
+            // act
+
+            var result1 = _service.isTeacher(courseID1, userid1);
+            var result2 = _service.isTeacher(courseID2, userid2);
+            var result3 = _service.isTeacher(courseID3, userid3);
+
+            // assert
+
+            Assert.IsFalse(result1);
+            Assert.IsFalse(result2);
+            Assert.IsTrue(result3);
         }
     }
 }

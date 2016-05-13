@@ -272,16 +272,16 @@ namespace MoooLien.Tests.Services
 
             // act
 
-            var result1 = _service.userExists(uid1, cid1, teacher);
-            var result2 = _service.userExists(uid2, cid2, student);
-            var result3 = _service.userExists(uid1, cid2, student);
+            var result1 = _service.createLink(uid1, cid1, teacher);
+            var result2 = _service.createLink(uid2, cid2, student);
+            var result3 = _service.createLink(uid1, cid2, student);
 
 
             // assert
 
-            //Assert.IsTrue(result1);
-            Assert.IsFalse(result2);
-            //Assert.IsTrue(result3);
+            Assert.IsTrue(result1);
+            Assert.IsTrue(result2);
+            Assert.IsTrue(result3);
         }
     }
 }
