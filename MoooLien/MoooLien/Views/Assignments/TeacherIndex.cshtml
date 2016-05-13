@@ -5,7 +5,7 @@
     Layout = "~/Views/Shared/_LayoutUsers.cshtml";
 }
 
-<h2>Name of the course...</h2>
+<h2>@Html.ViewBag.coursName</h2>
 
 <p>
     <a href="@Url.Action("Create", "Assignments", new { id = ViewBag.courseID }) " class="btn btn-primary">Create Assignment</a>

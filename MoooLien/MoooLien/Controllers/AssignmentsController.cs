@@ -18,10 +18,11 @@ namespace MoooLien.Controllers
     public class AssignmentsController : Controller
     {
         private AssignmentsService aService = new AssignmentsService(null);
+        private CourseService cService = new CourseService(null);
 
-		#region Get Assignments
-		// GET: Assignments
-		public ActionResult Index(int id)
+        #region Get Assignments
+        // GET: Assignments
+        public ActionResult Index(int id)
         {
             var currentUser = User.Identity.GetUserId();
 
@@ -65,6 +66,8 @@ namespace MoooLien.Controllers
 		//Teacher Index
 		public ActionResult TeacherIndex(int id)
         {
+            var coursName = cService.getCourseByID(id);
+            ViewBag.coursName = coursName.name;
             ViewBag.courseID = id;
             return View(aService.getAssignmentsInCourse(id));
         }
