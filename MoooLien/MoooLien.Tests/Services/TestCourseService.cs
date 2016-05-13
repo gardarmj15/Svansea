@@ -238,58 +238,33 @@ namespace MoooLien.Tests.Services
         }
 
         [TestMethod]
-        public void TestGetCourseByID2()
+        public void TestGetCourseByID()
         {
             // arrange
             const int ID = 2;
-
-
-            // act
-
-            var result = _service.getCourseByID(ID);
-
-            // assert
-
-            Assert.AreEqual(2, result.ID);
-            //Assert.AreEqual(1, result.Count);
-        }
-        [TestMethod]
-        public void TestGetCourseByID3()
-        {
-            // arrange
-            const int ID = 3;
-
+            const int ID2 = 3;
+            const int ID3 = 4;
 
             // act
 
-            var result = _service.getCourseByID(ID);
+            var result1 = _service.getCourseByID(ID);
+            var result2 = _service.getCourseByID(ID2);
+            var result3 = _service.getCourseByID(ID3);
 
             // assert
 
-            Assert.AreEqual(3, result.ID);
-            //Assert.AreEqual(1, result.Count);
-        }
-        [TestMethod]
-        public void TestGetCourseByID4()
-        {
-            // arrange
-            const int ID = 4;
-
-
-            // act
-
-            var result = _service.getCourseByID(ID);
-
-            // assert
-
-            Assert.AreEqual(4, result.ID);
-            //Assert.AreEqual(1, result.Count);
+            Assert.AreEqual(2, result1.ID);
+            Assert.AreEqual(3, result2.ID);
+            Assert.AreEqual(4, result3.ID);
+            Assert.AreEqual("Gagnaskipan", result1.name);
+            Assert.AreEqual("Vefforitun", result2.name);
+            Assert.AreEqual("Stærðfræði", result3.name);
         }
         [TestMethod]
         public void TestGetAllCourses()
         {
             // arrange
-
+ 
 
             // act
 

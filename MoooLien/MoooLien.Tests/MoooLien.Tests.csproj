@@ -96,7 +96,7 @@
     <Compile Include="MockDatabase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Controllers\HomeControllerTest.cs" />
-    <Compile Include="Services\SolutionService.cs" />
+    <Compile Include="Services\TestSolutionService.cs" />
     <Compile Include="Services\TestAssignmentService.cs" />
     <Compile Include="Services\TestCourseService.cs" />
     <Compile Include="Services\TestUsersInCourse.cs" />
