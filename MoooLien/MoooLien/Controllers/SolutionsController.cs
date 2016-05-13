@@ -51,8 +51,9 @@ namespace MoooLien.Controllers
             // Specify the directory you want to manipulate.
             //string path = @"c:\MyDir";
             var assignment = aService.getAssignmentByID(id);
+            var course = aService.givenCourse(id);
 
-            string path = Server.MapPath("~/Files/" + User.Identity.Name + "/" + assignment.name + "/");
+            string path = Server.MapPath("~/Files/" + User.Identity.Name + "/" + course + "/" + assignment.name + "/");
 
             try
             {
@@ -117,9 +118,10 @@ namespace MoooLien.Controllers
             // To simplify matters, we declare the code here.
             // The code would of course come from the student!
             var assignment = aService.getAssignmentByID(id);
+            var course = aService.givenCourse(id);
             
 
-            var path = Server.MapPath("~/Files/" + User.Identity.Name + "/"  + assignment.name + "/" + "main.cpp");
+            var path = Server.MapPath("~/Files/" + User.Identity.Name + "/"  + course + "/" + assignment.name + "/" + "main.cpp");
             var code = System.IO.File.ReadAllText(path);
 
             // Set up our working folder, and the file names/paths.

@@ -83,5 +83,18 @@ namespace MoooLien.Service
             return false;
         }
 
+        public string givenCourse(int id)
+        {
+            var courseID = (from coId in db.AssingmentInCourse
+                            where coId.assignmentID == id
+                            select coId.courseID).SingleOrDefault();
+
+            var courseName = (from co in db.Courses
+                              where co.ID == courseID
+                              select co.name).SingleOrDefault();
+
+            return courseName;
+        }
+
     }
 }
