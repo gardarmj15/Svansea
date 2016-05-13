@@ -12,19 +12,27 @@ namespace MoooLien.Service
     {
         private readonly IAppDataContext db;
 
-
-        public UsersInCourseService(IAppDataContext context)
+		#region Users in Course service
+		public UsersInCourseService(IAppDataContext context)
         {
             db = context ?? new ApplicationDbContext();
         }
-        public bool createLink(string userID, int courseID, int roleID)
+		#endregion
+
+		#region Create Link
+		//Create link between User and Course
+		public bool createLink(string userID, int courseID, int roleID)
         {
             UsersInCourse uInC = new UsersInCourse() { userID = userID, courseID = courseID, roleID = roleID};
             db.UsersInCourse.Add(uInC);
             
             return(Convert.ToBoolean(db.SaveChanges())); 
         }
-        public bool removeLink(string userID, int courseID)
+		#endregion
+
+		#region Remove Link
+		//Remove link between User and Course
+		public bool removeLink(string userID, int courseID)
         {
             var userToRemove = (from us in db.UsersInCourse
                                 where us.userID == userID && us.courseID == courseID
@@ -32,7 +40,10 @@ namespace MoooLien.Service
             db.UsersInCourse.Remove(userToRemove);
             return (Convert.ToBoolean(db.SaveChanges()));
         }
-        public bool userExists(string userID, int courseID, int roleID)
+		#endregion
+
+		#region Existing User
+		public bool userExists(string userID, int courseID, int roleID)
         {
             var exists = (from uInC in db.UsersInCourse
                           where uInC.userID == userID && uInC.courseID == courseID && uInC.roleID == roleID
@@ -47,5 +58,6 @@ namespace MoooLien.Service
                 return true;
             }
         }
-    }
+		#endregion
+	}
 }
