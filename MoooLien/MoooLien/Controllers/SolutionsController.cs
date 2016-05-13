@@ -47,9 +47,6 @@ namespace MoooLien.Controllers
 
         public ActionResult viewHandin(string userID, int courseID)
         {
-            var coursName = cService.getCourseByID(courseID);
-            ViewBag.coursName = coursName.name;
-
             return View(sService.getUsersHandin(userID, courseID));
         }
         
