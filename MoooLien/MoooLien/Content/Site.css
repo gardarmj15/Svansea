@@ -73,3 +73,7 @@ textarea {
 a{
     text-decoration: none !important;
 }
+
+.table > thead{
+    font-size: 25px;
+}
