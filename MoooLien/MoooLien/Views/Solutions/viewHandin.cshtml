@@ -2,6 +2,7 @@
 
 @{
     ViewBag.Title = "viewHandin";
+    Layout = "~/Views/Shared/_LayoutUsers.cshtml";
 }
 
 <h2>Students Best Handins</h2>
@@ -14,8 +15,8 @@
         @foreach (var user in Model.solutions)
         {
             <tr>
-                <td></td>
                 <td>@user.accepted</td>
+                <td>@user.handinDate</td>
             </tr>
         }
     </table>

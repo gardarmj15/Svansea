@@ -2,6 +2,7 @@
 
 @{
     ViewBag.Title = "viewStudentsInCourse";
+    Layout = "~/Views/Shared/_LayoutUsers.cshtml";
 }
 
 <h2>viewStudentsInCourse</h2>
@@ -12,7 +13,7 @@
     @foreach (var user in Model.users)
     {
         <tr>
-            <td><a href="@Url.Action("viewHandin", "Solutions", new { assignID = ViewBag.assignId})"> @user.UserName </a></td>
+            <td><a href="@Url.Action("viewHandin", "Solutions", new { userID = user.Id, courseID = ViewBag.assignId })"> @user.UserName </a></td>
         </tr>
     }
 </table>

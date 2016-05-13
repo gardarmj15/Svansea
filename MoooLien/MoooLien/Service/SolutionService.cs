@@ -43,10 +43,10 @@ namespace MoooLien.Service
             return;
         }
 
-        public SolutionViewModel getUsersBestHandin(int id)
+        public SolutionViewModel getUsersHandin(string id, int Id)
         {
             var handins = (from hand in db.Solutions
-                           where hand.assignmentID == id
+                           where hand.userID == id && hand.assignmentID == Id
                            select hand).ToList();
 
             SolutionViewModel result = new SolutionViewModel();
