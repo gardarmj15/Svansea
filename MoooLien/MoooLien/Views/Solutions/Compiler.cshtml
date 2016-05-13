@@ -6,6 +6,7 @@
 }
 
 <h2>C++ Compile</h2>
+
 <div class="row">
     <div class="col-md-4">
 
@@ -23,16 +24,26 @@
                     <li>@line</li>
                 }
             </ol>}
+
+
         <div>
             <h4>
                 Solution status: @Html.ViewBag.status
             </h4>
         </div>
+        <div>
+            <h5>
+                @Html.ActionLink("Back to My Courses", "UserIndex", "Courses")
+            </h5>
+        </div>
+
     </div>
     <div>
+
         <p>
             @Html.DisplayFor(model => model.theSolution)
         </p>
     </div>
+
 </div>
 
