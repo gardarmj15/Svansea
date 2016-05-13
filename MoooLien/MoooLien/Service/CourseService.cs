@@ -84,6 +84,17 @@ namespace MoooLien.Service
 
             return Convert.ToBoolean(db.SaveChanges());
         }
-		#endregion
-	}
+        #endregion
+        public bool GetCourseEditViewModel(int id, CreateCourseViewModel course)
+        {
+            var courseToEdit = (from co in db.Courses
+                              where co.ID == id
+                              select co).SingleOrDefault();
+
+            courseToEdit.name = course.name;
+            courseToEdit.description = courseToEdit.description;
+
+            return Convert.ToBoolean(db.SaveChanges());
+        }
+    }
 }

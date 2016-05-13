@@ -24,6 +24,12 @@
                             @x.name
                         </a>
                     </td>
+                    <td>
+                        @Html.ActionLink("Edit", "ManageCourses", new { id = User.Identity }, new { @class = "green" })
+                    </td>
+                    <td>
+                        @Html.ActionLink("Delete", "ManageCourses", new { id = User.Identity }, new { @class = "red" })
+                    </td>
                 </tr>
             }
         </tbody>

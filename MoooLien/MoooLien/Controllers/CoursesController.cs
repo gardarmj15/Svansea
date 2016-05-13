@@ -73,12 +73,7 @@ namespace MoooLien.Controllers
         # region Edit(int id)
         public ActionResult Edit(int id)
         {
-            Course course = cService.getCourseByID(id);
-            EditCourseViewModel model = new EditCourseViewModel();
-            {
-                
-            };
-            return View(model);
+            return View();
         }
         #endregion
     }
