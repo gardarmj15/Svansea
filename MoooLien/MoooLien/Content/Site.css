@@ -10,8 +10,8 @@
     padding-right: 15px;
     background-color:#e5eaec;
     margin-top:30px;
-    margin-right: 200px;
-    margin-left: 200px;
+    margin-right: auto;
+    margin-left: auto;
 }
 
 /* Override the default bootstrap behavior where horizontal description lists 
