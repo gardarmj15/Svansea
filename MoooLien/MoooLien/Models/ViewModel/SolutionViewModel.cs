@@ -10,5 +10,8 @@ namespace MoooLien.Models.ViewModel
     {
         public List<Solution> solutions { get; set; }
         public Solution solution { get; set; }
+
+
+        public int userId { get; set; }
     }
 }
