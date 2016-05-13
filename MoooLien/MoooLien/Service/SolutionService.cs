@@ -54,5 +54,18 @@ namespace MoooLien.Service
 
             return result;
         }
+        public UserViewModel getUsersInAssignments(int id)
+        {
+            var user = (from assign in db.Solutions
+                         join us in db.Users on assign.userID equals us.Id into result
+                         where assign.Id == id
+                         from x in result
+                         select x).ToList();
+
+            var userView = new UserViewModel();
+            userView.users = user;
+
+            return userView;
+        }
     }
 }

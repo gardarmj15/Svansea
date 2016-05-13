@@ -53,7 +53,7 @@ namespace MoooLien.Controllers
         public ActionResult viewStudentsInCourse(int id)
         {
             ViewBag.assignId = id;
-            return View(uSerivice.getUsersByAssignmentId(id));
+            return View(sService.getUsersInAssignments(id));
         }
 
         [HttpPost]

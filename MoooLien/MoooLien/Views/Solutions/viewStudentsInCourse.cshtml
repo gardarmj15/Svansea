@@ -9,10 +9,11 @@
 <h4>Students</h4>
 <table class="table table-hover">
 
-    @foreach (var user in Model)
+    @foreach (var user in Model.users)
     {
         <tr>
-            <td>@user</td>
+            <td>@user.UserName</td>
+            <td><a href="@Url.Action("viewHandin", "Solutions", new { assignID = ViewBag.assignId})"></a></td>
         </tr>
     }
 </table>
