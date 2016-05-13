@@ -260,5 +260,28 @@ namespace MoooLien.Tests.Services
             Assert.IsTrue(result2);
             Assert.IsFalse(result3);
         }
+        [TestMethod]
+        public void TestCreateLink()
+        {
+            const string uid1 = "1";
+            const string uid2 = "8";
+            const int cid1 = 5;
+            const int cid2 = 1;
+            const int student = 1;
+            const int teacher = 2;
+
+            // act
+
+            var result1 = _service.userExists(uid1, cid1, teacher);
+            var result2 = _service.userExists(uid2, cid2, student);
+            var result3 = _service.userExists(uid1, cid2, student);
+
+
+            // assert
+
+            //Assert.IsTrue(result1);
+            Assert.IsFalse(result2);
+            //Assert.IsTrue(result3);
+        }
     }
 }
