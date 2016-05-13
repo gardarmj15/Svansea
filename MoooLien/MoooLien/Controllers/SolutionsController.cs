@@ -23,7 +23,8 @@ namespace MoooLien.Controllers
         private AssignmentsService aService = new AssignmentsService(null);
         private SolutionService sService = new SolutionService(null);
         private UsersService uSerivice = new UsersService(null);
- 
+        private CourseService cService = new CourseService(null);
+
 
 
         // GET: Solutions
@@ -46,12 +47,18 @@ namespace MoooLien.Controllers
 
         public ActionResult viewHandin(string userID, int courseID)
         {
+            var coursName = cService.getCourseByID(courseID);
+            ViewBag.coursName = coursName.name;
+
             return View(sService.getUsersHandin(userID, courseID));
         }
         
         public ActionResult viewStudentsInCourse(int id)
         {
+            var assName = aService.getAssignmentByID(id);
+            ViewBag.assName = assName.name;
             ViewBag.assignId = id;
+
             return View(sService.getUsersInAssignments(id));
         }
 

@@ -1,4 +1,6 @@
-﻿@{
+﻿@model MoooLien.Models.ViewModel.SolutionViewModel
+
+@{
     ViewBag.Title = "C++ Compile test page";
     Layout = "~/Views/Shared/_LayoutUsers.cshtml";
 }
@@ -22,4 +24,10 @@
                 }
             </ol>}
     </div>
+    <div>
+        <p>
+            @Html.DisplayFor(model => model.theSolution)
+        </p>
+    </div>
 </div>
+
