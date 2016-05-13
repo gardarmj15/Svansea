@@ -1,17 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
-using System.Linq;
-using System.Net;
 using System.Web;
 using System.Web.Mvc;
-using MoooLien.DAL;
-using MoooLien.Models.Entities;
 using MoooLien.Models;
 using System.IO;
 using System.Diagnostics;
-using MoooLien.Models.ViewModel;
 using MoooLien.Service;
 
 namespace MoooLien.Controllers
@@ -19,42 +12,56 @@ namespace MoooLien.Controllers
     [Authorize]
     public class SolutionsController : Controller
     {
-
+        #region Service connection
         private AssignmentsService aService = new AssignmentsService(null);
         private SolutionService sService = new SolutionService(null);
         private UsersService uSerivice = new UsersService(null);
- 
+        private CourseService cService = new CourseService(null);
+        #endregion
 
-
+        #region Index()
         // GET: Solutions
         public ActionResult Index()
         {
             return View();
         }
+        #endregion
 
+        #region Details(int id)
         // GET: Solutions/Details/5
         public ActionResult Details(int id)
         {
             ViewBag.AssId = id;
             return View(aService.getAssignmentByID(id));
         }
+        #endregion
 
+        #region Create()
         public ActionResult Create()
         {
             return View();
         }
+        #endregion
 
+        #region viewHandin(string userID, int courseID)
         public ActionResult viewHandin(string userID, int courseID)
         {
             return View(sService.getUsersHandin(userID, courseID));
         }
-        
+        #endregion
+
+        #region viewStudentsInCourse(int id)
         public ActionResult viewStudentsInCourse(int id)
         {
+            var assName = aService.getAssignmentByID(id);
+            ViewBag.assName = assName.name;
             ViewBag.assignId = id;
+
             return View(sService.getUsersInAssignments(id));
         }
+        #endregion
 
+        #region UploadStatus(HttpPostedFileBase file, int id)
         [HttpPost]
         public ActionResult UploadStatus(HttpPostedFileBase file, int id)
         {
@@ -103,7 +110,9 @@ namespace MoooLien.Controllers
             //return View();
             return View("Details");
         }
+        #endregion
 
+        #region Dispose(bool disposing)
         protected override void Dispose(bool disposing)
         {
             ApplicationDbContext db = new ApplicationDbContext();
@@ -113,8 +122,9 @@ namespace MoooLien.Controllers
             }
             base.Dispose(disposing);
         }
+        #endregion
 
-
+        #region Compiler(int id)
         public ActionResult Compiler(int id)
         {
             ViewBag.assId = id;
@@ -122,6 +132,9 @@ namespace MoooLien.Controllers
 
             return View();
         }
+        #endregion
+
+        # region Compiler(FormCollection data, int id)
         [HttpPost]
         public ActionResult Compiler(FormCollection data, int id)
         {
@@ -222,7 +235,7 @@ namespace MoooLien.Controllers
 
             return View();
         }
-
+        #endregion
 
     }
 }

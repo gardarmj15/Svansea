@@ -12,6 +12,6 @@ namespace MoooLien.Models.ViewModel
         public Solution solution { get; set; }
 
 
-        public int userId { get; set; }
+        public string theSolution { get; set; }
     }
 }

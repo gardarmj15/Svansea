@@ -5,7 +5,7 @@
     Layout = "~/Views/Shared/_LayoutUsers.cshtml";
 }
 
-<h2>Students Best Handins</h2>
+<h2>Students Handins</h2>
 
 @Html.AntiForgeryToken()
 <div>
@@ -20,4 +20,8 @@
             </tr>
         }
     </table>
+</div>
+
+<div>
+    @Html.ActionLink("Back to My Courses", "UserIndex", "Courses")
 </div>
