@@ -40,6 +40,8 @@ namespace MoooLien.Service
             db.Solutions.Add(sol);
             db.SaveChanges();
 
+            getSolution(assignmentId);
+
             return;
         }
 
@@ -70,6 +72,17 @@ namespace MoooLien.Service
             userView.users = courseStudents;
 
             return userView;
+        }
+
+        public SolutionViewModel getSolution(int id)
+        {
+            var solution = (from sol in db.Solutions
+                            where sol.assignmentID == id
+                            select sol.file).SingleOrDefault();
+
+            SolutionViewModel solu = new SolutionViewModel() { theSolution = solution };
+
+            return solu;
         }
     }
 }
