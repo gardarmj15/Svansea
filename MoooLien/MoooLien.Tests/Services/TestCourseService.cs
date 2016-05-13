@@ -285,12 +285,13 @@ namespace MoooLien.Tests.Services
             };
 
             // act
-
+            var beforeadd = _service.getAllCourses();
             var result = _service.add(c1);
-
+            var afteradd = _service.getAllCourses();
             // assert
 
-            Assert.IsTrue(result);
+            Assert.AreEqual(5, beforeadd.courses.Count);
+            Assert.AreEqual(6, afteradd.courses.Count);
         }
     }
 }

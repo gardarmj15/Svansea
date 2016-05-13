@@ -17,7 +17,7 @@ namespace MoooLien.Service
         {
             db = context ?? new ApplicationDbContext();
         }
-        public SolutionViewModel createHandinAttempt(int assignmentId, string solution)
+        public void createHandinAttempt(int assignmentId, string solution)
         {
             var currentUser = HttpContext.Current.User.Identity.GetUserId();
 
@@ -40,12 +40,19 @@ namespace MoooLien.Service
             db.Solutions.Add(sol);
             db.SaveChanges();
 
+            return;
+        }
 
+        public SolutionViewModel getUsersBestHandin(int id)
+        {
+            var handins = (from hand in db.Solutions
+                           where hand.assignmentID == id
+                           select hand).ToList();
 
+            SolutionViewModel result = new SolutionViewModel();
+            result.solutions = handins;
 
-
-
-            return null;
+            return result;
         }
     }
 }

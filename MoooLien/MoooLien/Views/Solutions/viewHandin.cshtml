@@ -1,0 +1,22 @@
+﻿@model MoooLien.Models.ViewModel.SolutionViewModel
+
+@{
+    ViewBag.Title = "viewHandin";
+}
+
+<h2>Students Best Handins</h2>
+
+@Html.AntiForgeryToken()
+<div>
+    <h4>Teachers</h4>
+    <table class="table table-hover">
+
+        @foreach (var user in Model.solutions)
+        {
+            <tr>
+                <td></td>
+                <td>@user.accepted</td>
+            </tr>
+        }
+    </table>
+</div>

@@ -355,6 +355,8 @@
     <Content Include="Views\Solutions\IndexTeacher.cshtml" />
     <Content Include="Views\Solutions\Create.cshtml" />
     <Content Include="Views\Solutions\Details - Copy.cshtml" />
+    <Content Include="Views\Solutions\viewHandin.cshtml" />
+    <Content Include="Views\Solutions\viewStudentsInCourse.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

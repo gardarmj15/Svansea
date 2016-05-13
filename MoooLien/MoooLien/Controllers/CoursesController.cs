@@ -1,12 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
-using System.Linq;
-using System.Net;
-using System.Web;
-using System.Web.Mvc;
-using MoooLien.DAL;
+﻿using System.Web.Mvc;
 using MoooLien.Models.Entities;
 using MoooLien.Service;
 using MoooLien.Models.ViewModel;
@@ -16,9 +8,11 @@ namespace MoooLien.Controllers
 {
     public class CoursesController : Controller
     {
-
+        #region Server conections
         private CourseService cService = new CourseService(null);
+        #endregion
 
+        #region Index()
         // GET: Courses
         [Authorize(Roles = "Administrator")]
         public ActionResult Index()
@@ -26,19 +20,25 @@ namespace MoooLien.Controllers
             CourseViewModel cView = cService.getAllCourses();
             return View(cView);
         }
+        #endregion
 
+        #region UserIndex()
         public ActionResult UserIndex()
         {
             var userid = User.Identity.GetUserId();
             return View(cService.getCourseByUserID(userid));
         }
+        #endregion
 
+        #region Create()
         // GET: Courses/Details/5
         public ActionResult Create()
         {
             return View();
         }
+        #endregion
 
+        #region Create(CreateCourseViewModel newCourse)
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(CreateCourseViewModel newCourse)
@@ -53,6 +53,9 @@ namespace MoooLien.Controllers
                 return (RedirectToAction("Create"));
             }
         }
+        #endregion
+
+        #region Delete(int id)
         public ActionResult Delete(int id)
         {
             if(cService.deleteCourse(id))
@@ -65,6 +68,9 @@ namespace MoooLien.Controllers
                 return RedirectToAction("Index");
             }
         }
+        #endregion
+
+        # region Edit(int id)
         public ActionResult Edit(int id)
         {
             Course course = cService.getCourseByID(id);
@@ -74,23 +80,6 @@ namespace MoooLien.Controllers
             };
             return View(model);
         }
-
-        /*[HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit(EditCourseViewModel editCourse)
-        {
-            if (cService.editCourse(editCourse))
-            {
-                return RedirectToAction("index");
-            }
-            else
-            {
-                ModelState.AddModelError("", "Edit course failed!");
-                return RedirectToAction("index");
-            }
-
-            
-
-        }*/
+        #endregion
     }
 }
