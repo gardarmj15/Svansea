@@ -10,6 +10,7 @@ using MoooLien.DAL;
 using MoooLien.Models.Entities;
 using MoooLien.Service;
 using MoooLien.Models.ViewModel;
+using Microsoft.AspNet.Identity;
 
 namespace MoooLien.Controllers
 {
@@ -28,8 +29,8 @@ namespace MoooLien.Controllers
 
         public ActionResult UserIndex()
         {
-            
-            return View(cService.getCourseByUserID());
+            var userid = User.Identity.GetUserId();
+            return View(cService.getCourseByUserID(userid));
         }
 
         // GET: Courses/Details/5
