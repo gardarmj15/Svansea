@@ -56,14 +56,18 @@ namespace MoooLien.Service
         }
         public UserViewModel getUsersInAssignments(int id)
         {
-            var user = (from assign in db.Solutions
-                         join us in db.Users on assign.userID equals us.Id into result
-                         where assign.Id == id
-                         from x in result
-                         select x).ToList();
+            var courseId = (from cor in db.AssingmentInCourse
+                            where cor.assignmentID == id
+                            select cor.courseID).SingleOrDefault();
+
+            var courseStudents = (from u in db.UsersInCourse
+                                  join us in db.Users on u.userID equals us.Id into result
+                                  where u.courseID == courseId && u.roleID == 1
+                                  from x in result
+                                  select x).ToList();
 
             var userView = new UserViewModel();
-            userView.users = user;
+            userView.users = courseStudents;
 
             return userView;
         }
