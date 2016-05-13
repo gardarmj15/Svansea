@@ -12,7 +12,8 @@ using System.Web.Mvc;
 
 namespace MoooLien.Service
 {
-    public class UsersService
+		#region User Service
+	public class UsersService
     {
 
         private readonly IAppDataContext db;
@@ -27,7 +28,11 @@ namespace MoooLien.Service
                          select user).ToList();
             return users;
         }
-        public UserViewModel getAllUsers()
+		#endregion
+
+		#region Get All Users
+		//get all users from db.users
+		public UserViewModel getAllUsers()
         {
             UserViewModel theModel = new UserViewModel();
             theModel.users = (from user in db.Users
@@ -35,14 +40,22 @@ namespace MoooLien.Service
                               select user).ToList();
             return theModel;
         }
-        public ApplicationUser getUserByID(string ID)
+		#endregion
+
+		#region Get Users by ID
+		//get users by ID from db.Users
+		public ApplicationUser getUserByID(string ID)
         {
             ApplicationUser user = (from users in db.Users
                                     where users.Id == ID
                                     select users).SingleOrDefault();
             return user;
         }
-        public bool CanDeleteUser(ApplicationUser user)
+		#endregion
+
+		#region Delete User
+		//delete user from db.users
+		public bool CanDeleteUser(ApplicationUser user)
         {
             var exists = (from x in db.Users
                           where x.Id == user.Id
@@ -54,8 +67,11 @@ namespace MoooLien.Service
 
             return true;
         }
+		#endregion
 
-        public EnroleViewModel getUsersByCourseID(int id)
+		#region Get Users by Course ID
+		//get users by course ID from db.UsersInCourse
+		public EnroleViewModel getUsersByCourseID(int id)
         {
             var courseStudents = (from u in db.UsersInCourse
                                   join us in db.Users on u.userID equals us.Id into result
@@ -79,5 +95,6 @@ namespace MoooLien.Service
 
             return all;
         }
-    }
+		#endregion
+	}
 }

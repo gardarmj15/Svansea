@@ -13,19 +13,28 @@ namespace MoooLien.Service
 {
     public class AssignmentsService
     {
-        private readonly IAppDataContext db;
-        public AssignmentsService(IAppDataContext context)
+		private readonly IAppDataContext db;
+		#region Assingment Service
+		public AssignmentsService(IAppDataContext context)
         {
             db = context ?? new ApplicationDbContext();
         }
-        public Assignment getAssignmentByID(int assignmentID)
+		#endregion
+
+		#region Get Assignment by ID
+		//get Assingment by ID from Assignment.db
+		public Assignment getAssignmentByID(int assignmentID)
         {
             Assignment assignment = (from assign in db.Assignments
                               where assign.ID == assignmentID
                               select assign).SingleOrDefault();
             return assignment;
         }
-        public AssignmentViewModel getAllAssignments()
+		#endregion
+
+		#region Get all Assignments
+		//Get all assignments from db.Assigments
+		public AssignmentViewModel getAllAssignments()
         {
             var assignments = (from assign in db.Assignments
                                select assign).ToList();
@@ -36,7 +45,11 @@ namespace MoooLien.Service
             return result;
 
         }
-        public AssignmentViewModel getAssignmentsInCourse(int courseID)
+		#endregion
+
+		#region Get Assignments in Course
+		//Get Assignment in course from db.Assignment
+		public AssignmentViewModel getAssignmentsInCourse(int courseID)
         {
             //cID = courseID;
             var assignmentInCourse = (from asInCo in db.AssingmentInCourse
@@ -50,8 +63,11 @@ namespace MoooLien.Service
 
             return all;
         }
+		#endregion
 
-        public bool createAssignment(CreateAssignmentViewModel newAssignment)
+		#region Create Assignment
+		// Add assignment to db.assignments
+		public bool createAssignment(CreateAssignmentViewModel newAssignment)
         {
             Assignment temp = new Assignment() { name = newAssignment.name, solution = newAssignment.solution,
                                                  description = newAssignment.description, startDate = newAssignment.startDate,
@@ -64,7 +80,11 @@ namespace MoooLien.Service
             
             return Convert.ToBoolean(db.SaveChanges());
         }
-        public bool isTeacher(int id, string userid)
+		#endregion
+
+		#region Set as Teacher
+		//set role of user in UserInCourse 
+		public bool isTeacher(int id, string userid)
         {
 
             var getRole = (from role in db.UsersInCourse
@@ -77,8 +97,10 @@ namespace MoooLien.Service
             }
             return false;
         }
+		#endregion
 
-        public string givenCourse(int id)
+		#region Get Course Name
+		public string givenCourse(int id)
         {
             var courseID = (from coId in db.AssingmentInCourse
                             where coId.assignmentID == id
@@ -90,6 +112,6 @@ namespace MoooLien.Service
 
             return courseName;
         }
-
-    }
+		#endregion
+	}
 }
