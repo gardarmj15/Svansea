@@ -32,13 +32,9 @@ namespace MoooLien.Service
         public UsersCoursesViewModel getCourseByUserID(string id)
         {
 
-            var user = (from u in db.Users
-                        where u.Id == id
-                        select u).SingleOrDefault();
-
             var userCourses = (from cUsers in db.UsersInCourse
                                join courses in db.Courses on cUsers.courseID equals courses.ID into result
-                               where cUsers.userID == user.Id
+                               where cUsers.userID == id
                                from x in result
                                select x).ToList();
 
