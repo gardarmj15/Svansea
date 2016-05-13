@@ -237,7 +237,7 @@ namespace MoooLien.Tests.Services
             _service = new UsersInCourseService(mockDB);
         }
         [TestMethod]
-        public void TestUserExists()
+        public void testUserExists()
         {
             // arrange
             const string uid1 = "1";
@@ -261,7 +261,7 @@ namespace MoooLien.Tests.Services
             Assert.IsFalse(result3);
         }
         [TestMethod]
-        public void TestCreateLink()
+        public void testCreateLink()
         {
             const string uid1 = "1";
             const string uid2 = "8";

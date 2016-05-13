@@ -256,7 +256,7 @@ namespace MoooLien.Tests.Services
         }
 
         [TestMethod]
-        public void TestGetCourseByID()
+        public void testGetCourseByID()
         {
             // arrange
             const int ID = 2;
@@ -279,7 +279,7 @@ namespace MoooLien.Tests.Services
             Assert.AreEqual("Stærðfræði", result3.name);
         }
         [TestMethod]
-        public void TestGetAllCourses()
+        public void testGetAllCourses()
         {
             // arrange
  
@@ -293,7 +293,7 @@ namespace MoooLien.Tests.Services
             Assert.AreEqual(5,result.courses.Count);
         }
         [TestMethod]
-        public void TestAddCourse()
+        public void testAddCourse()
         {
             // arrange
             var c1 = new CreateCourseViewModel
