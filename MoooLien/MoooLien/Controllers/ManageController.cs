@@ -1,5 +1,4 @@
-﻿using System;
-using System.Linq;
+﻿using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
@@ -16,16 +15,21 @@ namespace MoooLien.Controllers
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
 
+        #region ManageController()
         public ManageController()
         {
         }
+        #endregion
 
+        #region ManageController(ApplicationUserManager userManager, ApplicationSignInManager signInManager)
         public ManageController(ApplicationUserManager userManager, ApplicationSignInManager signInManager)
         {
             UserManager = userManager;
             SignInManager = signInManager;
         }
+        #endregion
 
+        # region SignInManager
         public ApplicationSignInManager SignInManager
         {
             get
@@ -37,7 +41,9 @@ namespace MoooLien.Controllers
                 _signInManager = value; 
             }
         }
+        #endregion
 
+        #region UserManager
         public ApplicationUserManager UserManager
         {
             get
@@ -49,8 +55,9 @@ namespace MoooLien.Controllers
                 _userManager = value;
             }
         }
+        #endregion
 
-        //
+        #region Index(ManageMessageId? message)
         // GET: /Manage/Index
         public async Task<ActionResult> Index(ManageMessageId? message)
         {
@@ -74,8 +81,9 @@ namespace MoooLien.Controllers
             };
             return View(model);
         }
+        #endregion
 
-        //
+        #region RemoveLogin(string loginProvider, string providerKey)
         // POST: /Manage/RemoveLogin
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -98,15 +106,17 @@ namespace MoooLien.Controllers
             }
             return RedirectToAction("ManageLogins", new { Message = message });
         }
+        #endregion
 
-        //
+        #region AddPhoneNumber()
         // GET: /Manage/AddPhoneNumber
         public ActionResult AddPhoneNumber()
         {
             return View();
         }
+        #endregion
 
-        //
+        #region AddPhoneNumber(AddPhoneNumberViewModel model)
         // POST: /Manage/AddPhoneNumber
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -129,8 +139,9 @@ namespace MoooLien.Controllers
             }
             return RedirectToAction("VerifyPhoneNumber", new { PhoneNumber = model.Number });
         }
+        #endregion
 
-        //
+        #region EnableTwoFactorAuthentication()
         // POST: /Manage/EnableTwoFactorAuthentication
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -144,8 +155,9 @@ namespace MoooLien.Controllers
             }
             return RedirectToAction("Index", "Manage");
         }
+        #endregion
 
-        //
+        #region DisableTwoFactorAuthentication()
         // POST: /Manage/DisableTwoFactorAuthentication
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -159,8 +171,9 @@ namespace MoooLien.Controllers
             }
             return RedirectToAction("Index", "Manage");
         }
+        #endregion
 
-        //
+        #region VerifyPhoneNumber(string phoneNumber)
         // GET: /Manage/VerifyPhoneNumber
         public async Task<ActionResult> VerifyPhoneNumber(string phoneNumber)
         {
@@ -168,8 +181,9 @@ namespace MoooLien.Controllers
             // Send an SMS through the SMS provider to verify the phone number
             return phoneNumber == null ? View("Error") : View(new VerifyPhoneNumberViewModel { PhoneNumber = phoneNumber });
         }
+        #endregion
 
-        //
+        #region VerifyPhoneNumber(VerifyPhoneNumberViewModel model)
         // POST: /Manage/VerifyPhoneNumber
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -193,8 +207,9 @@ namespace MoooLien.Controllers
             ModelState.AddModelError("", "Failed to verify phone");
             return View(model);
         }
+        #endregion
 
-        //
+        #region RemovePhoneNumber()
         // POST: /Manage/RemovePhoneNumber
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -212,15 +227,17 @@ namespace MoooLien.Controllers
             }
             return RedirectToAction("Index", new { Message = ManageMessageId.RemovePhoneSuccess });
         }
+        #endregion
 
-        //
+        #region ChangePassword()
         // GET: /Manage/ChangePassword
         public ActionResult ChangePassword()
         {
             return View();
         }
+        #endregion
 
-        //
+        #region ChangePassword(ChangePasswordViewModel model)
         // POST: /Manage/ChangePassword
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -243,15 +260,17 @@ namespace MoooLien.Controllers
             AddErrors(result);
             return View(model);
         }
+        #endregion
 
-        //
+        #region SetPassword()
         // GET: /Manage/SetPassword
         public ActionResult SetPassword()
         {
             return View();
         }
+        #endregion
 
-        //
+        #region SetPassword(SetPasswordViewModel model)
         // POST: /Manage/SetPassword
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -275,8 +294,9 @@ namespace MoooLien.Controllers
             // If we got this far, something failed, redisplay form
             return View(model);
         }
+        #endregion
 
-        //
+        #region ManageLogins(ManageMessageId? message)
         // GET: /Manage/ManageLogins
         public async Task<ActionResult> ManageLogins(ManageMessageId? message)
         {
@@ -298,8 +318,9 @@ namespace MoooLien.Controllers
                 OtherLogins = otherLogins
             });
         }
+        #endregion
 
-        //
+        #region LinkLogin(string provider)
         // POST: /Manage/LinkLogin
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -308,8 +329,9 @@ namespace MoooLien.Controllers
             // Request a redirect to the external login provider to link a login for the current user
             return new AccountController.ChallengeResult(provider, Url.Action("LinkLoginCallback", "Manage"), User.Identity.GetUserId());
         }
+        #endregion
 
-        //
+        #region LinkLoginCallback()
         // GET: /Manage/LinkLoginCallback
         public async Task<ActionResult> LinkLoginCallback()
         {
@@ -321,7 +343,9 @@ namespace MoooLien.Controllers
             var result = await UserManager.AddLoginAsync(User.Identity.GetUserId(), loginInfo.Login);
             return result.Succeeded ? RedirectToAction("ManageLogins") : RedirectToAction("ManageLogins", new { Message = ManageMessageId.Error });
         }
+        #endregion
 
+        #region Dispose(bool disposing)
         protected override void Dispose(bool disposing)
         {
             if (disposing && _userManager != null)
@@ -332,8 +356,9 @@ namespace MoooLien.Controllers
 
             base.Dispose(disposing);
         }
+        #endregion
 
-#region Helpers
+        #region Helpers
         // Used for XSRF protection when adding external logins
         private const string XsrfKey = "XsrfId";
 
