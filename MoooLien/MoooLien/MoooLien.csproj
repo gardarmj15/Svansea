@@ -253,6 +253,7 @@
     <Compile Include="Models\ViewModel\UserViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Service\AssignmentsService.cs" />
+    <Compile Include="Service\CompilerService.cs" />
     <Compile Include="Service\CourseService.cs" />
     <Compile Include="Service\SolutionService.cs" />
     <Compile Include="Service\UsersInCourseService.cs" />

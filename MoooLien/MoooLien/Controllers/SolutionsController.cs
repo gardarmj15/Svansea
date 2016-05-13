@@ -50,8 +50,9 @@ namespace MoooLien.Controllers
 
             // Specify the directory you want to manipulate.
             //string path = @"c:\MyDir";
+            var assignment = aService.getAssignmentByID(id);
 
-            string path = Server.MapPath("~/Files/" + User.Identity.Name + "/");
+            string path = Server.MapPath("~/Files/" + User.Identity.Name + "/" + assignment.name + "/");
 
             try
             {
@@ -115,19 +116,10 @@ namespace MoooLien.Controllers
             //Compiler();
             // To simplify matters, we declare the code here.
             // The code would of course come from the student!
-            /*
-            var code = "#include <iostream>\n" +
-                    "using namespace std;\n" +
-                    "int main()\n" +
-                    "{\n" +
-                    "cout << \"Hello world\" << endl;\n" +
-                    "cout << \"The output should contain two lines\" << endl;\n" +
-                    "return 0;\n" +
-                    "}";
-            */
-            var path = Server.MapPath("~/Files/" + User.Identity.Name + "/" + "main.cpp");
+            var assignment = aService.getAssignmentByID(id);
+
+            var path = Server.MapPath("~/Files/" + User.Identity.Name + "/"  + assignment.name + "/" + "main.cpp");
             var code = System.IO.File.ReadAllText(path);
-            //var code = Server.MapPath("~/Files/" + User.Identity.Name + "/" + "main.cpp");
 
             // Set up our working folder, and the file names/paths.
             // In this example, this is all hardcoded, but in a
@@ -203,7 +195,7 @@ namespace MoooLien.Controllers
                     {
                         lines.Add(processExe.StandardOutput.ReadLine());
                     }
-                    var allLines = lines.ToString();
+                    var allLines = lines[0];
                     sService.createHandinAttempt(id, allLines);
                     ViewBag.Output = lines;
                 }
