@@ -290,7 +290,7 @@ namespace MoooLien.Tests.Services
 
             // assert
 
-            Assert.IsFalse(result);
+            Assert.IsTrue(result);
         }
     }
 }

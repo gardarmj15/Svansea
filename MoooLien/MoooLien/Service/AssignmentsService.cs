@@ -64,16 +64,11 @@ namespace MoooLien.Service
             
             return Convert.ToBoolean(db.SaveChanges());
         }
-        public bool isTeacher(int id)
+        public bool isTeacher(int id, string userid)
         {
-            var currentUser = HttpContext.Current.User.Identity.GetUserId();
-
-            var user = (from u in db.Users
-                        where u.Id == currentUser
-                        select u).SingleOrDefault();
 
             var getRole = (from role in db.UsersInCourse
-                           where role.courseID == id && role.userID == user.Id
+                           where role.courseID == id && role.userID == userid
                            select role.roleID).SingleOrDefault();
 
             if(getRole == 2)
