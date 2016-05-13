@@ -227,6 +227,9 @@ namespace MoooLien.Controllers
                     var allLines = lines[0];
                     sService.createHandinAttempt(id, allLines);
                     ViewBag.Output = lines;
+
+                    var status = sService.getSolution(id);
+                    ViewBag.status = status;
                 }
             }
 

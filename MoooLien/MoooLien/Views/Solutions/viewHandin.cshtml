@@ -11,14 +11,21 @@
 <div>
     <h4>Teachers</h4>
     <table class="table table-hover">
-
-        @foreach (var user in Model.solutions)
-        {
+        <thead>
             <tr>
-                <td>@user.accepted</td>
-                <td>@user.handinDate</td>
+                <td>Status</td>
+                <td>Date and time</td>
             </tr>
-        }
+        </thead>
+        <tbody>
+            @foreach (var user in Model.solutions)
+            {
+                <tr>
+                    <td>@user.accepted</td>
+                    <td>@user.handinDate</td>
+                </tr>
+            }
+        </tbody>
     </table>
 </div>
 

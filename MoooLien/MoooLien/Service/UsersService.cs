@@ -30,7 +30,7 @@ namespace MoooLien.Service
         }
 		#endregion
 
-		#region Get All Users
+		#region getAllUsers()
 		//get all users from db.users
 		public UserViewModel getAllUsers()
         {
@@ -42,7 +42,7 @@ namespace MoooLien.Service
         }
 		#endregion
 
-		#region Get Users by ID
+		#region getUsersByID(string ID)
 		//get users by ID from db.Users
 		public ApplicationUser getUserByID(string ID)
         {
@@ -53,7 +53,7 @@ namespace MoooLien.Service
         }
 		#endregion
 
-		#region Delete User
+		#region canDeleteUser()
 		//delete user from db.users
 		public bool CanDeleteUser(ApplicationUser user)
         {
@@ -69,7 +69,7 @@ namespace MoooLien.Service
         }
 		#endregion
 
-		#region Get Users by Course ID
+		#region getUsersByCourseID(int id)
 		//get users by course ID from db.UsersInCourse
 		public EnroleViewModel getUsersByCourseID(int id)
         {

@@ -15,14 +15,14 @@ namespace MoooLien.Service
     {
         private readonly IAppDataContext db;
 
-		#region Course Service 
+		#region CourseService 
 		public CourseService(IAppDataContext context)
         {
             db = context ?? new ApplicationDbContext();
         }
 		#endregion
 
-		#region Get Course by ID
+		#region getCoursebByID(int ID)
 		//get course by ID from db.course
 		public Course getCourseByID(int Id)
         {
@@ -33,7 +33,7 @@ namespace MoooLien.Service
         }
 		#endregion
 
-		#region Get Course by UserID
+		#region getCoursebyUserID(string id)
 		//Get course by UserID from db.UserInCourse
 		public UsersCoursesViewModel getCourseByUserID(string id)
         {
@@ -52,7 +52,7 @@ namespace MoooLien.Service
         }
 		#endregion
 
-		#region Get all Courses
+		#region getAllCourses()
 		//Get all courses from db.Courses
 		public CourseViewModel getAllCourses()
         {
@@ -66,7 +66,7 @@ namespace MoooLien.Service
         }
 		#endregion
 
-		#region Create Course
+		#region createCourse
 		//Add Course to db.Courses
 		public bool add(CreateCourseViewModel newCourse)
         {
@@ -76,7 +76,7 @@ namespace MoooLien.Service
         }
 		#endregion
 
-		#region Delete Course
+		#region deleteCourse(int id)
 		//Delete course from db.courses
 		public bool deleteCourse(int id)
         {

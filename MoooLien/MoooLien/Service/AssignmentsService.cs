@@ -14,14 +14,14 @@ namespace MoooLien.Service
     public class AssignmentsService
     {
 		private readonly IAppDataContext db;
-		#region Assingment Service
+		#region AssingmentService
 		public AssignmentsService(IAppDataContext context)
         {
             db = context ?? new ApplicationDbContext();
         }
 		#endregion
 
-		#region Get Assignment by ID
+		#region getAssignmentByID(int assignmentID)
 		//get Assingment by ID from Assignment.db
 		public Assignment getAssignmentByID(int assignmentID)
         {
@@ -32,7 +32,7 @@ namespace MoooLien.Service
         }
 		#endregion
 
-		#region Get all Assignments
+		#region getAllAssignments()
 		//Get all assignments from db.Assigments
 		public AssignmentViewModel getAllAssignments()
         {
@@ -47,7 +47,7 @@ namespace MoooLien.Service
         }
 		#endregion
 
-		#region Get Assignments in Course
+		#region getAssignmentsInCourse(int courseID)
 		//Get Assignment in course from db.Assignment
 		public AssignmentViewModel getAssignmentsInCourse(int courseID)
         {
@@ -65,7 +65,7 @@ namespace MoooLien.Service
         }
 		#endregion
 
-		#region Create Assignment
+		#region createAssignment
 		// Add assignment to db.assignments
 		public bool createAssignment(CreateAssignmentViewModel newAssignment)
         {
@@ -82,7 +82,7 @@ namespace MoooLien.Service
         }
 		#endregion
 
-		#region Set as Teacher
+		#region isTeacher(int id, string userid)
 		//set role of user in UserInCourse 
 		public bool isTeacher(int id, string userid)
         {
@@ -99,7 +99,7 @@ namespace MoooLien.Service
         }
 		#endregion
 
-		#region Get Course Name
+		#region givenCourse(int id)
 		public string givenCourse(int id)
         {
             var courseID = (from coId in db.AssingmentInCourse
