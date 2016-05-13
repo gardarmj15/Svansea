@@ -10,7 +10,13 @@ namespace MoooLien.Service
 {
     public class UsersInCourseService
     {
-        ApplicationDbContext db = new ApplicationDbContext();
+        private readonly IAppDataContext db;
+
+
+        public UsersInCourseService(IAppDataContext context)
+        {
+            db = context ?? new ApplicationDbContext();
+        }
         public bool createLink(string userID, int courseID, int roleID)
         {
             UsersInCourse uInC = new UsersInCourse() { userID = userID, courseID = courseID, roleID = roleID};

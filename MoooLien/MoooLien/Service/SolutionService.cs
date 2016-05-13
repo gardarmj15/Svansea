@@ -9,10 +9,14 @@ using System.Web;
 
 namespace MoooLien.Service
 {
-    public class SolutionServive
+    public class SolutionService
     {
-        private ApplicationDbContext db = new ApplicationDbContext();
+        private readonly IAppDataContext db;
 
+        public SolutionService(IAppDataContext context)
+        {
+            db = context ?? new ApplicationDbContext();
+        }
         public SolutionViewModel createHandinAttempt(int assignmentId, string solution)
         {
             var currentUser = HttpContext.Current.User.Identity.GetUserId();
