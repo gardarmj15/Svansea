@@ -19,7 +19,7 @@ namespace MoooLien.Service
         }
 		#endregion
 
-		#region Create Link
+		#region createLink(string userID, int courseID, int roleID)
 		//Create link between User and Course
 		public bool createLink(string userID, int courseID, int roleID)
         {
@@ -30,7 +30,7 @@ namespace MoooLien.Service
         }
 		#endregion
 
-		#region Remove Link
+		#region removeLink(string userID, int courseID)
 		//Remove link between User and Course
 		public bool removeLink(string userID, int courseID)
         {
@@ -42,7 +42,7 @@ namespace MoooLien.Service
         }
 		#endregion
 
-		#region Existing User
+		#region userExists(string userID, int courseID, int roleID)
 		public bool userExists(string userID, int courseID, int roleID)
         {
             var exists = (from uInC in db.UsersInCourse

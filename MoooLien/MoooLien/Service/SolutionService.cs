@@ -9,15 +9,19 @@ using System.Web;
 
 namespace MoooLien.Service
 {
-    public class SolutionService
+	public class SolutionService
     {
         private readonly IAppDataContext db;
 
-        public SolutionService(IAppDataContext context)
+		#region Solution Service
+		public SolutionService(IAppDataContext context)
         {
             db = context ?? new ApplicationDbContext();
         }
-        public void createHandinAttempt(int assignmentId, string solution)
+		#endregion
+
+		#region createHandinAttempt(int assignmentID, string soltuion)
+		public void createHandinAttempt(int assignmentId, string solution)
         {
             var currentUser = HttpContext.Current.User.Identity.GetUserId();
 
@@ -44,8 +48,11 @@ namespace MoooLien.Service
 
             return;
         }
+		#endregion
 
-        public SolutionViewModel getUsersHandin(string id, int Id)
+		#region getUserHandin(string id, int Id)
+		//get user handin from db.soltution
+		public SolutionViewModel getUsersHandin(string id, int Id)
         {
             var handins = (from hand in db.Solutions
                            where hand.userID == id && hand.assignmentID == Id
@@ -56,7 +63,11 @@ namespace MoooLien.Service
 
             return result;
         }
-        public UserViewModel getUsersInAssignments(int id)
+		#endregion
+
+		#region getUsersinAssignments(int id)
+		//get course from db.AssignmentInCourse and user from db.UserInCourse
+		public UserViewModel getUsersInAssignments(int id)
         {
             var courseId = (from cor in db.AssingmentInCourse
                             where cor.assignmentID == id
@@ -73,8 +84,11 @@ namespace MoooLien.Service
 
             return userView;
         }
+		#endregion
 
-        public SolutionViewModel getSolution(int id)
+		#region getSolution(int id)
+		//get soltuion from db.Assignments
+		public SolutionViewModel getSolution(int id)
         {
             var solution = (from sol in db.Assignments
                             where sol.ID == id
@@ -84,5 +98,6 @@ namespace MoooLien.Service
 
             return solu;
         }
-    }
+		#endregion
+	}
 }

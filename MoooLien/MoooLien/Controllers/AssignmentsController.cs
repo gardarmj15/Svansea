@@ -20,9 +20,9 @@ namespace MoooLien.Controllers
         private AssignmentsService aService = new AssignmentsService(null);
         private CourseService cService = new CourseService(null);
 
-        #region Get Assignments
-        // GET: Assignments
-        public ActionResult Index(int id)
+		#region Index(int id)
+		// GET: Assignments
+		public ActionResult Index(int id)
         {
             var currentUser = User.Identity.GetUserId();
 
@@ -37,7 +37,7 @@ namespace MoooLien.Controllers
         }
 		#endregion
 
-		#region Create Assignment
+		#region Create(int id)
 		//Create Assignment
 		public ActionResult Create(int id)
         {
@@ -62,7 +62,7 @@ namespace MoooLien.Controllers
         }
 		#endregion
 
-		#region Teacher Index
+		#region TeacherIndex(int id)
 		//Teacher Index
 		public ActionResult TeacherIndex(int id)
         {
@@ -73,7 +73,7 @@ namespace MoooLien.Controllers
         }
 		#endregion
 
-		#region Student Index
+		#region StudentIndex(int id)
 		//Student Index
 		public ActionResult StudentIndex(int id)
         {
