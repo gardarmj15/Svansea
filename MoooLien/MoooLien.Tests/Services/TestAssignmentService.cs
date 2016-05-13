@@ -238,7 +238,7 @@ namespace MoooLien.Tests.Services
         }
 
         [TestMethod]
-        public void TestGetAssignmentByID()
+        public void testGetAssignmentByID()
         {
             // arrange
             const int ID = 2;
@@ -262,7 +262,7 @@ namespace MoooLien.Tests.Services
         }
 
         [TestMethod]
-        public void TestGetAllAssignments()
+        public void testGetAllAssignments()
         {
             // arrange
 
@@ -277,7 +277,7 @@ namespace MoooLien.Tests.Services
         }
 
         [TestMethod]
-        public void TestGetAssignmentsInCourse()
+        public void testGetAssignmentsInCourse()
         {
             // arrange
             const int courseID1 = 2;
@@ -318,6 +318,48 @@ namespace MoooLien.Tests.Services
             Assert.IsFalse(result1);
             Assert.IsFalse(result2);
             Assert.IsTrue(result3);
+        }
+        [TestMethod]
+        public void testGivenCourse()
+        {
+            const int assignid1 = 2;
+            const int assignid2 = 1;
+            const int assignid3 = 4;
+
+
+            // act
+
+            var result1 = _service.givenCourse(assignid1);
+            var result2 = _service.givenCourse(assignid2);
+            var result3 = _service.givenCourse(assignid3);
+
+            // assert
+
+            Assert.AreEqual("Gagnaskipan", result1);
+            Assert.AreEqual("Forritun", result2);
+            Assert.AreEqual("Stærðfræði", result3);
+        }
+        [TestMethod]
+        public void testCreateAssignment()
+        {
+            // arrange
+            var a1 = new CreateAssignmentViewModel
+            {
+                name = "Mooshak 2.0",
+                description = "Make Mooshak free for us",
+                startDate = new DateTime(2016, 05, 05, 00, 00, 00),
+                endDate = new DateTime(2016, 06, 06, 23, 59, 59),
+                solution = "free"
+            };
+
+            // act
+            var beforeadd = _service.getAllAssignments();
+            var result = _service.createAssignment(a1);
+            var afteradd = _service.getAllAssignments();
+            // assert
+
+            Assert.AreEqual(6, beforeadd.assignments.Count);
+            Assert.AreEqual(7, afteradd.assignments.Count);
         }
     }
 }
