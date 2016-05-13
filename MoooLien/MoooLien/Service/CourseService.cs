@@ -72,6 +72,8 @@ namespace MoooLien.Service
 
             return Convert.ToBoolean(db.SaveChanges());
         }
+
+       
         /*public bool editCourse(EditCourseViewModel editC)
         {
             var givenCourse = (from co in db.Courses

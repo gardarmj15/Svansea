@@ -23,9 +23,9 @@ namespace MoooLien.Service
 
             var assignmentSolution = (from assign in db.Assignments
                                       where assign.ID == assignmentId
-                                      select assign.solution).ToString();
+                                      select assign.solution).FirstOrDefault();
 
-            var acceptedOrNot = "String";
+            var acceptedOrNot = "";
 
             if(assignmentSolution == solution)
             {
@@ -36,7 +36,7 @@ namespace MoooLien.Service
                 acceptedOrNot = "Not Accepted";
             }
 
-            Solution sol = new Solution() { userID = currentUser, assignmentID = assignmentId, accepted = acceptedOrNot, handinDate = DateTime.Now };
+            Solution sol = new Solution() { userID = currentUser, assignmentID = assignmentId, accepted = acceptedOrNot, handinDate = DateTime.Now, file = solution};
             db.Solutions.Add(sol);
             db.SaveChanges();
 
